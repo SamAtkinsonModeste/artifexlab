@@ -38,17 +38,20 @@
   background-image: linear-gradient(to left bottom, #f6ece3, #faeeea, #fbf1f1, #faf4f7, #faf8fa, #fbf9fb, #fcfafb, #fdfbfc, #fefafb, #fff9f9, #fff9f7, #fff9f4);
 }
 
-.NavLab a {
+.NavLink {
   font-size: 1.2rem;
   color: #2E2E2E;
+  margin-top: 4px;
+  padding: 5px;
+  text-decoration: none;
 }
 
-.NavLab a:hover {
+.NavLink:hover {
   color: #D54949;
 }
 
 
-.NavLab a:active {
+.Active {
   color: #529B63;
 }
 
@@ -90,13 +93,21 @@
   transition-delay: 0.6s;
 }
 
+.delay7 {
+  transition-delay: 0.7s;
+}
+
+.delay8 {
+  transition-delay: 0.8s;
+}
+
 
 
 /* -----------------------------------
    Media Queries
 ----------------------------------- */
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
   .NavbarLogo {
     height: 72px;
   }
@@ -110,6 +121,11 @@
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .NavLink {
+    margin-right: 5px;
+    margin-left: 5px;
   }
 
 
