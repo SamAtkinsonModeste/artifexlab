@@ -3,6 +3,7 @@
 *::before,
 *::after {
   box-sizing: border-box;
+  /* border: solid green 1px; */
 }
 
 .App {
