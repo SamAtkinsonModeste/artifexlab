@@ -115,13 +115,13 @@ const NavBar = () => {
             {/* User dropdown - this will be hidden for logged-out users later */}
             <NavDropdown
               title={
-                <div className="bg-primary rounded-circle p-1 d-inline-block">
+                <div className="rounded-circle p-1 d-inline-block">
                   <img
                     src="/default_profile.jpg"
                     alt="User avatar"
                     className="rounded-circle mb-md-3"
-                    width="40"
-                    height="40"
+                    width="60"
+                    height="60"
                   />
                 </div>
               }
