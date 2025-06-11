@@ -1,0 +1,98 @@
+/* Box sizing and reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.App {
+  font-family: "FinalSix", sans-serif;
+  background-image: linear-gradient(to right bottom,
+      #fef3f4,
+      #fff5f6,
+      #fff7f8,
+      #fff9fa,
+      #fffafb);
+
+  min-height: 100vh;
+}
+
+
+.Header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw;
+  padding: 0 1rem;
+  border-bottom: solid #5e60ce 1px;
+  z-index: 1050;
+  height: 74px;
+  display: block;
+  background: #fff9f4;
+  background-image: url("assets/tall-bg-header.svg");
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: auto;
+}
+
+
+
+
+
+
+
+
+.Main {
+  padding-top: 81px;
+
+}
+
+
+
+
+
+/* scrollbar */
+*::-webkit-scrollbar {
+  width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #a1f506;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #db06be;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #eb0404;
+}
+
+/*-----------------------------
+      MEDIA QUERIES
+-----------------------------------*/
+
+@media (min-width: 768px) {
+  .Header {
+    height: 95px;
+  }
+
+  .Main {
+    padding-top: 100px;
+  }
+}
+
+
+@media (min-width: 1024px) {
+  /* .Header {
+    height: 98px;
+  } */
+}
+
+
+@media (min-width: 1300px) {
+  .Header {
+    height: 100px;
+  }
+}
