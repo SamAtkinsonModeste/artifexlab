@@ -1,0 +1,278 @@
+/* ---------------------------
+   🎨 BACKGROUND COLORS
+---------------------------- */
+
+/* White */
+.bgWhiteLight {
+  background-color: #FCFCFC;
+}
+
+.bgWhiteBase {
+  background-color: #FFF9F4;
+}
+
+.bgWhiteDark {
+  background-color: #F6ECE3;
+}
+
+/* Black */
+.bgBlackLight {
+  background-color: #2E2323;
+}
+
+.bgBlackBase {
+  background-color: #2E2E2E;
+}
+
+.bgBlackDark {
+  background-color: #070707;
+}
+
+/* Accent Primary */
+.bgPrimLight {
+  background-color: #8688F3;
+}
+
+.bgPrimBase {
+  background-color: #5E60CE;
+}
+
+.bgPrimDark {
+  background-color: #454797;
+}
+
+/* Accent Secondary */
+.bgSecLight {
+  background-color: #B0E88D;
+}
+
+.bgSecBase {
+  background-color: #80ED99;
+}
+
+.bgSecDark {
+  background-color: #529B63;
+}
+
+/* Call to Action */
+.bgCtaLight {
+  background-color: #FBA747;
+}
+
+.bgCtaBase {
+  background-color: #FF6B6B;
+}
+
+.bgCtaDark {
+  background-color: #D54949;
+}
+
+/* Gradient */
+.bgMainGradient {
+  background-image: linear-gradient(to right bottom, #80ED99, #FF6B6B, #5E60CE);
+}
+
+
+.bgWhiteGradient {
+  background-image: linear-gradient(to left bottom, #f6ece3, #faeeea, #fbf1f1, #faf4f7, #faf8fa, #fbf9fb, #fcfafb, #fdfbfc, #fefafb, #fff9f9, #fff9f7, #fff9f4);
+}
+
+
+
+
+
+
+
+/* ---------------------------
+   🖋️ TEXT COLORS
+---------------------------- */
+
+/* White */
+.textWhiteLight {
+  color: #FCFCFC;
+}
+
+.textWhiteBase {
+  color: #FFF9F4;
+}
+
+.textWhiteDark {
+  color: #F6ECE3;
+}
+
+/* Black */
+.textBlackLight {
+  color: #2E2323;
+}
+
+.textBlackBase {
+  color: #2E2E2E;
+}
+
+.textBlackDark {
+  color: #070707;
+}
+
+/* Accent Primary */
+.textPrimLight {
+  color: #8688F3;
+}
+
+.textPrimBase {
+  color: #5E60CE;
+}
+
+.textPrimDark {
+  color: #454797;
+}
+
+/* Accent Secondary */
+.textSecLight {
+  color: #B0E88D;
+}
+
+.textSecBase {
+  color: #80ED99;
+}
+
+.textSecDark {
+  color: #529B63;
+}
+
+/* Call to Action */
+.textCtaLight {
+  color: #FBA747;
+}
+
+.textCtaBase {
+  color: #FF6B6B;
+}
+
+.textCtaDark {
+  color: #D54949;
+}
+
+/*-----------------------------
+   BORDER COLOURS
+--------------------------------*/
+
+/* White */
+.borderWhiteLight {
+  border-color: #FCFCFC;
+}
+
+.borderWhiteBase {
+  border-color: #FFF9F4;
+}
+
+.borderWhiteDark {
+  border-color: #F6ECE3;
+}
+
+/* Black */
+.borderBlackLight {
+  border-color: #2E2323;
+}
+
+.borderBlackBase {
+  border-color: #2E2E2E;
+}
+
+.borderBlackDark {
+  border-color: #070707;
+}
+
+/* Accent Primary */
+.borderPrimLight {
+  border-color: #8688F3;
+}
+
+.borderPrimBase {
+  border-color: #5E60CE;
+}
+
+.borderPrimDark {
+  border-color: #454797;
+}
+
+/* Accent Secondary */
+.borderSecLight {
+  border-color: #B0E88D;
+}
+
+.borderSecBase {
+  border-color: #80ED99;
+}
+
+.borderSecDark {
+  border-color: #529B63;
+}
+
+/* Call to Action */
+.borderCtaLight {
+  border-color: #FBA747;
+}
+
+.borderCtaBase {
+  border-color: #FF6B6B;
+}
+
+.borderCtaDark {
+  border-color: #D54949;
+}
+
+/* ---------------------------
+   ✒️ FONTS
+---------------------------- */
+
+.fontPinotLight {
+  font-family: pinot-grigio-modern, sans-serif;
+  font-weight: 300;
+}
+
+.fontPinotMed {
+  font-family: pinot-grigio-modern, sans-serif;
+  font-weight: 500;
+}
+
+.fontBc {
+  font-family: bc-alphapipe, sans-serif;
+}
+
+.fontBcItalic {
+  font-family: bc-alphapipe, sans-serif;
+  font-style: italic;
+}
+
+.fontBcBold {
+  font-family: bc-alphapipe, sans-serif;
+  font-weight: 600;
+}
+
+
+/* ---------------------------
+   ✨ SHADOWS (optional)
+---------------------------- */
+
+.textGlow {
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.shadowCard {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.shadowHover:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.insetShadowCard {
+  box-shadow: inset 0 0 12px rgba(69, 71, 151, 0.6);
+}
+
+
+/*
+PURPLE DARK RGB : 69, 71, 151
+GREEN BASE RGB: 128, 237, 153
+
+*/
