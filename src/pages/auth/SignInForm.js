@@ -1,30 +1,34 @@
-import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 
-import eyeArt from "../../assets/eye-art.webp";
-import styles from "../../styles/SignInUpForm.module.css";
-import btnStyles from "../../styles/Button.module.css";
-import appStyles from "../../App.module.css";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
-import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+
+import styles from "../../styles/SignInUpForm.module.css";
+import btnStyles from "../../styles/Button.module.css";
+import appStyles from "../../App.module.css";
 import FieldAlerts from "../../components/FieldAlerts";
+import eyeArt from "../../assets/eye-art.webp";
+import { SetCurrentUserContext } from "../../App";
 
 const SignInForm = () => {
+  const setCurrentUser = useContext(SetCurrentUserContext);
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
   });
 
   const { username, password } = signInData;
-  const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
 
+  const navigate = useNavigate();
+  //USEEFFECT - IF SUCCESSFULL SUBMISSION
   useEffect(() => {
     if (success) {
       const timer = setTimeout(() => {
@@ -48,7 +52,8 @@ const SignInForm = () => {
     event.preventDefault();
     try {
       console.log(signInData);
-      await axios.post("/dj-rest-auth/login/", signInData);
+      const { data } = await axios.post("/dj-rest-auth/login/", signInData);
+      setCurrentUser(data.user);
       setSuccess(true);
       console.log("Success!");
     } catch (err) {
