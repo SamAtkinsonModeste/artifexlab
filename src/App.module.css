@@ -38,12 +38,7 @@
 }
 
 
-.Content {
-  background-color: #FCFCFC;
-  padding: 10px;
-  border-radius: 5px;
-  border: 1px solid rgbA(46, 35, 35, 0.3);
-}
+
 
 
 
@@ -55,11 +50,7 @@
 }
 
 
-.FillerImage {
-  object-fit: cover;
-  height: 100%;
-  width: 100%;
-}
+
 
 
 /* scrollbar */

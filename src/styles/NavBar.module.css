@@ -101,19 +101,7 @@
   transition-delay: 0.8s;
 }
 
-.ProfileAvatar {
-  width: 40px;
-  height: 40px;
-  object-fit: cover;
-  border-radius: 50%;
-  display: block;
-}
 
-.Dropdowns {
-  margin-top: 0.5rem;
-  top: 100% !important;
-  z-index: 1050;
-}
 
 /* -----------------------------------
    Media Queries
