@@ -13,6 +13,17 @@
   margin-bottom: 1rem;
 }
 
+.Input:focus {
+  border-color: #6f42c1;
+  box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
+}
+
+.Input::placeholder {
+  color: rgba(7, 7, 7, 0.5);
+
+}
+
+
 .Header {
   font-family: bc-alphapipe, sans-serif;
   font-weight: 600;
@@ -22,12 +33,14 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: #529B63;
+  text-shadow: 0 1px 1px rgba(7, 7, 7, 0.8);
 }
 
 .Link {
   font-family: bc-alphapipe, sans-serif;
   font-weight: 600;
   letter-spacing: 1px;
+  text-shadow: 0 1px 1px rgba(7, 7, 7, 0.8);
   text-decoration: none;
   text-align: center;
   display: block;
@@ -37,6 +50,11 @@
 
 .Link span {
   color: #FF6B6B;
+
+}
+
+.Link span:hover {
+  color: #5E60CE;
 }
 
 .Container {

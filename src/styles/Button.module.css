@@ -16,59 +16,11 @@
   cursor: pointer;
 }
 
-.Button:hover:active {
-  background-color: #2142b2 !important;
-}
-
-.Button:active {
-  background-color: #2142b2 !important;
-}
-
-.Button:focus {
-  background-color: #2142b2;
-}
-
 .Wide {
   padding: 10px 50px;
   width: 100%;
 }
 
-.Blue,
-.BlueOutline:hover {
-  background-color: #2142b2;
-  color: #ffffff;
-}
-
-.SignUpIn:hover {
-  box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.9);
-  background-color: #80ed99;
-  color: #FF6B6B;
-  text-shadow: 0 1px 2px #070707;
-}
-
-.BlueOutline,
-.Blue:hover {
-  /* border: 1px solid #2142b2; */
-  background-color: #ffffff;
-  color: #2142b2;
-}
-
-.Black,
-.BlackOutline:hover {
-  /* background-color: #242a3d;
-    color: white; */
-  background-color: #242a3d;
-  color: aliceblue;
-}
-
-.Black:hover,
-.BlackOutline {
-  /* background-color: #dadadf;
-    color: #242a3d;
-    border-color: #242a3d; */
-  background-color: aliceblue;
-  color: #242a3d;
-}
 
 .SignUpIn {
   box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.6);
@@ -76,6 +28,66 @@
   color: #B0E88D;
   text-shadow: 0 1px 2px #070707;
 }
+
+.SignUpIn:hover {
+  opacity: 0.8;
+  box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.9);
+  background-color: #80ed99;
+  color: #FF6B6B;
+  text-shadow: 0 1px 2px #070707;
+}
+
+.SignUpIn:focus {
+  background-color: #529B63 !important;
+  color: #FBA747;
+  box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.9) !important;
+  text-shadow: 0 1px 2px #070707;
+  border-color: rgba(7, 7, 7, 0.6);
+}
+
+.SignUpIn:active {
+  background-color: #529B63 !important;
+  color: #FBA747 !important;
+  box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.9) !important;
+  text-shadow: 0 1px 2px #070707;
+  border-color: rgba(7, 7, 7, 0.6);
+}
+
+.SignUpIn:hover:active,
+.SignUpIn:focus:active {
+  background-color: #529B63 !important;
+  color: #FCFCFC !important;
+  box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.9) !important;
+  text-shadow: 0 1px 2px #070707 !important;
+  border-color: rgba(7, 7, 7, 0.6) !important;
+}
+
+.SignUpIn:disabled {
+  background-color: #529B63 !important;
+  color: #FBA747 !important;
+  box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.9) !important;
+  cursor: not-allowed;
+  text-shadow: 0 1px 2px #070707 !important;
+  border-color: rgba(7, 7, 7, 0.6) !important;
+}
+
+
+/* .Button:hover:active {
+  background-color: #eb1111 !important;
+}
+
+.Button:active {
+  background-color: #62b221 !important;
+}
+
+.Button:focus {
+  background-color: #f502f1;
+} */
+
+
+
+
+
 
 /*-------------------------
        MEDIA QUERIES
