@@ -452,3 +452,4 @@ yarn-error.log*
 
 # my project files
 .vscode/settings.json
+.husky/commit-msg
