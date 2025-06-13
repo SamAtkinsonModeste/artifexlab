@@ -7,7 +7,7 @@ import { NavLink } from "react-router-dom";
 import logo from "../assets/artifexLab-logo.svg";
 import styles from "../styles/NavBar.module.css";
 import Design from "../styles/Design.module.css";
-import Avatar from "./Avatar";
+// import Avatar from "./Avatar";
 
 const NavBar = () => {
   const [expanded, setExpanded] = useState();
@@ -23,7 +23,7 @@ const NavBar = () => {
       onToggle={setExpanded}
       className="w-sm-80 px-3 w-md-100"
     >
-      <Container fluid>
+      <Container fluid className="flex-nowrap">
         <Navbar.Brand>
           <img
             src={logo}
@@ -124,7 +124,7 @@ const NavBar = () => {
               Sign In
             </NavLink>
 
-            {/* Register */}
+            {/* Sign Up */}
             <NavLink
               to="/signup"
               className={`order-7 order-md-6 text-nowrap ${styles.NavLink} ${styles.NavFade} ${styles.delay8}`}
@@ -135,7 +135,7 @@ const NavBar = () => {
 
             {/* User dropdown - this will be hidden for logged-out users later */}
             <NavDropdown
-              title={<Avatar />}
+              title="Profile"
               id="user-nav-dropdown"
               className={`order-6 order-md-5  ${styles.NavFade} ${styles.DelayOne} ${Design.bgWhiteBase} w-75`}
             >
