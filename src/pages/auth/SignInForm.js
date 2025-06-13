@@ -14,14 +14,13 @@ import Container from "react-bootstrap/Container";
 import axios from "axios";
 import FieldAlerts from "../../components/FieldAlerts";
 
-const SignUpForm = () => {
-  const [signUpData, setSignUpData] = useState({
+const SignInForm = () => {
+  const [signInData, setSignInData] = useState({
     username: "",
-    password1: "",
-    password2: "",
+    password: "",
   });
 
-  const { username, password1, password2 } = signUpData;
+  const { username, password } = signInData;
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
@@ -29,7 +28,7 @@ const SignUpForm = () => {
   useEffect(() => {
     if (success) {
       const timer = setTimeout(() => {
-        navigate("/profile");
+        navigate("/");
       }, 5000);
 
       return () => clearTimeout(timer);
@@ -38,8 +37,8 @@ const SignUpForm = () => {
 
   //EVENTHANDLER - handleChange of form inputs
   const handleChange = (evt) => {
-    setSignUpData({
-      ...signUpData,
+    setSignInData({
+      ...signInData,
       [evt.target.name]: evt.target.value,
     });
   };
@@ -48,16 +47,13 @@ const SignUpForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log(signUpData);
-      await axios.post("/dj-rest-auth/registration/", signUpData);
+      console.log(signInData);
+      await axios.post("/dj-rest-auth/login/", signInData);
       setSuccess(true);
-      console.log("Success!");
       console.log("Success!");
     } catch (err) {
       console.log(err);
-      console.log("Signup error:", err.response?.data);
       setErrors(err.response?.data);
-      console.log("Errors state:", err.reponse?.data);
     }
   };
 
@@ -66,47 +62,33 @@ const SignUpForm = () => {
       <Row className={styles.Row}>
         <Col className="my-auto py-2 p-md-2" md={6}>
           <Container className={`${appStyles.Content} p-4 `}>
-            <h1 className={styles.Header}>sign up</h1>
-
+            <h1 className={styles.Header}>sign in</h1>
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="username">
                 <Form.Label className="d-none">Username</Form.Label>
                 <Form.Control
                   className={styles.Input}
                   type="text"
-                  placeholder="Username"
+                  placeholder="Enter Username"
                   name="username"
                   value={username}
                   onChange={handleChange}
                 />
-                <FieldAlerts messages={errors?.username} />
               </Form.Group>
+              <FieldAlerts messages={errors?.username} />
 
-              <Form.Group controlId="password1">
+              <Form.Group controlId="password">
                 <Form.Label className="d-none">Password</Form.Label>
                 <Form.Control
                   className={styles.Input}
                   type="password"
                   placeholder="Password"
-                  name="password1"
-                  value={password1}
+                  name="password"
+                  value={password}
                   onChange={handleChange}
                 />
-                <FieldAlerts messages={errors?.password1} />
               </Form.Group>
-
-              <Form.Group controlId="password2">
-                <Form.Label className="d-none">Confirm Password</Form.Label>
-                <Form.Control
-                  className={styles.Input}
-                  type="password"
-                  placeholder="Confirm password"
-                  name="password2"
-                  value={password2}
-                  onChange={handleChange}
-                />
-                <FieldAlerts messages={errors?.password2} />
-              </Form.Group>
+              <FieldAlerts messages={errors?.password} />
 
               <Button
                 variant="none"
@@ -114,18 +96,16 @@ const SignUpForm = () => {
                 type="submit"
                 disabled={success}
               >
-                Sign Up
+                Sign In
               </Button>
-              <FieldAlerts messages={errors?.non_field_errors} />
+
               {success && (
                 <div
                   className="mt-3"
                   ref={(el) => el && el.scrollIntoView({ behaviour: "smooth" })}
                 >
                   <FieldAlerts
-                    messages={[
-                      "Account created successfully! Redirecting to your profile page.",
-                    ]}
+                    messages={[`Welcome back ${username}`]}
                     variant="success"
                   />
                 </div>
@@ -133,8 +113,8 @@ const SignUpForm = () => {
             </Form>
           </Container>
           <Container className={`mt-3 ${appStyles.Content}`}>
-            <Link className={styles.Link} to="/signin">
-              Already have an account? <span>Sign in</span>
+            <Link className={styles.Link} to="/signup">
+              Don't have an account? <span>Sign Up now!</span>
             </Link>
           </Container>
         </Col>
@@ -149,4 +129,4 @@ const SignUpForm = () => {
   );
 };
 
-export default SignUpForm;
+export default SignInForm;
