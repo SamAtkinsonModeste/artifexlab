@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 import Row from "react-bootstrap/Row";
@@ -14,10 +14,10 @@ import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import FieldAlerts from "../../components/FieldAlerts";
 import eyeArt from "../../assets/eye-art.webp";
-import { SetCurrentUserContext } from "../../App";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 const SignInForm = () => {
-  const setCurrentUser = useContext(SetCurrentUserContext);
+  const setCurrentUser = useSetCurrentUser();
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
