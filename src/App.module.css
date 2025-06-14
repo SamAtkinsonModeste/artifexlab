@@ -40,6 +40,7 @@
 
 .Main {
   min-height: calc(100vh - 128px);
+  padding: 0;
   padding-top: 81px;
   /* border: solid rgb(235, 7, 121) 2px; */
 
