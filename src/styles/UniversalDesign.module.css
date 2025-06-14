@@ -1,0 +1,87 @@
+/*---------------------------
+BACKGROUND COLOURS
+----------------------------*/
+.bgWhiteBase {
+  background-color: #FFF9F4;
+}
+
+
+/*--------------------
+BACKGROUND GRADIENTS
+-------------------------*/
+
+/* Gradient */
+.bgMainGradient {
+  background-image: linear-gradient(to right bottom, #80ED99, #FF6B6B, #5E60CE);
+}
+
+.bgDarkGradient {
+  background-image: radial-gradient(circle, #2e2e2e, #2a2a2a, #262626, #222222, #1e1e1e);
+}
+
+/* ---------------------------
+   🖋️ TEXT COLORS
+---------------------------- */
+
+/* White */
+.textWhiteLight {
+  color: #FCFCFC;
+}
+
+
+/*-------------------------
+  FONT FAMILIES
+---------------------------*/
+
+.fontPinotMed {
+  font-family: pinot-grigio-modern, sans-serif;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+
+
+/*-------------------------
+      SPECIALS
+---------------------------*/
+
+/****** TAGLINE ********/
+.TaglineSmall {
+  color: #FFF9F4;
+  text-shadow: 0 1px 1px rgba(213, 73, 73, 0.9);
+}
+
+.Footer {
+  background-image: radial-gradient(circle, #2e2e2e, #2a2a2a, #262626, #222222, #1e1e1e);
+  color: #FFF9F4;
+  min-height: 128px;
+}
+
+/**** ICONS *****/
+
+.FooterSocialIcons {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: solid 1px #5E60CE;
+  box-shadow: inset 0 0 1px 1px rgba(69, 71, 151, 0.6);
+  transition: transform 0.3s ease;
+  background-image: linear-gradient(to left top, #5e60ce, #80ed99, #ff6b6b);
+}
+
+.FooterSocialIcons i {
+
+  font-size: 1.750rem;
+  line-height: 37px;
+  color: #fff9fa !important;
+  text-shadow: 2px 2px 4px rgba(46, 46, 46, 0.6);
+
+}
+
+
+.FooterCopySmall {
+  font-size: 0.750rem;
+}
