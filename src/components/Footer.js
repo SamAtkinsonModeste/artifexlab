@@ -1,19 +1,18 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
+import styles from "../styles/Footer.module.css";
 import Design from "../styles/UniversalDesign.module.css";
 
 const Footer = () => {
   return (
-    <Container fluid className={` ${Design.Footer}`}>
+    <Container fluid className={` ${styles.Footer}`}>
       <Container className="mt-auto text-center py-2">
-        <p
-          className={`mb-1 fst-italic ${Design.fontPinotMed}  ${Design.TaglineSmall}`}
-        >
+        <p className={`mb-1 fst-italic ${Design.TaglineSmall}`}>
           “Create. Inspire. Mentor.”
         </p>
         <div className="d-flex justify-content-center gap-3 my-3">
-          <span className={Design.FooterSocialIcons}>
+          <span className={styles.FooterSocialIcons}>
             <Nav.Link
               href="https://instagram.com"
               target="_blank"
@@ -23,7 +22,7 @@ const Footer = () => {
               <i className="fab fa-instagram"></i>
             </Nav.Link>
           </span>
-          <span className={Design.FooterSocialIcons}>
+          <span className={styles.FooterSocialIcons}>
             <Nav.Link
               href="https://facebook.com"
               target="_blank"
@@ -33,7 +32,7 @@ const Footer = () => {
               <i className="fab fa-facebook"></i>
             </Nav.Link>
           </span>
-          <span className={Design.FooterSocialIcons}>
+          <span className={styles.FooterSocialIcons}>
             <Nav.Link
               href="https://x.com"
               target="_blank"
@@ -45,7 +44,7 @@ const Footer = () => {
           </span>
         </div>
 
-        <small className={`${Design.FooterCopySmall}`}>
+        <small className={`${styles.FooterCopySmall}`}>
           © 2025 ArtifexLab. All rights reserved.
         </small>
       </Container>
