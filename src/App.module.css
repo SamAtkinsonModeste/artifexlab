@@ -94,6 +94,15 @@
   }
 }
 
+@media (min-width: 992px) {
+  .Header {
+    height: 115px;
+  }
+
+  .Main {
+    padding-top: 115px;
+  }
+}
 
 @media (min-width: 1024px) {
   /* .Header {
