@@ -1,0 +1,26 @@
+.About {
+  font-family: bc-alphapipe, sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  color: #FFF9F4;
+  text-shadow: 0 1px 1px rgba(7, 7, 7, 0.9);
+}
+
+.AboutBg {
+  background-image: linear-gradient(to right bottom, #5e60ce, #5e60ce, #5e60ce, #a757bf, #d650a6, #f35789, #ff6b6b);
+
+}
+
+
+/*----------------------------------------------------------
+                           MEDIA QUERIES
+------------------------------------------------------------*/
+
+@media (min-width: 768px) {}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1200px) {}
+
+@media (min-width: 1400px) {}
