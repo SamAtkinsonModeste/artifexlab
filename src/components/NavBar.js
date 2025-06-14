@@ -6,7 +6,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { NavLink } from "react-router-dom";
 import logo from "../assets/artifexLab-logo.svg";
 import styles from "../styles/NavBar.module.css";
-import Design from "../styles/Design.module.css";
+import Design from "../styles/UniversalDesign.module.css";
 import {
   useCurrentUser,
   useSetCurrentUser,
