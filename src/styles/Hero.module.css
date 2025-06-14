@@ -1,0 +1,30 @@
+.bgHeroImage {
+  background-image: linear-gradient(to top, rgba(255, 249, 244, 0.9), rgba(255, 249, 244, 0.2)),
+    url('../assets/hero-bg.svg');
+  background-size: auto;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+}
+
+.Lead {
+  font-size: 0.9rem;
+  text-shadow: 0 1px 1px #fcfcfc;
+}
+
+.HeroBottomBorder {
+  border-bottom: 3px solid #5e60ce;
+}
+
+
+
+/*----------------------------------------------------------
+                           MEDIA QUERIES
+------------------------------------------------------------*/
+
+@media (min-width: 768px) {}
+
+@media (min-width: 992px) {}
+
+@media (min-width: 1200px) {}
+
+@media (min-width: 1400px) {}
