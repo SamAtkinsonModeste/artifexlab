@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import "./api/axiosDefaults";
 import SignInForm from "./pages/auth/SignInForm";
 import SignUpForm from "./pages/auth/SignUpForm";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="*" element={<p> Page Not Found </p>} />
         </Routes>
       </Container>
+      <Footer />
     </div>
   );
 }
