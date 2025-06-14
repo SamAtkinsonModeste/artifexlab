@@ -7,11 +7,12 @@ import { NavLink } from "react-router-dom";
 import logo from "../assets/artifexLab-logo.svg";
 import styles from "../styles/NavBar.module.css";
 import Design from "../styles/Design.module.css";
-import { CurrentUserContext } from "../App";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
+
 // import Avatar from "./Avatar";
 
 const NavBar = () => {
-  const currentUser = useContext(CurrentUserContext);
+  const currentUser = useCurrentUser();
   const handleLinkClick = () => {
     setExpanded(false);
   };
