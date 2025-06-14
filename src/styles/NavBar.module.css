@@ -56,22 +56,57 @@
   color: #529B63;
 }
 
-.SigninupIcons {
+.ActiveSignOut {
+  background-image: linear-gradient(to right bottom, #80ed99, #b4d360, #dcb442, #f78f4b, #ff6b6b);
+  color: #fff9f4;
+  text-shadow: 0 1px 1px rgba(7, 7, 7, 0.9);
+}
+
+
+.NavAvatarWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* spacing between avatar and text */
+}
+
+.AvatarContainer {
+  position: relative;
+  display: inline-block;
+}
+
+.NavAvatarStatus {
+  position: absolute;
+  top: 2px;
+  /* Adjust until it hugs the avatar */
+  right: 46px;
+  font-size: 0.6rem;
+  color: green;
+}
+
+
+.NavBarIcons {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(to right bottom, #80ED99, #FF6B6B, #5E60CE);
+  margin-right: 8px;
   padding: 4px;
   border-radius: 4px;
   vertical-align: middle;
 }
 
-.SigninupIcons i {
+.NavBarIcons i {
   color: #fff9f4;
   text-shadow: 0 2px 3px rgba(7, 7, 7, 0.9);
   font-size: 1.1rem;
   line-height: 1;
 
+}
+
+:global(.nav-link) .ProfileNav {
+  height: 30px;
+  border: red 1px solid;
 }
 
 /* -----------------------------------
@@ -86,6 +121,25 @@
 :global(.navbar-collapse.show) .NavFade {
   opacity: 1;
   transform: translateY(0);
+}
+
+:global(.navbar-collapse.show) .NavFade {
+  width: 200px;
+  /* height: 20px; */
+  margin: 20px 0;
+  /* border: red 1px solid; */
+  border-radius: 5px;
+  background-image: #fff9f4;
+}
+
+:global(.navbar-collapse.show .navbar-nav .dropdown-menu) .Dropdown {
+
+  background: linear-gradient(to left bottom, #f6ece3, #faeeea, #fbf1f1, #faf4f7, #faf8fa, #fbf9fb, #fcfafb, #fdfbfc, #fefafb, #fff9f9, #fff9f7, #fff9f4);
+}
+
+:global(.navbar-collapse.show .navbar-nav .dropdown-menu) .ActiveSignOut {
+
+  border: solid 1px rgb(255, 95, 47);
 }
 
 .DelayOne {
@@ -140,11 +194,18 @@
     opacity: 1;
     transform: none;
     transition: none;
+    /* margin: 0 40px;
+    width: 80px; */
   }
 
   .NavLink {
     margin-right: 5px;
     margin-left: 5px;
+  }
+
+  :global(.navbar-collapse.show .navbar-nav .dropdown-menu) .Dropdown {
+
+    background-image: none;
   }
 
 
