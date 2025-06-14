@@ -6,6 +6,7 @@ import "./api/axiosDefaults";
 import SignInForm from "./pages/auth/SignInForm";
 import SignUpForm from "./pages/auth/SignUpForm";
 import Footer from "./components/Footer";
+import HomePage from "./pages/Home/HomePage";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
       </header>
       <Container fluid className={styles.Main}>
         <Routes>
-          <Route path="/" element={<h1>Home Page</h1>} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/signin" element={<SignInForm />} />
           <Route path="/signup" element={<SignUpForm />} />
           <Route path="/artworks" element={<h1>Artworks</h1>} />
