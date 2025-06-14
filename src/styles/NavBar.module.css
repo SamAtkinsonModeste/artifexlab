@@ -16,6 +16,7 @@
 /* Responsive logo */
 .NavbarLogo {
   height: 60px;
+  margin-left: -40px;
   width: auto;
   object-fit: contain;
   animation: logo-reveal 0.8s ease-out forwards;
