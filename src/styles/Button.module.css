@@ -21,6 +21,11 @@
   width: 100%;
 }
 
+.MedWide {
+  padding: 10px 50px;
+  width: 40%;
+}
+
 
 .SignUpIn,
 .CallOutArt {
