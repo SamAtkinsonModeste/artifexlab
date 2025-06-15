@@ -6,7 +6,8 @@ import "./api/axiosDefaults";
 import SignInForm from "./pages/auth/SignInForm";
 import SignUpForm from "./pages/auth/SignUpForm";
 import Footer from "./components/Footer";
-import HomePage from "./pages/Home/HomePage";
+import HomePage from "./pages/home/HomePage";
+import ArtUploadForm from "./pages/artworks/ArtUploadForm";
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/signin" element={<SignInForm />} />
           <Route path="/signup" element={<SignUpForm />} />
-          <Route path="/artworks" element={<h1>Artworks</h1>} />
+          <Route path="/artworks/create" element={<ArtUploadForm />} />
           <Route path="*" element={<p> Page Not Found </p>} />
         </Routes>
       </Container>
