@@ -110,7 +110,7 @@ const ArtUploadForm = () => {
         className={`${btnStyles.CallOutArt} ${btnStyles.MedWide} rounded-pill m-2`}
         onClick={handleCancel}
       >
-        Canel
+        Cancel
       </Button>
 
       {/* Submit Button */}
