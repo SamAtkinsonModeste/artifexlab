@@ -10,7 +10,7 @@ const AboutSection = () => {
     <Container fluid className={`${styles.AboutBg}`}>
       <Container className="py-5">
         <Row className="justify-content-center">
-          <Col sm={12} md={10} lg={8} ClassName="d-flex justify-content-center">
+          <Col sm={12} md={10} lg={8} className="d-flex justify-content-center">
             <h2 className={`${styles.About} text-center`}>About</h2>
             <p className={`${design.textWhiteLight} text-center`}>
               <span className={`${design.ArtifexLab}`}>ArtifexLab</span> is a

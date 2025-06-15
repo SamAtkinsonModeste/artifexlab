@@ -13,8 +13,7 @@ import {
 } from "../contexts/CurrentUserContext";
 import axios from "axios";
 import Avatar from "./Avatar";
-
-// import Avatar from "./Avatar";
+import { removeTokenTimestamp } from "../utils/utils";
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
@@ -27,6 +26,7 @@ const NavBar = () => {
       setCurrentUser(null);
     } catch (err) {
       console.log(err);
+      removeTokenTimestamp();
     }
   };
 
@@ -77,7 +77,7 @@ const NavBar = () => {
           className={`${styles.NavLink} ${styles.Dropdown} activeClassName=${styles.Active}`}
           as={NavLink}
           onClick={handleLinkClick}
-          to="/upload-artwork"
+          to="/artworks/create"
         >
           <span className={styles.NavBarIcons}>
             <i className="fas fa-paint-brush"></i>
@@ -89,7 +89,7 @@ const NavBar = () => {
           className={`${styles.NavLink} activeClassName=${styles.Active} ${styles.Dropdown}`}
           as={NavLink}
           onClick={handleLinkClick}
-          to="/create-tutorials"
+          to="/tutorials/create"
         >
           <span className={styles.NavBarIcons}>
             <i className="fas fa-file-alt"></i>

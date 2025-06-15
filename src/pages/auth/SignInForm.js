@@ -15,6 +15,7 @@ import appStyles from "../../App.module.css";
 import FieldAlerts from "../../components/FieldAlerts";
 import eyeArt from "../../assets/eye-art.webp";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
+import { setTokenTimestamp } from "../../utils/utils";
 
 const SignInForm = () => {
   const setCurrentUser = useSetCurrentUser();
@@ -51,11 +52,13 @@ const SignInForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      console.log(signInData);
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
+
       setCurrentUser(data.user);
+      setTokenTimestamp(data);
       setSuccess(true);
       console.log("Success!");
+      console.log(data);
     } catch (err) {
       console.log(err);
       setErrors(err.response?.data);

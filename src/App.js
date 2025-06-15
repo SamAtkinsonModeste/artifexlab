@@ -9,8 +9,12 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/home/HomePage";
 import ArtUploadForm from "./pages/artworks/ArtUploadForm";
 import CreateTutorialForm from "./pages/tutorials/CreateTutorialForm";
+import ArtworkPage from "./pages/artworks/ArtworkPage";
+import { useCurrentUser } from "./contexts/CurrentUserContext";
 
 function App() {
+  const currentUser = useCurrentUser();
+  const profile_id = currentUser?.profile_id || "";
   return (
     <div className={styles.App}>
       <header className={styles.Header}>
@@ -22,6 +26,8 @@ function App() {
           <Route path="/signin" element={<SignInForm />} />
           <Route path="/signup" element={<SignUpForm />} />
           <Route path="/artworks/create" element={<ArtUploadForm />} />
+          <Route path="/artworks/:id" element={<ArtworkPage />} />
+
           <Route path="/tutorials/create" element={<CreateTutorialForm />} />
           <Route path="*" element={<p> Page Not Found </p>} />
         </Routes>

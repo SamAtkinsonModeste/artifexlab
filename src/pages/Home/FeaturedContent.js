@@ -20,7 +20,7 @@ const FeaturedContent = () => {
                 src="/images/11.png" // Replace with your own image
                 alt="Digital Collage artwork"
               />
-              <Card.Body ClassName="d-flex flex-column">
+              <Card.Body className="d-flex flex-column">
                 <Card.Title
                   className={`${styles.FeatureCardTitle} mb-5 text-center`}
                 >
@@ -42,7 +42,7 @@ const FeaturedContent = () => {
                 src="/images/10.png"
                 alt="Lighting Effects artwork"
               />
-              <Card.Body ClassName="d-flex flex-column" y>
+              <Card.Body className="d-flex flex-column">
                 <Card.Title
                   className={`${styles.FeatureCardTitle} mb-5 text-center`}
                 >
@@ -64,7 +64,7 @@ const FeaturedContent = () => {
                 src="/images/13.png"
                 alt="Environment Design artwork"
               />
-              <Card.Body ClassName="d-flex flex-column">
+              <Card.Body className="d-flex flex-column">
                 <Card.Title
                   className={`${styles.FeatureCardTitle} mb-5 text-center`}
                 >
