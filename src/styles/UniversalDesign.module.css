@@ -56,6 +56,7 @@ BACKGROUND GRADIENTS
 .TaglineBlack {
   font-family: pinot-grigio-modern, sans-serif;
   font-weight: 500;
+  line-height: 50px;
   font-size: 1.2rem;
   letter-spacing: 1px;
   color: #2E2E2E;
@@ -76,10 +77,6 @@ BACKGROUND GRADIENTS
 
 
 .ArtifexLabQuote {
-  /* font-family: bc-alphapipe, sans-serif;
-  font-weight: 600; */
-  /* font-family: pinot-grigio-modern, sans-serif;
-  font-weight: 500; */
   font-size: 1.4rem;
   letter-spacing: 1px;
   color: #FFF9F4;
@@ -96,10 +93,46 @@ BACKGROUND GRADIENTS
                            MEDIA QUERIES
 ------------------------------------------------------------*/
 
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+  .TaglineBlack {
+    font-size: 2.5rem;
+  }
 
-@media (min-width: 992px) {}
+  .ArtifexLab {
+    font-size: 1.6rem;
+    text-shadow: 0 1px 1px rgba(7, 7, 7, 0.9);
+  }
 
-@media (min-width: 1200px) {}
+  .textWhiteLight {
+    color: #FCFCFC;
+    font-size: 1.2rem
+  }
+
+  .ArtifexLabQuote {
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    color: #FFF9F4;
+    text-shadow: 0 1px 1px rgba(7, 7, 7, 0.9);
+
+  }
+
+  .ArtifexLab {
+    font-size: 1.9rem;
+    ;
+  }
+}
+
+@media (min-width: 992px) {
+  .TaglineBlack {
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .TaglineBlack {
+    font-size: 4rem;
+
+  }
+}
 
 @media (min-width: 1400px) {}

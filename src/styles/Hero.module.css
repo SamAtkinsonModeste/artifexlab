@@ -8,6 +8,7 @@
 
 .Lead {
   font-size: 0.9rem;
+  line-height: 30px;
   text-shadow: 0 1px 1px #fcfcfc;
 }
 
@@ -21,10 +22,29 @@
                            MEDIA QUERIES
 ------------------------------------------------------------*/
 
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+  .Lead {
+    font-size: 1rem;
+  }
+}
 
-@media (min-width: 992px) {}
+@media (min-width: 992px) {
+  .Lead {
+    font-size: 1.1rem;
+    margin-top: 1.1rem;
+  }
+}
 
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+  .Lead {
+    font-size: 1.3rem;
+    margin-top: 1.5rem;
+  }
+}
 
-@media (min-width: 1400px) {}
+@media (min-width: 1400px) {
+  .Lead {
+    font-size: 1.5rem;
+    margin-top: 1.4rem;
+  }
+}

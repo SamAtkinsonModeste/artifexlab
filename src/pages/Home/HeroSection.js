@@ -16,18 +16,20 @@ const HeroSection = () => {
       <Container>
         <Row className="justify-content-center">
           <Col sm={12} md={10} lg={8}>
-            <h1 className={`${design.TaglineBlack} text-center mt-3`}>
+            <h1
+              className={`${design.TaglineBlack} text-center mt-3 mt-lg-4 mt-xlg-5`}
+            >
               Create. Inspire. Mentor.
             </h1>
             <p className={`${styles.Lead} text-center`}>
               A digital art space for creators who learn, share and grow
               together
             </p>
-            <div className="d-flex flex-column justify-content-center gap-3 my-4">
+            <div className="d-flex flex-column flex-md-row justify-content-center gap-3 gap-md-5 my-4 my-lg-5">
               <Button className={`${btnStyle.CallOutArt} rounded-pill`}>
                 &larr; &nbsp; Explore Art
               </Button>
-              <Button className={`${btnStyle.CallOutTutorial} rounded-pill`}>
+              <Button className={`${btnStyle.CallOutTutorial}  rounded-pill`}>
                 Browse Tutorials Art &nbsp; &rarr;
               </Button>
             </div>
