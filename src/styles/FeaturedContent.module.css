@@ -26,10 +26,34 @@
                            MEDIA QUERIES
 ------------------------------------------------------------*/
 
-@media (min-width: 768px) {}
+@media (min-width: 768px) {
+  .FeaturedHeading {
+    font-size: 2rem;
+  }
+
+  .FeatureCardTitle {
+    font-size: 1.4rem;
+  }
+
+  .FeatureCardText {
+    font-size: 1.1rem;
+  }
+}
 
 @media (min-width: 992px) {}
 
-@media (min-width: 1200px) {}
+@media (min-width: 1200px) {
+  .FeatureCardTitle {
+    font-size: 1.5rem;
+  }
+}
 
 @media (min-width: 1400px) {}
+
+@media (min-width: 1800px) {
+  .FeatureCardTitle {
+    font-size: 2rem;
+  }
+}
+
+@media (min-width: 2000px) {}

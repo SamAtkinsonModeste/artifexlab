@@ -64,9 +64,8 @@ BACKGROUND GRADIENTS
 }
 
 
-.ArtifexLab {
-  /* font-family: bc-alphapipe, sans-serif;
-  font-weight: 600; */
+.ArtifexLab,
+.ArtifexLabInline {
   font-family: pinot-grigio-modern, sans-serif;
   font-weight: 500;
   font-size: 1.4rem;
@@ -98,11 +97,6 @@ BACKGROUND GRADIENTS
     font-size: 2.5rem;
   }
 
-  .ArtifexLab {
-    font-size: 1.6rem;
-    text-shadow: 0 1px 1px rgba(7, 7, 7, 0.9);
-  }
-
   .textWhiteLight {
     color: #FCFCFC;
     font-size: 1.2rem
@@ -116,9 +110,9 @@ BACKGROUND GRADIENTS
 
   }
 
-  .ArtifexLab {
+  .ArtifexLab,
+  .ArtifexLabInline {
     font-size: 1.9rem;
-    ;
   }
 }
 
@@ -126,13 +120,103 @@ BACKGROUND GRADIENTS
   .TaglineBlack {
     font-size: 3rem;
   }
+
+  .textWhiteLight {
+    font-size: 1.3rem;
+  }
 }
 
 @media (min-width: 1200px) {
   .TaglineBlack {
+    line-height: 80px;
     font-size: 4rem;
+
+  }
+
+  .ArtifexLab,
+  .ArtifexLabInline {
+    font-size: 2.2rem;
+    ;
+  }
+
+  .textWhiteLight {
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 1400px) {
+  .TaglineBlack {
+    font-size: 5rem;
+
+  }
+
+  .ArtifexLab,
+  .ArtifexLabInline {
+    font-size: 2.5rem;
+  }
+
+  .textWhiteLight {
+    font-size: 1.4rem;
+  }
+
+  .ArtifexLabQuote {
+    font-size: 2rem;
+    text-shadow: 0 2px 3px rgba(7, 7, 7, 0.9);
 
   }
 }
 
-@media (min-width: 1400px) {}
+
+@media (min-width: 1800px) {
+  .TaglineBlack {
+    line-height: 100px;
+    font-size: 6rem;
+
+  }
+
+  .ArtifexLab,
+  .ArtifexLabInline {
+    font-size: 2.8rem;
+    text-shadow: 0 2px 2px rgba(7, 7, 7, 0.9);
+  }
+
+  .ArtifexLab {
+    text-shadow: 0 3px 3px rgba(7, 7, 7, 0.9);
+  }
+
+  /* .textWhiteLight {
+    font-size: 2rem;
+  } */
+
+  .ArtifexLabQuote {
+    font-size: 2.8rem;
+    text-shadow: 0 3px 4px rgba(7, 7, 7, 0.9);
+
+  }
+}
+
+
+@media (min-width: 2000px) {
+  .TaglineBlack {
+    line-height: 150px;
+    font-size: 8rem;
+
+  }
+
+
+  .ArtifexLabInline {
+    font-size: 3rem;
+    text-shadow: 0 3px 3px rgba(7, 7, 7, 0.9);
+
+  }
+
+  .textWhiteLight {
+    font-size: 2.5rem;
+  }
+
+  .ArtifexLabQuote {
+    font-size: 3rem;
+    text-shadow: 0 3px 4px rgba(7, 7, 7, 0.9);
+
+  }
+}

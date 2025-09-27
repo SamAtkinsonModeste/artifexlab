@@ -36,6 +36,11 @@
 }
 
 @media (min-width: 1200px) {
+  .bgHeroImage {
+    background-image: url('../assets/hero-bg.svg');
+    background-size: 21%;
+  }
+
   .Lead {
     font-size: 1.3rem;
     margin-top: 1.5rem;
@@ -46,5 +51,20 @@
   .Lead {
     font-size: 1.5rem;
     margin-top: 1.4rem;
+  }
+}
+
+@media (min-width: 1800px) {
+  .Lead {
+    font-size: 1.6rem;
+    margin-top: 1.5rem;
+  }
+}
+
+@media (min-width: 2000px) {
+  .Lead {
+    font-size: 2.3rem;
+    line-height: 60px;
+    margin-top: 1.6rem;
   }
 }
