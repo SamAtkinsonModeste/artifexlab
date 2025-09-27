@@ -3,8 +3,10 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Card from "react-bootstrap/Card";
+import astronaut from "../../assets/astronaut.webp";
+import lady from "../../assets/lady-in-the-clouds.webp";
+import tree from "../../assets/tree-of-music-notes.webp";
 import styles from "../../styles/FeaturedContent.module.css";
-import design from "../../styles/UniversalDesign.module.css";
 
 const FeaturedContent = () => {
   return (
@@ -17,18 +19,23 @@ const FeaturedContent = () => {
             <Card className="h-100 shadow-sm">
               <Card.Img
                 variant="top"
-                src="/images/11.png" // Replace with your own image
-                alt="Digital Collage artwork"
+                src={lady}
+                alt="Fantasy lady in the clouds artwork"
               />
               <Card.Body className="d-flex flex-column">
                 <Card.Title
                   className={`${styles.FeatureCardTitle} mb-5 text-center`}
                 >
-                  Digital Collage Magic
+                  Dreams in the Sky
                 </Card.Title>
-                <Card.Text className="mt-auto text-center">
-                  Learn how to blend textures, colors, and photos to create
-                  stunning digital collages using Photoshop layers and masks.
+                <Card.Text
+                  className={`${styles.FeatureCardText} mt-3 text-center`}
+                >
+                  Transform everyday skies into surreal portraits with
+                  Photoshop's blending modes, layer masks, and soft brushes. By
+                  shaping cloud textures into human features, this piece
+                  captures the serenity of imagination floating weightlessly
+                  above the world.
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -39,18 +46,23 @@ const FeaturedContent = () => {
             <Card className="h-100 shadow-sm">
               <Card.Img
                 variant="top"
-                src="/images/10.png"
-                alt="Lighting Effects artwork"
+                src={astronaut}
+                alt="Fantasy astronaut artwork"
               />
               <Card.Body className="d-flex flex-column">
                 <Card.Title
                   className={`${styles.FeatureCardTitle} mb-5 text-center`}
                 >
-                  Lighting Effects in Portrait Art
+                  Cosmic Explorer
                 </Card.Title>
-                <Card.Text className="mt-auto text-center">
-                  Explore how lighting can transform your digital portraits with
-                  simple brush techniques and layer modes.
+                <Card.Text
+                  className={`${styles.FeatureCardText} mt-3 text-center`}
+                >
+                  Bring outer space to life with Photoshop's masking tools,
+                  gradient overlays, and particle brushes. By blending vibrant
+                  nebula textures with a splash of liquid effects, this artwork
+                  transforms a lone astronaut into a surreal journey through
+                  color and imagination.
                 </Card.Text>
               </Card.Body>
             </Card>
@@ -61,18 +73,23 @@ const FeaturedContent = () => {
             <Card className="h-100 shadow-sm">
               <Card.Img
                 variant="top"
-                src="/images/13.png"
-                alt="Environment Design artwork"
+                src={tree}
+                alt="Tree made of musical notes artwork"
               />
               <Card.Body className="d-flex flex-column">
                 <Card.Title
                   className={`${styles.FeatureCardTitle} mb-5 text-center`}
                 >
-                  Environment Design for Games
+                  The Symphony Tree
                 </Card.Title>
-                <Card.Text className="mt-auto text-center">
-                  See how concept artists block out game worlds with mood,
-                  atmosphere, and visual storytelling.
+                <Card.Text
+                  className={`${styles.FeatureCardText} mt-3 text-center`}
+                >
+                  Discover how blending custom brushes, clipping masks, and
+                  layer styles in Photoshop can turn a simple silhouette into a
+                  vibrant explosion of creativity. By combining colorful
+                  gradients with scattered musical note shapes, this artwork
+                  transforms a tree into a living symphony of sound and color.
                 </Card.Text>
               </Card.Body>
             </Card>
