@@ -28,7 +28,8 @@
 
 
 .SignUpIn,
-.CallOutArt {
+.CallOutArt,
+.BlackOutline {
   box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.6);
   background-color: #FF6B6B;
   color: #B0E88D;
@@ -43,7 +44,8 @@
 }
 
 
-.CallOutTutorial {
+.CallOutTutorial,
+.Black {
   box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.9);
   background-color: #529b63;
   color: #ff6b6b;

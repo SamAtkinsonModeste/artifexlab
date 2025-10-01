@@ -83,6 +83,46 @@ BACKGROUND GRADIENTS
 
 }
 
+.ProfileLink {
+  color: #454797;
+  font-size: 1.2rem;
+  text-shadow: 0 1px 1px rgba(7, 7, 7, 0.9);
+  letter-spacing: 1px;
+  text-decoration: none;
+  border-bottom: 1px solid #454797;
+
+}
+
+.ProfileLink:hover {
+  color: #D54949;
+  border-color: #D54949;
+}
+
+.ArtUpdate {
+  color: #2f5538;
+  padding: 5px;
+}
+
+.ProfileName,
+.ProfileInfo {
+  color: #454797;
+  text-shadow: 0 1px 1px rgba(7, 7, 7, 0.9);
+}
+
+.ArtworkTitle {
+  font-size: 1.2rem;
+  color: #D54949;
+  text-shadow: 0 1px 1px rgba(7, 7, 7, 0.9);
+}
+
+.CustomHr {
+  height: 4px;
+  background-image: linear-gradient(to right bottom, #80ED99, #FF6B6B, #5E60CE);
+  opacity: 1;
+  border: 0;
+  border-radius: 2px;
+}
+
 
 
 
@@ -116,6 +156,7 @@ BACKGROUND GRADIENTS
   }
 }
 
+/******  992PX  ************/
 @media (min-width: 992px) {
   .TaglineBlack {
     font-size: 3rem;
@@ -123,6 +164,11 @@ BACKGROUND GRADIENTS
 
   .textWhiteLight {
     font-size: 1.3rem;
+  }
+
+  .ArtworkTitle {
+    font-size: 1.3rem;
+
   }
 }
 

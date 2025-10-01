@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -22,36 +22,51 @@ const ProfileEditForm = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const { id } = useParams();
-  const history = useHistory();
+  const navigate = useNavigate();
   const imageFile = useRef();
+  const previewUrlRef = useRef(null);
 
   const [profileData, setProfileData] = useState({
     name: "",
-    content: "",
+    bio: "",
     image: "",
   });
-  const { name, content, image } = profileData;
+  const { name, bio, image } = profileData;
 
   const [errors, setErrors] = useState({});
 
   useEffect(() => {
     const handleMount = async () => {
-      if (currentUser?.profile_id?.toString() === id) {
-        try {
-          const { data } = await axiosReq.get(`/profiles/${id}/`);
-          const { name, content, image } = data;
-          setProfileData({ name, content, image });
-        } catch (err) {
-          console.log(err);
-          history.push("/");
-        }
-      } else {
-        history.push("/");
+      if (!currentUser) return;
+
+      if (currentUser?.profile_id?.toString() !== id) {
+        navigate("/");
+        return;
+      }
+
+      try {
+        const { data } = await axiosReq.get(`/profiles/${id}/`);
+        const { display_name, bio, profile_image } = data;
+        setProfileData({
+          name: display_name ?? "",
+          bio: bio ?? "",
+          image: profile_image || "",
+        });
+      } catch (err) {
+        console.log(err);
+        navigate("/");
       }
     };
 
     handleMount();
-  }, [currentUser, history, id]);
+
+    return () => {
+      if (previewUrlRef.current) {
+        URL.revokeObjectURL(previewUrlRef.current);
+        previewUrlRef.current = null;
+      }
+    };
+  }, [currentUser, id, navigate]);
 
   const handleChange = (event) => {
     setProfileData({
@@ -63,20 +78,20 @@ const ProfileEditForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("name", name);
-    formData.append("content", content);
+    formData.append("display_name", name);
+    formData.append("bio", bio);
 
     if (imageFile?.current?.files[0]) {
-      formData.append("image", imageFile?.current?.files[0]);
+      formData.append("profile_image", imageFile?.current?.files[0]);
     }
 
     try {
-      const { data } = await axiosReq.put(`/profiles/${id}/`, formData);
+      const { data } = await axiosReq.patch(`/profiles/${id}/`, formData);
       setCurrentUser((currentUser) => ({
         ...currentUser,
-        profile_image: data.image,
+        profile_image: data.profile_image,
       }));
-      history.goBack();
+      navigate(-1);
     } catch (err) {
       console.log(err);
       setErrors(err.response?.data);
@@ -86,24 +101,24 @@ const ProfileEditForm = () => {
   const textFields = (
     <>
       <Form.Group>
-        <Form.Label>Bio</Form.Label>
+        <Form.Label>Artist Bio</Form.Label>
         <Form.Control
           as="textarea"
-          value={content}
+          value={bio}
           onChange={handleChange}
-          name="content"
+          name="bio"
           rows={7}
         />
       </Form.Group>
 
-      {errors?.content?.map((message, idx) => (
+      {errors?.bio?.map((message, idx) => (
         <Alert variant="warning" key={idx}>
           {message}
         </Alert>
       ))}
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
-        onClick={() => history.goBack()}
+        onClick={() => navigate(-1)}
       >
         cancel
       </Button>
@@ -121,10 +136,14 @@ const ProfileEditForm = () => {
             <Form.Group>
               {image && (
                 <figure>
-                  <Image src={image} fluid />
+                  <Image
+                    src={image}
+                    alt={`${name || currentUser?.username}'s avatar`}
+                    fluid
+                  />
                 </figure>
               )}
-              {errors?.image?.map((message, idx) => (
+              {errors?.profile_image?.map((message, idx) => (
                 <Alert variant="warning" key={idx}>
                   {message}
                 </Alert>
@@ -136,20 +155,31 @@ const ProfileEditForm = () => {
                 >
                   Change the image
                 </Form.Label>
+
+                <Form.Control
+                  className="d-none"
+                  id="image-upload"
+                  type="file"
+                  name="profile_image"
+                  ref={imageFile}
+                  accept="image/*"
+                  onChange={(e) => {
+                    if (e.target.files.length) {
+                      if (previewUrlRef.current) {
+                        URL.revokeObjectURL(previewUrlRef.current);
+                      }
+
+                      const file = e.target.files[0];
+                      const blobUrl = URL.createObjectURL(file);
+                      previewUrlRef.current = blobUrl;
+                      setProfileData({
+                        ...profileData,
+                        image: blobUrl,
+                      });
+                    }
+                  }}
+                />
               </div>
-              <Form.File
-                id="image-upload"
-                ref={imageFile}
-                accept="image/*"
-                onChange={(e) => {
-                  if (e.target.files.length) {
-                    setProfileData({
-                      ...profileData,
-                      image: URL.createObjectURL(e.target.files[0]),
-                    });
-                  }
-                }}
-              />
             </Form.Group>
             <div className="d-md-none">{textFields}</div>
           </Container>

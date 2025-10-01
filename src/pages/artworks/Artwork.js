@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../styles/Artwork.module.css";
+import uniStyles from "../../styles/UniversalDesign.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Card from "react-bootstrap/Card";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
@@ -28,7 +29,7 @@ const Artwork = (props) => {
   } = props;
 
   const currentUser = useCurrentUser();
-  const is_owner = currentUser?.username === owner;
+  const is_owner = props.is_owner;
   const navigate = useNavigate();
 
   const handleEdit = () => {
@@ -87,12 +88,17 @@ const Artwork = (props) => {
     <Card className={styles.Artwork}>
       <Card.Body>
         <Row className="align-items-center justify-content-between">
-          <Link to={`/profiles/${profile_id}`}>
+          <Link
+            className={uniStyles.ProfileLink}
+            to={`/profiles/${profile_id}`}
+          >
             <Avatar src={profile_image} height={55} />
             {owner}
           </Link>
           <div className="d-flex align-items-center">
-            <span>{updated_at}</span>
+            <span className={` ${uniStyles.ArtUpdate} textDarkBlue`}>
+              {updated_at}
+            </span>
             {is_owner && artworkPage && (
               <MoreDropdown
                 handleEdit={handleEdit}
@@ -107,15 +113,21 @@ const Artwork = (props) => {
       </Link>
 
       <Card.Body>
-        {title && <Card.Title className="text-center">{title}</Card.Title>}
+        {title && (
+          <Card.Title className={`${styles.ArtworkTitles} text-center`}>
+            {title}
+          </Card.Title>
+        )}
         {description && <Card.Text>{description}</Card.Text>}
-        <div className={styles.PostBar}>
+        <div
+          className={`${styles.PostBar} d-flex align-items-center justify-content-center`}
+        >
           {is_owner ? (
             <OverlayTrigger
               placement="top"
               overlay={<Tooltip>You can't like your own post!</Tooltip>}
             >
-              <i className="fas fa-heart" />
+              <i className={`far fa-heart ${styles.HeartOutline}`} />
             </OverlayTrigger>
           ) : artwork_liked_id ? (
             <span onClick={handleUnlike}>
@@ -130,14 +142,14 @@ const Artwork = (props) => {
               placement="top"
               overlay={<Tooltip>Log in to like!</Tooltip>}
             >
-              <i className="far fa-heart" />
+              <i className={`far fa-heart ${styles.HeartOutline}`} />
             </OverlayTrigger>
           )}
-          {artwork_likes_count}
+          <span className={styles.LikeCount}>{artwork_likes_count}</span>
           <Link to={`/artworks/${id}`}>
-            <i className="far fa-comments" />
+            <i className={` ${styles.Comment} far fa-comments`} />
           </Link>
-          {artwork_comments_count}
+          <span className={styles.CommentCount}> {artwork_comments_count}</span>
         </div>
       </Card.Body>
     </Card>

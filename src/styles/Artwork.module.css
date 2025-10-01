@@ -1,25 +1,53 @@
 .Artwork {
   background-color: #fff9f4;
-  border: 1px solid #dadadf;
-  border-radius: 2px;
+  border: 1px solid #D54949;
+  border-radius: 10px;
   margin-bottom: 16px;
   text-align: center;
+  padding: 5px;
 
 }
 
-.Artwork figure,
-h5 {
-  margin: 0 0;
+.ArtworkTitles {
+  color: #D54949;
+  text-shadow: 0 1px 1px rgba(7, 7, 7, 0.9);
 }
 
-.Heart {
-  color: #f85032;
+
+
+.Heart,
+.HeartOutline,
+.LikeCount,
+.Comment,
+.CommentCount {
+  font-size: 1.2rem;
 }
 
-.Heart:hover {
-  color: #2142b2;
+.Heart,
+.HeartOutline,
+.LikeCount,
+.CommentCount {
+  color: #D54949;
+  margin-right: 10px;
 }
 
-.HeartOutline:hover {
-  color: #f85032;
+.LikeCount,
+.CommentCount {
+  margin-right: 0;
+}
+
+.HeartOutline,
+.Comment {
+  color: rgba(7, 7, 7, 0.9);
+}
+
+.Comment {
+  margin: 0 10px;
+}
+
+
+.HeartOutline:hover,
+.Comment:hover {
+  cursor: pointer;
+  color: #5E60CE;
 }

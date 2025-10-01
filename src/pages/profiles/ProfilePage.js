@@ -8,6 +8,7 @@ import Image from "react-bootstrap/Image";
 
 import Asset from "../../components/Asset";
 
+import uniStyles from "../../styles/UniversalDesign.module.css";
 import styles from "../../styles/ProfilePage.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -63,29 +64,39 @@ function ProfilePage() {
 
   const mainProfile = (
     <>
-      {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
-      <Row noGutters className="px-3 text-center">
-        <Col lg={3} className="text-lg-left">
-          <Image
-            className={styles.ProfileImage}
-            roundedCircle
-            src={profile?.image}
-          />
+      <Row className="px-3 text-center g-0 position-relative">
+        {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
+        <Col lg={4} className="text-lg-left ">
+          <div
+            className={`${styles.ProfileImageWrapper} ${uniStyles.bgMainGradient}`}
+          >
+            <Image
+              className={styles.ProfileImage}
+              roundedCircle
+              src={profile?.profile_image}
+            />
+          </div>
         </Col>
         <Col lg={6}>
-          <h3 className="m-2">{profile?.owner}</h3>
+          <h3 className={`${uniStyles.ProfileName} m-2`}>{profile?.owner}</h3>
           <Row className="justify-content-center no-gutters">
             <Col xs={3} className="my-2">
-              <div>{profile?.artwork_count}</div>
-              <div>artwork</div>
+              <div className={uniStyles.ProfileInfo}>
+                {profile?.artworks_count}
+              </div>
+              <div className={uniStyles.ProfileInfo}>artwork</div>
             </Col>
             <Col xs={3} className="my-2">
-              <div>{profile?.followers_count}</div>
-              <div>followers</div>
+              <div className={uniStyles.ProfileInfo}>
+                {profile?.followers_count}
+              </div>
+              <div className={uniStyles.ProfileInfo}>followers</div>
             </Col>
             <Col xs={3} className="my-2">
-              <div>{profile?.following_count}</div>
-              <div>following</div>
+              <div className={uniStyles.ProfileInfo}>
+                {profile?.following_count}
+              </div>
+              <div className={uniStyles.ProfileInfo}>following</div>
             </Col>
           </Row>
         </Col>
@@ -115,9 +126,11 @@ function ProfilePage() {
 
   const mainProfileArtworks = (
     <>
-      <hr />
-      <p className="text-center">{profile?.owner}'s artworks</p>
-      <hr />
+      <hr className={uniStyles.CustomHr} />
+      <p className={` ${uniStyles.ArtworkTitle}  text-center`}>
+        {profile?.owner}'s Artworks
+      </p>
+      <hr className={uniStyles.CustomHr} />
       {profileArtworks.results.length ? (
         <InfiniteScroll
           children={profileArtworks.results.map((artwork) => (
@@ -142,24 +155,30 @@ function ProfilePage() {
   );
 
   return (
-    <Row>
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <PopularProfiles mobile />
-        <Container className={appStyles.Content}>
-          {hasLoaded ? (
-            <>
-              {mainProfile}
-              {mainProfileArtworks}
-            </>
-          ) : (
-            <Asset spinner />
-          )}
-        </Container>
-      </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        <PopularProfiles />
-      </Col>
-    </Row>
+    <section className={styles.profileSectionBg}>
+      <div className={styles.pageShell}>
+        <Row className="justify-content-lg-between">
+          <Col className="py-2 p-0 p-lg-2" lg={9}>
+            <PopularProfiles mobile />
+            <Container className={appStyles.Content}>
+              {hasLoaded ? (
+                <>
+                  {mainProfile}
+
+                  {mainProfileArtworks}
+                </>
+              ) : (
+                <Asset spinner />
+              )}
+            </Container>
+          </Col>
+
+          <Col lg={3} className="d-none d-lg-block p-0 p-lg-2">
+            <PopularProfiles />
+          </Col>
+        </Row>
+      </div>
+    </section>
   );
 }
 

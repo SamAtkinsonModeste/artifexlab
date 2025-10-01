@@ -1,13 +1,73 @@
-.ProfileImage {
-  object-fit: cover;
-  height: 120px;
-  width: 120px;
-  margin: 4px;
+.profileSectionBg {
+  /* Pick your background */
+  background-image: linear-gradient(to left bottom, #f6ece3, #faeeea, #fbf1f1, #faf4f7, #faf8fa, #fbf9fb, #fcfafb, #fdfbfc, #fefafb, #fff9f9, #fff9f7, #fff9f4);
+  /* Vertical breathing room — adjust to taste */
+  background-size: cover;
+  padding-block: 1.5rem;
 }
 
-@media screen and (max-width: 991px) {
-  .ProfileImage {
-    width: 250px;
-    height: 250px;
+.ProfileImageWrapper {
+  display: inline-block;
+  padding: 6px;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+}
+
+
+.ProfileImage {
+  border-radius: 50%;
+  display: block;
+  width: 100%;
+}
+
+
+.pageShell {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  max-width: 100%;
+}
+
+
+
+
+
+/***********************************
+         MEDIA QUERIES
+***************************************/
+
+@media (min-width: 576px) {
+  .pageShell {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .pageShell {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .ProfileImageWrapper {
+    width: 150px;
+    height: 150px;
+  }
+
+  .pageShell {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .pageShell {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .pageShell {
+    max-width: 1320px;
   }
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+import { setTokenTimestamp } from "../../utils/utils";
 import eyeArt from "../../assets/eye-art.webp";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -13,6 +13,7 @@ import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import axios from "axios";
 import FieldAlerts from "../../components/FieldAlerts";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
@@ -22,19 +23,21 @@ const SignUpForm = () => {
   });
 
   const { username, password1, password2 } = signUpData;
+  const setCurrentUser = useSetCurrentUser();
   const navigate = useNavigate();
   const [errors, setErrors] = useState({});
   const [success, setSuccess] = useState(false);
+  const [newProfileId, setNewProfileId] = useState(null);
 
   useEffect(() => {
     if (success) {
       const timer = setTimeout(() => {
-        navigate("/profile");
+        navigate(`/profiles/${newProfileId}`);
       }, 5000);
 
       return () => clearTimeout(timer);
     }
-  }, [success, navigate]);
+  }, [success, navigate, newProfileId]);
 
   //EVENTHANDLER - handleChange of form inputs
   const handleChange = (evt) => {
@@ -50,6 +53,18 @@ const SignUpForm = () => {
     try {
       console.log(signUpData);
       await axios.post("/dj-rest-auth/registration/", signUpData);
+
+      const loginRes = await axios.post("/dj-rest-auth/login/", {
+        username: signUpData.username.trim(),
+        password: signUpData.password1,
+      });
+
+      setTokenTimestamp(loginRes.data);
+
+      const { data: user } = await axios.get("/dj-rest-auth/user/");
+      setCurrentUser(user);
+
+      setNewProfileId(user.profile_id);
       setSuccess(true);
       console.log("Success!");
       console.log("Success!");
