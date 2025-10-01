@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 const ThreeDots = React.forwardRef(({ onClick }, ref) => (
   // STEP Step 2 - Changed element from <a> to <i> tag with font-awesome icon
   <i
-    className="fas fa-ellipsis-v"
+    className={`fas fa-ellipsis-v ${styles.ThreeDots}`}
     // STEP 3 - Preserved ref functionality for Bootstrap compatibility
     ref={ref}
     // STEP Step 4 - Kept the same onClick logic for dropdown behavior
@@ -27,7 +27,7 @@ export const MoreDropdown = ({ handleEdit, handleDelete }) => {
       <Dropdown.Toggle as={ThreeDots} />
 
       <Dropdown.Menu
-        className="text-center"
+        className={`${styles.DropdownMenu} text-center`}
         popperConfig={{ strategy: "fixed" }}
       >
         <Dropdown.Item
@@ -55,14 +55,16 @@ export const ProfileEditDropdown = ({ id }) => {
   return (
     <Dropdown className={`ml-auto px-3 ${styles.Absolute}`} drop="left">
       <Dropdown.Toggle as={ThreeDots} />
-      <Dropdown.Menu>
+      <Dropdown.Menu className={styles.DropdownProfileMenu}>
         <Dropdown.Item
+          className={styles.DropdownItem}
           onClick={() => navigate(`/profiles/${id}/edit`)}
           aria-label="edit-profile"
         >
           <i className="fas fa-edit" /> edit profile
         </Dropdown.Item>
         <Dropdown.Item
+          className={styles.DropdownItem}
           onClick={() => navigate(`/profiles/${id}/edit/username`)}
           aria-label="edit-username"
         >
@@ -70,6 +72,7 @@ export const ProfileEditDropdown = ({ id }) => {
           change username
         </Dropdown.Item>
         <Dropdown.Item
+          className={styles.DropdownItem}
           onClick={() => navigate(`/profiles/${id}/edit/password`)}
           aria-label="edit-password"
         >
