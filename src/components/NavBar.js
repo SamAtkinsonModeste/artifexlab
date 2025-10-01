@@ -105,7 +105,7 @@ const NavBar = () => {
         <NavDropdown
           title={
             <div
-              className={styles.NavAvatarWrap}
+              className={`${styles.NavAvatarWrap}`}
               style={{ position: "relative" }}
             >
               <div className={styles.AvatarContainer}>
@@ -115,7 +115,7 @@ const NavBar = () => {
                   height={40}
                 />
                 <i
-                  className={`fas fa-circle-notch ${styles.NavAvatarStatus}${styles.Dropdown}`}
+                  className={`fas fa-circle-notch ${styles.NavAvatarStatus} ${styles.Dropdown}`}
                 ></i>
               </div>
             </div>
@@ -135,7 +135,7 @@ const NavBar = () => {
             className={`${styles.NavLink} activeClassName=${styles.Active} ${styles.Dropdown}`}
             as={NavLink}
             onClick={handleLinkClick}
-            to={`/profiles/${currentUser?.profile_id}`}
+            to={`/profiles/${currentUser?.profile_id}/edit`}
           >
             Edit Profile
           </NavDropdown.Item>
