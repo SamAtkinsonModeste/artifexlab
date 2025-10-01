@@ -12,6 +12,7 @@ import CreateTutorialForm from "./pages/tutorials/CreateTutorialForm";
 import ArtworkPage from "./pages/artworks/ArtworkPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import ProfilePage from "./pages/profiles/ProfilePage";
+import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -26,7 +27,8 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/signin" element={<SignInForm />} />
           <Route path="/signup" element={<SignUpForm />} />
-          <Route path="/profiles/:d" element={<ProfilePage />} />
+          <Route path="/profiles/:id" element={<ProfilePage />} />
+          <Route path="/profiles/:id/edit" element={<ProfileEditForm />} />
           <Route path="/artworks/create" element={<ArtUploadForm />} />
           <Route path="/artworks/:id" element={<ArtworkPage />} />
 
