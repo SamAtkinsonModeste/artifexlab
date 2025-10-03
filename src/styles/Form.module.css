@@ -1,0 +1,42 @@
+.Input,
+.Textarea {
+  background: #FFF9F4;
+  border: 1px solid rgbA(46, 35, 35, 0.3);
+  box-sizing: border-box;
+  border-radius: 5px;
+  color: #454797;
+  text-align: center;
+  padding: 10px;
+  margin-bottom: 1rem;
+}
+
+.Textarea {
+  border-radius: 10px;
+  text-align: left;
+  /* padding: 10px;
+  margin-bottom: 1rem; */
+}
+
+.CommentLink {
+  margin-right: auto;
+}
+
+.Input:focus,
+.Textarea:focus {
+  border-color: #6f42c1;
+  box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
+}
+
+.Input::placeholder,
+.Textarea::placeholder {
+  color: rgba(7, 7, 7, 0.5);
+
+}
+
+/* .ArtworkComment {} */
+
+@media (min-width: 992px) {
+  .Input {
+    font-size: 1rem;
+  }
+}
