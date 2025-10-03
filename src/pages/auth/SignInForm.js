@@ -9,6 +9,7 @@ import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import { Link, useNavigate } from "react-router-dom";
 
+import formStyles from "../../styles/Form.module.css";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
@@ -75,7 +76,7 @@ const SignInForm = () => {
               <Form.Group controlId="username">
                 <Form.Label className="d-none">Username</Form.Label>
                 <Form.Control
-                  className={styles.Input}
+                  className={formStyles.Input}
                   type="text"
                   placeholder="Enter Username"
                   name="username"
@@ -88,7 +89,7 @@ const SignInForm = () => {
               <Form.Group controlId="password">
                 <Form.Label className="d-none">Password</Form.Label>
                 <Form.Control
-                  className={styles.Input}
+                  className={formStyles.Input}
                   type="password"
                   placeholder="Password"
                   name="password"
