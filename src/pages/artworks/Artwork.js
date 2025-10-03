@@ -47,7 +47,7 @@ const Artwork = (props) => {
 
   const handleLike = async () => {
     try {
-      const { data } = await axiosRes.post("/artworklikes/", { artwork: id });
+      const { data } = await axiosRes.post("/artwork-likes/", { artwork: id });
       setArtworks((prevArtworks) => ({
         ...prevArtworks,
         results: prevArtworks.results.map((artwork) => {
@@ -67,7 +67,7 @@ const Artwork = (props) => {
 
   const handleUnlike = async () => {
     try {
-      await axiosReq.delete(`/artworklikes/${artwork_liked_id}/`);
+      await axiosReq.delete(`/artwork-likes/${artwork_liked_id}/`);
       setArtworks((prevArtworks) => ({
         ...prevArtworks,
         results: prevArtworks.results.map((artwork) => {
@@ -127,27 +127,27 @@ const Artwork = (props) => {
               placement="top"
               overlay={<Tooltip>You can't like your own post!</Tooltip>}
             >
-              <i className={`far fa-heart ${styles.HeartOutline}`} />
+              <i className={`fa-regular fa-heart ${styles.HeartOutline}`} />
             </OverlayTrigger>
           ) : artwork_liked_id ? (
             <span onClick={handleUnlike}>
-              <i className={`fas fa-heart ${styles.Heart}`} />
+              <i className={`fa-solid fa-heart ${styles.Heart}`} />
             </span>
           ) : currentUser ? (
             <span onClick={handleLike}>
-              <i className={`far fa-heart ${styles.HeartOutline}`} />
+              <i className={`fa-regular fa-heart ${styles.HeartOutline}`} />
             </span>
           ) : (
             <OverlayTrigger
               placement="top"
               overlay={<Tooltip>Log in to like!</Tooltip>}
             >
-              <i className={`far fa-heart ${styles.HeartOutline}`} />
+              <i className={`fa-regular fa-heart ${styles.HeartOutline}`} />
             </OverlayTrigger>
           )}
           <span className={styles.LikeCount}>{artwork_likes_count}</span>
           <Link to={`/artworks/${id}`}>
-            <i className={` ${styles.Comment} far fa-comments`} />
+            <i className={` ${styles.Comment} fa-regular fa-comments`} />
           </Link>
           <span className={styles.CommentCount}> {artwork_comments_count}</span>
         </div>
