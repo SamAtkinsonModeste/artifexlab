@@ -4,7 +4,8 @@ import { Link } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import InputGroup from "react-bootstrap/InputGroup";
 
-import styles from "../../styles/CommentCreateEditForm.module.css";
+import styles from "../../styles/Form.module.css";
+import btnStyles from "../../styles/Button.module.css";
 import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 
@@ -43,14 +44,15 @@ function CommentCreateForm(props) {
 
   return (
     <Form className="mt-2" onSubmit={handleSubmit}>
-      <Form.Group>
+      <Form.Group controlId="comment">
         <InputGroup>
-          <Link to={`/profiles/${profile_id}`}>
+          <Link className={styles.CommentLink} to={`/profiles/${profile_id}`}>
             <Avatar src={profileImage} />
           </Link>
+          <Form.Label className="d-none">Your Comment</Form.Label>
           <Form.Control
-            className={styles.Form}
-            placeholder="my comment..."
+            className={styles.Textarea}
+            placeholder="my thoughts..."
             as="textarea"
             value={content}
             onChange={handleChange}
@@ -59,7 +61,7 @@ function CommentCreateForm(props) {
         </InputGroup>
       </Form.Group>
       <button
-        className={`${styles.Button} btn d-block ml-auto`}
+        className={`${btnStyles.Button} ${btnStyles.BtnBasePeach} btn d-block ms-auto`}
         disabled={!content.trim()}
         type="submit"
       >
