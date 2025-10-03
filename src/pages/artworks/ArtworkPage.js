@@ -4,6 +4,8 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import appStyles from "../../App.module.css";
+import styles from "../../styles/ProfilePage.module.css";
+import uniStyles from "../../styles/UniversalDesign.module.css";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Artwork from "./Artwork";
@@ -28,7 +30,7 @@ function ArtworkPage() {
       try {
         const [{ data: artwork }, { data: comments }] = await Promise.all([
           axiosReq.get(`/artworks/${id}`),
-          axiosReq.get(`/comments/?artwork=${id}`),
+          axiosReq.get(`/artwork-comments/?artwork=${id}`),
         ]);
         setArtwork({ results: [artwork] });
         setComments(comments);
@@ -41,48 +43,58 @@ function ArtworkPage() {
   }, [id]);
 
   return (
-    <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <PopularProfiles mobile />
-        <Artwork {...artwork.results[0]} setArtworks={setArtwork} artworkPage />
-        <Container className={appStyles.Content}>
-          {currentUser ? (
-            <CommentCreateForm
-              profile_id={currentUser.profile_id}
-              profileImage={profile_image}
-              artwork={id}
-              setArtwork={setArtwork}
-              setComments={setComments}
+    <section className={styles.profileSectionBg}>
+      <div className={styles.pageShell}>
+        <Row className="h-100">
+          <Col className="py-2 p-0 p-lg-2" lg={8}>
+            <PopularProfiles mobile />
+            <Artwork
+              {...artwork.results[0]}
+              setArtworks={setArtwork}
+              artworkPage
             />
-          ) : comments.results.length ? (
-            "Comments"
-          ) : null}
-          {comments.results.length ? (
-            <InfiniteScroll
-              children={comments.results.map((comment) => (
-                <Comment
-                  key={comment.id}
-                  {...comment}
+            <Container
+              className={`${appStyles.Content}  ${uniStyles.BorderPeach}`}
+            >
+              {currentUser ? (
+                <CommentCreateForm
+                  profile_id={currentUser.profile_id}
+                  profileImage={profile_image}
+                  artwork={id}
                   setArtwork={setArtwork}
                   setComments={setComments}
                 />
-              ))}
-              dataLength={comments.results.length}
-              loader={<Asset spinner />}
-              hasMore={!!comments.next}
-              next={() => fetchMoreData(comments, setComments)}
-            />
-          ) : currentUser ? (
-            <span>No comments yet, be the first to comment!</span>
-          ) : (
-            <span>No comments... yet</span>
-          )}
-        </Container>
-      </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        <PopularProfiles />
-      </Col>
-    </Row>
+              ) : comments.results.length ? (
+                "Comments"
+              ) : null}
+              {comments.results.length ? (
+                <InfiniteScroll
+                  children={comments.results.map((comment) => (
+                    <Comment
+                      key={comment.id}
+                      {...comment}
+                      setArtwork={setArtwork}
+                      setComments={setComments}
+                    />
+                  ))}
+                  dataLength={comments.results.length}
+                  loader={<Asset spinner />}
+                  hasMore={!!comments.next}
+                  next={() => fetchMoreData(comments, setComments)}
+                />
+              ) : currentUser ? (
+                <span>No comments yet, be the first to comment!</span>
+              ) : (
+                <span>No comments... yet</span>
+              )}
+            </Container>
+          </Col>
+          <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
+            <PopularProfiles />
+          </Col>
+        </Row>
+      </div>
+    </section>
   );
 }
 
