@@ -107,7 +107,7 @@ const ArtUploadForm = () => {
 
       {/* Cancel button */}
       <Button
-        className={`${btnStyles.CallOutArt} ${btnStyles.MedWide} rounded-pill m-2`}
+        className={`${btnStyles.CallOutArt} ${btnStyles.SmallWide} rounded-pill m-2`}
         onClick={handleCancel}
       >
         Cancel
@@ -116,7 +116,7 @@ const ArtUploadForm = () => {
       {/* Submit Button */}
       <Button
         type="submit"
-        className={`${btnStyles.CallOutTutorial} ${btnStyles.MedWide}  rounded-pill mx-4 my-5`}
+        className={`${btnStyles.CallOutTutorial} ${btnStyles.SmallWide}  rounded-pill mx-4 my-5`}
       >
         Create
       </Button>
