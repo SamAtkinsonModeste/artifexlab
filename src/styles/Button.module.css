@@ -26,18 +26,40 @@
   width: 40%;
 }
 
+.SmallWide {
+  margin: 10px;
+  padding: 8px;
+  width: 20%;
+}
 
-.SignUpIn,
-.CallOutArt,
-.BlackOutline {
+.BtnBasePurple {
+  box-shadow: inset 0 0 20px rgba(82, 155, 99, 0.9);
+  background-color: rgb(69, 71, 151);
+  color: #ff6b6b;
+  text-shadow: 0 1px 2px #070707;
+}
+
+.BtnBasePeach,
+.BtnBasePeach:disabled {
   box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.6);
   background-color: #FF6B6B;
   color: #B0E88D;
   text-shadow: 0 1px 2px #070707;
 }
 
-.CallOutArt:hover {
-  box-shadow: inset 0 0 20px rgba(255, 107, 107, 0.6);
+
+.SignUpIn,
+.CallOutArt,
+.Follow {
+  box-shadow: inset 0 0 10px rgba(69, 71, 151, 0.4);
+  background-color: #FF6B6B;
+  color: #B0E88D;
+  text-shadow: 0 1px 2px #070707;
+}
+
+.CallOutArt:hover,
+.Follow:hover {
+  box-shadow: inset 0 0 10px rgba(255, 107, 107, 0.4);
   background-color: rgb(69, 71, 151);
   color: #B0E88D;
   text-shadow: 0 1px 2px #070707;
@@ -45,8 +67,8 @@
 
 
 .CallOutTutorial,
-.Black {
-  box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.9);
+.Unfollow {
+  box-shadow: inset 0 0 10px rgba(69, 71, 151, 0.4);
   background-color: #529b63;
   color: #ff6b6b;
   text-shadow: 0 1px 2px #070707;
@@ -62,13 +84,19 @@
   text-shadow: 0 1px 2px #070707;
 }
 
-.SignUpIn:hover {
+.SignUpIn:hover,
+.BtnBasePurple:hover,
+.BtnBasePeach:hover,
+.BtnBasePeach:disabled:hover,
+.Unfollow:hover {
   opacity: 0.8;
   box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.9);
   background-color: #80ed99;
   color: #FF6B6B;
   text-shadow: 0 1px 2px #070707;
 }
+
+
 
 .SignUpIn:focus {
   background-color: #529B63 !important;
@@ -78,7 +106,21 @@
   border-color: rgba(7, 7, 7, 0.6);
 }
 
-.SignUpIn:active {
+
+
+.SignUpIn:hover:active,
+.SignUpIn:focus:active,
+.Follow:hover:active,
+.UnFollow:hover:active {
+  background-color: #529B63 !important;
+  color: #FCFCFC !important;
+  box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.9) !important;
+  text-shadow: 0 1px 2px #070707 !important;
+  border-color: rgba(7, 7, 7, 0.6) !important;
+}
+
+.SignUpIn:active,
+.Follow:active {
   background-color: #529B63 !important;
   color: #FBA747 !important;
   box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.9) !important;
@@ -86,14 +128,8 @@
   border-color: rgba(7, 7, 7, 0.6);
 }
 
-.SignUpIn:hover:active,
-.SignUpIn:focus:active {
-  background-color: #529B63 !important;
-  color: #FCFCFC !important;
-  box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.9) !important;
-  text-shadow: 0 1px 2px #070707 !important;
-  border-color: rgba(7, 7, 7, 0.6) !important;
-}
+
+
 
 .SignUpIn:disabled {
   background-color: #529B63 !important;
@@ -145,6 +181,11 @@
     width: 60%;
     margin-left: 5px;
     margin-right: 5px;
+  }
+
+  .ProfileFollow {
+    margin-top: 10px;
+    margin-left: 80px;
   }
 }
 
