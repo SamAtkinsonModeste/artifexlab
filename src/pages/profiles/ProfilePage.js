@@ -64,7 +64,7 @@ function ProfilePage() {
 
   const mainProfile = (
     <>
-      <Row className="px-3 text-center g-0 position-relative">
+      <Row className="px-3 text-center g-0">
         {profile?.is_owner && <ProfileEditDropdown id={profile?.id} />}
         <Col lg={4} className="text-lg-left ">
           <div
@@ -77,23 +77,23 @@ function ProfilePage() {
             />
           </div>
         </Col>
-        <Col lg={6}>
+        <Col lg={5}>
           <h3 className={`${uniStyles.ProfileName} m-2`}>{profile?.owner}</h3>
           <Row className="justify-content-center no-gutters">
-            <Col xs={3} className="my-2">
-              <div className={uniStyles.ProfileInfo}>
+            <Col xs={4} className="my-2">
+              <div className={uniStyles.ProfileInfoCount}>
                 {profile?.artworks_count}
               </div>
               <div className={uniStyles.ProfileInfo}>artwork</div>
             </Col>
-            <Col xs={3} className="my-2">
-              <div className={uniStyles.ProfileInfo}>
+            <Col xs={4} className="my-2">
+              <div className={uniStyles.ProfileInfoCount}>
                 {profile?.followers_count}
               </div>
               <div className={uniStyles.ProfileInfo}>followers</div>
             </Col>
-            <Col xs={3} className="my-2">
-              <div className={uniStyles.ProfileInfo}>
+            <Col xs={4} className="my-2">
+              <div className={uniStyles.ProfileInfoCount}>
                 {profile?.following_count}
               </div>
               <div className={uniStyles.ProfileInfo}>following</div>
@@ -105,14 +105,14 @@ function ProfilePage() {
             !is_owner &&
             (profile?.following_id ? (
               <Button
-                className={`${btnStyles.Button} ${btnStyles.BlackOutline}`}
+                className={`${btnStyles.Button} ${btnStyles.Unfollow} ${btnStyles.ProfileFollow}`}
                 onClick={() => handleUnfollow(profile)}
               >
                 unfollow
               </Button>
             ) : (
               <Button
-                className={`${btnStyles.Button} ${btnStyles.Black}`}
+                className={`${btnStyles.Button} ${btnStyles.Follow} ${btnStyles.ProfileFollow}`}
                 onClick={() => handleFollow(profile)}
               >
                 follow
@@ -157,10 +157,10 @@ function ProfilePage() {
   return (
     <section className={styles.profileSectionBg}>
       <div className={styles.pageShell}>
-        <Row className="justify-content-lg-between">
-          <Col className="py-2 p-0 p-lg-2" lg={9}>
+        <Row className="justify-content-lg-between position-relative">
+          <Col className="py-2 p-0 p-lg-2" lg={8} xl={9}>
             <PopularProfiles mobile />
-            <Container className={appStyles.Content}>
+            <Container className={`${appStyles.Content} position-relative`}>
               {hasLoaded ? (
                 <>
                   {mainProfile}
@@ -173,7 +173,7 @@ function ProfilePage() {
             </Container>
           </Col>
 
-          <Col lg={3} className="d-none d-lg-block p-0 p-lg-2">
+          <Col lg={4} xl={3} className="d-none d-lg-block p-0 p-lg-2">
             <PopularProfiles />
           </Col>
         </Row>
