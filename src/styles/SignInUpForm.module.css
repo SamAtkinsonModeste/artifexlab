@@ -2,27 +2,6 @@
   height: calc(100vh - 81px);
 }
 
-.Input {
-  background: #FFF9F4;
-  border: 1px solid rgbA(46, 35, 35, 0.3);
-  box-sizing: border-box;
-  border-radius: 5px;
-  color: #454797;
-  text-align: center;
-  padding: 10px;
-  margin-bottom: 1rem;
-}
-
-.Input:focus {
-  border-color: #6f42c1;
-  box-shadow: 0 0 0 0.2rem rgba(111, 66, 193, 0.25);
-}
-
-.Input::placeholder {
-  color: rgba(7, 7, 7, 0.5);
-
-}
-
 
 .Header {
   font-family: bc-alphapipe, sans-serif;

@@ -1,7 +1,6 @@
 .profileSectionBg {
-  /* Pick your background */
+
   background-image: linear-gradient(to left bottom, #f6ece3, #faeeea, #fbf1f1, #faf4f7, #faf8fa, #fbf9fb, #fcfafb, #fdfbfc, #fefafb, #fff9f9, #fff9f7, #fff9f4);
-  /* Vertical breathing room — adjust to taste */
   background-size: cover;
   padding-block: 1.5rem;
 }
@@ -26,7 +25,6 @@
   width: 100%;
   margin-inline: auto;
   padding-inline: 1rem;
-  max-width: 100%;
 }
 
 

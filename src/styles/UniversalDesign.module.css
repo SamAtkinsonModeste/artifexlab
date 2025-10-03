@@ -41,6 +41,13 @@ BACKGROUND GRADIENTS
 
 
 /*-------------------------
+    BORDERS
+---------------------------*/
+.BorderPeach {
+  border: 1px solid #D54949;
+}
+
+/*-------------------------
       SPECIALS
 ---------------------------*/
 
@@ -104,10 +111,13 @@ BACKGROUND GRADIENTS
 }
 
 .ProfileName,
-.ProfileInfo {
+.ProfileInfo,
+.ProfileInfoCount {
   color: #454797;
   text-shadow: 0 1px 1px rgba(7, 7, 7, 0.9);
 }
+
+
 
 .ArtworkTitle {
   font-size: 1.2rem;
