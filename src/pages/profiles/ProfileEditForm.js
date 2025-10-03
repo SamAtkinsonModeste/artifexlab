@@ -15,8 +15,10 @@ import {
   useSetCurrentUser,
 } from "../../contexts/CurrentUserContext";
 
-import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import btnStyles from "../../styles/Button.module.css";
+import styles from "../../styles/ProfilePage.module.css";
+import uniStyles from "../../styles/UniversalDesign.module.css";
 
 const ProfileEditForm = () => {
   const currentUser = useCurrentUser();
@@ -117,12 +119,15 @@ const ProfileEditForm = () => {
         </Alert>
       ))}
       <Button
-        className={`${btnStyles.Button} ${btnStyles.Blue}`}
+        className={`${btnStyles.Button} ${btnStyles.BtnBasePurple} ${btnStyles.SmallWide}`}
         onClick={() => navigate(-1)}
       >
         cancel
       </Button>
-      <Button className={`${btnStyles.Button} ${btnStyles.Blue}`} type="submit">
+      <Button
+        className={`${btnStyles.Button} ${btnStyles.BtnBasePeach} ${btnStyles.SmallWide}`}
+        type="submit"
+      >
         save
       </Button>
     </>
@@ -130,64 +135,78 @@ const ProfileEditForm = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Row>
-        <Col className="py-2 p-0 p-md-2 text-center" md={7} lg={6}>
-          <Container className={appStyles.Content}>
-            <Form.Group>
-              {image && (
-                <figure>
-                  <Image
-                    src={image}
-                    alt={`${name || currentUser?.username}'s avatar`}
-                    fluid
-                  />
-                </figure>
-              )}
-              {errors?.profile_image?.map((message, idx) => (
-                <Alert variant="warning" key={idx}>
-                  {message}
-                </Alert>
-              ))}
-              <div>
-                <Form.Label
-                  className={`${btnStyles.Button} ${btnStyles.Blue} btn my-auto`}
-                  htmlFor="image-upload"
-                >
-                  Change the image
-                </Form.Label>
+      <section className={styles.profileSectionBg}>
+        <div className={styles.pageShell}>
+          <Row>
+            <Col className="py-2 p-0 p-md-2 text-center" md={7} lg={6}>
+              <Container
+                className={` ${appStyles.Content} ${uniStyles.BorderPeach}`}
+              >
+                <Form.Group>
+                  {image && (
+                    <figure>
+                      <Image
+                        src={image}
+                        alt={`${name || currentUser?.username}'s avatar`}
+                        fluid
+                      />
+                    </figure>
+                  )}
+                  {errors?.profile_image?.map((message, idx) => (
+                    <Alert variant="warning" key={idx}>
+                      {message}
+                    </Alert>
+                  ))}
+                  <div>
+                    <Form.Label
+                      className={`${btnStyles.Button} ${btnStyles.Blue} btn my-auto`}
+                      htmlFor="image-upload"
+                    >
+                      Change the image
+                    </Form.Label>
 
-                <Form.Control
-                  className="d-none"
-                  id="image-upload"
-                  type="file"
-                  name="profile_image"
-                  ref={imageFile}
-                  accept="image/*"
-                  onChange={(e) => {
-                    if (e.target.files.length) {
-                      if (previewUrlRef.current) {
-                        URL.revokeObjectURL(previewUrlRef.current);
-                      }
+                    <Form.Control
+                      className="d-none"
+                      id="image-upload"
+                      type="file"
+                      name="profile_image"
+                      ref={imageFile}
+                      accept="image/*"
+                      onChange={(e) => {
+                        if (e.target.files.length) {
+                          if (previewUrlRef.current) {
+                            URL.revokeObjectURL(previewUrlRef.current);
+                          }
 
-                      const file = e.target.files[0];
-                      const blobUrl = URL.createObjectURL(file);
-                      previewUrlRef.current = blobUrl;
-                      setProfileData({
-                        ...profileData,
-                        image: blobUrl,
-                      });
-                    }
-                  }}
-                />
-              </div>
-            </Form.Group>
-            <div className="d-md-none">{textFields}</div>
-          </Container>
-        </Col>
-        <Col md={5} lg={6} className="d-none d-md-block p-0 p-md-2 text-center">
-          <Container className={appStyles.Content}>{textFields}</Container>
-        </Col>
-      </Row>
+                          const file = e.target.files[0];
+                          const blobUrl = URL.createObjectURL(file);
+                          previewUrlRef.current = blobUrl;
+                          setProfileData({
+                            ...profileData,
+                            image: blobUrl,
+                          });
+                        }
+                      }}
+                    />
+                  </div>
+                </Form.Group>
+                <div className="d-md-none">{textFields}</div>
+              </Container>
+            </Col>
+            <Col
+              md={5}
+              lg={6}
+              className="d-none d-md-block p-0 p-md-2 text-center"
+            >
+              <Container
+                className={` ${appStyles.Content} ${uniStyles.BorderPeach}`}
+              >
+                {textFields}
+              </Container>
+            </Col>
+          </Row>
+        </div>
+      </section>
     </Form>
   );
 };
