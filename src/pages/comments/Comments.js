@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import styles from "../../styles/Comment.module.css";
+import commentStyles from "../../styles/Comment.module.css";
+import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Link } from "react-router-dom";
@@ -17,8 +18,10 @@ const Comments = (props) => {
     updated_at,
     content,
     id,
-    setPost,
     setComments,
+    endpoint,
+    setParent,
+    countKey,
   } = props;
 
   //USEHOOK - showEditForm & setShowEditForm
@@ -32,12 +35,12 @@ const Comments = (props) => {
   //STEP - 8
   const handleDelete = async () => {
     try {
-      await axiosRes.delete(`/comments/${id}/`);
-      setPost((prevPost) => ({
+      await axiosRes.delete(`${endpoint}${id}/`);
+      setParent((prev) => ({
         results: [
           {
-            ...prevPost.results[0],
-            comments_count: prevPost.results[0].comments_count - 1,
+            ...prev.results[0],
+            [countKey]: prev.results[0][countKey] - 1,
           },
         ],
       }));
@@ -53,33 +56,40 @@ const Comments = (props) => {
   return (
     <>
       <hr />
-      <Row>
-        <Link to={`/profiles/${profile_id}`}>
-          <Avatar src={profile_image} />
-        </Link>
-        <Col xs={2} className="align-self-center ml-2">
-          <span className={styles.Owner}>{owner}</span>
-          <span className={styles.Date}>{updated_at}</span>
-          {showEditForm ? (
-            <CommentEditForm
-              id={id}
-              profile_id={profile_id}
-              content={content}
-              profileImage={profile_image}
-              setComments={setComments}
-              setShowEditForm={setShowEditForm}
-            />
-          ) : (
-            <p>{content}</p>
-          )}
-        </Col>
-        {is_owner && !showEditForm && (
-          <MoreDropdown
-            handleEdit={() => setShowEditForm(true)}
-            handleDelete={handleDelete}
-          />
-        )}
-      </Row>
+      <Container>
+        <Row className="align-items-start g-2">
+          <Col xs="auto">
+            <Link to={`/profiles/${profile_id}`}>
+              <Avatar src={profile_image} />
+            </Link>
+          </Col>
+          <Col xs={7} md={9} lg={10} className="align-self-center ms-1">
+            <span className={commentStyles.Owner}>{owner}</span>
+            <span className={commentStyles.Date}>{updated_at}</span>
+            {showEditForm ? (
+              <CommentEditForm
+                id={id}
+                profile_id={profile_id}
+                content={content}
+                profileImage={profile_image}
+                setComments={setComments}
+                setShowEditForm={setShowEditForm}
+                endpoint={endpoint}
+              />
+            ) : (
+              <p className={commentStyles.PostedMessage}>{content}</p>
+            )}
+          </Col>
+          <Col xs="auto">
+            {is_owner && !showEditForm && (
+              <MoreDropdown
+                handleEdit={() => setShowEditForm(true)}
+                handleDelete={handleDelete}
+              />
+            )}
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };
