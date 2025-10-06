@@ -29,10 +29,10 @@ const HeroSection = () => {
             </p>
             {currentUser && (
               <div className="d-flex flex-column flex-md-row justify-content-center gap-3 gap-md-5 my-4 my-lg-5">
-                <Button className={`${btnStyle.CallOutArt} rounded-pill`}>
+                <Button className={`${styles.CallOutArt} rounded-pill`}>
                   &larr; &nbsp; Explore Art
                 </Button>
-                <Button className={`${btnStyle.CallOutTutorial}  rounded-pill`}>
+                <Button className={`${styles.CallOutTutorial}  rounded-pill`}>
                   Browse Tutorials Art &nbsp; &rarr;
                 </Button>
               </div>
