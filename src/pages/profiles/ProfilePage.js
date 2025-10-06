@@ -155,8 +155,8 @@ function ProfilePage() {
   );
 
   return (
-    <section className={styles.profileSectionBg}>
-      <div className={styles.pageShell}>
+    <section className={uniStyles.RowWrapperBg}>
+      <div className={uniStyles.pageShell}>
         <Row className="justify-content-lg-between position-relative">
           <Col className="py-2 p-0 p-lg-2" lg={8} xl={9}>
             <PopularProfiles mobile />
