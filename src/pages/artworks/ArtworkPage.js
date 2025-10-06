@@ -6,6 +6,7 @@ import Container from "react-bootstrap/Container";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/ProfilePage.module.css";
 import uniStyles from "../../styles/UniversalDesign.module.css";
+
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Artwork from "./Artwork";
@@ -42,27 +43,35 @@ function ArtworkPage() {
     handleMount();
   }, [id]);
 
+  const artworkId = artwork.results[0]?.id ?? Number(id);
   return (
-    <section className={styles.profileSectionBg}>
-      <div className={styles.pageShell}>
+    <section className={uniStyles.RowWrapperBg}>
+      <div className={uniStyles.pageShell}>
         <Row className="h-100">
           <Col className="py-2 p-0 p-lg-2" lg={8}>
             <PopularProfiles mobile />
-            <Artwork
-              {...artwork.results[0]}
-              setArtworks={setArtwork}
-              artworkPage
-            />
+            {artwork.results[0] && (
+              <Artwork
+                {...artwork.results[0]}
+                setArtworks={setArtwork}
+                artworkPage
+              />
+            )}
+
             <Container
               className={`${appStyles.Content}  ${uniStyles.BorderPeach}`}
             >
               {currentUser ? (
                 <CommentCreateForm
+                  endpoint="/artwork-comments/"
+                  fkKey="artwork"
+                  parentId={artworkId}
+                  setParent={setArtwork}
+                  setComments={setComments}
+                  countKey="artwork_comments_count"
                   profile_id={currentUser.profile_id}
                   profileImage={profile_image}
-                  artwork={id}
-                  setArtwork={setArtwork}
-                  setComments={setComments}
+                  owner={currentUser.username}
                 />
               ) : comments.results.length ? (
                 "Comments"
@@ -73,8 +82,10 @@ function ArtworkPage() {
                     <Comment
                       key={comment.id}
                       {...comment}
-                      setArtwork={setArtwork}
                       setComments={setComments}
+                      endpoint="/artwork-comments/"
+                      setParent={setArtwork}
+                      countKey="artwork_comments_count"
                     />
                   ))}
                   dataLength={comments.results.length}
