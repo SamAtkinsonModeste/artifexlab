@@ -10,8 +10,30 @@ import Avatar from "../../components/Avatar";
 import { axiosRes } from "../../api/axiosDefaults";
 
 function CommentCreateForm(props) {
-  const { post, setPost, setComments, profileImage, profile_id } = props;
+  const {
+    setComments,
+    profileImage,
+    profile_id,
+    owner,
+    endpoint,
+    fkKey,
+    parentId,
+    setParent,
+    countKey,
+  } = props;
+
   const [content, setContent] = useState("");
+
+  if (!endpoint || !fkKey || !parentId || !setParent || !countKey) {
+    console.warn("CommentCreateForm: missing required props", {
+      endpoint,
+      fkKey,
+      parentId,
+      hasSetParent: !!setParent,
+      countKey,
+    });
+    return null;
+  }
 
   const handleChange = (event) => {
     setContent(event.target.value);
@@ -20,19 +42,27 @@ function CommentCreateForm(props) {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axiosRes.post("/comments/", {
-        content,
-        post,
-      });
+      const payload = { content: content.trim(), [fkKey]: parentId };
+      const { data } = await axiosRes.post(endpoint, payload);
+
       setComments((prevComments) => ({
         ...prevComments,
-        results: [data, ...prevComments.results],
-      }));
-      setPost((prevPost) => ({
         results: [
           {
-            ...prevPost.results[0],
-            comments_count: prevPost.results[0].comments_count + 1,
+            ...data,
+            owner,
+            profile_id,
+            profile_image: profileImage,
+          },
+          ...prevComments.results,
+        ],
+      }));
+
+      setParent((prev) => ({
+        results: [
+          {
+            ...prev.results[0],
+            [countKey]: prev.results[0][countKey] + 1,
           },
         ],
       }));
