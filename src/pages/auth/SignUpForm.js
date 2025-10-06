@@ -33,7 +33,7 @@ const SignUpForm = () => {
     if (success) {
       const timer = setTimeout(() => {
         navigate(`/profiles/${newProfileId}`);
-      }, 5000);
+      }, 2500);
 
       return () => clearTimeout(timer);
     }
