@@ -135,8 +135,8 @@ const ProfileEditForm = () => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <section className={styles.profileSectionBg}>
-        <div className={styles.pageShell}>
+      <section className={uniStyles.RowWrapperBg}>
+        <div className={uniStyles.pageShell}>
           <Row>
             <Col className="py-2 p-0 p-md-2 text-center" md={7} lg={6}>
               <Container
@@ -159,7 +159,7 @@ const ProfileEditForm = () => {
                   ))}
                   <div>
                     <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.Blue} btn my-auto`}
+                      className={`${btnStyles.Button} ${btnStyles.BtnBasePeach} btn my-auto`}
                       htmlFor="image-upload"
                     >
                       Change the image
