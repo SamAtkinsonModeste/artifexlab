@@ -35,7 +35,7 @@ const SignInForm = () => {
     if (success) {
       const timer = setTimeout(() => {
         navigate("/");
-      }, 5000);
+      }, 2500);
 
       return () => clearTimeout(timer);
     }
