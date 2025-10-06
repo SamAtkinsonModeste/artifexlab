@@ -44,12 +44,29 @@ BACKGROUND GRADIENTS
     BORDERS
 ---------------------------*/
 .BorderPeach {
-  border: 1px solid #D54949;
+  border: 1px solid #d54848;
+}
+
+.BorderRadius {
+  border-radius: 10px;
 }
 
 /*-------------------------
       SPECIALS
 ---------------------------*/
+/******  WRAPPERS ***********/
+.RowWrapperBg {
+
+  background-image: linear-gradient(to left bottom, #f6ece3, #faeeea, #fbf1f1, #faf4f7, #faf8fa, #fbf9fb, #fcfafb, #fdfbfc, #fefafb, #fff9f9, #fff9f7, #fff9f4);
+  background-size: cover;
+  padding-block: 1.5rem;
+}
+
+.pageShell {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
 
 /****** TAGLINE ********/
 .TaglineSmall {
@@ -90,8 +107,10 @@ BACKGROUND GRADIENTS
 
 }
 
+
+
 .ProfileLink {
-  color: #454797;
+  color: #454696;
   font-size: 1.2rem;
   text-shadow: 0 1px 1px rgba(7, 7, 7, 0.9);
   letter-spacing: 1px;
@@ -141,6 +160,13 @@ BACKGROUND GRADIENTS
 /*----------------------------------------------------------
                            MEDIA QUERIES
 ------------------------------------------------------------*/
+@media (min-width: 576px) {
+  .pageShell {
+    max-width: 540px;
+  }
+}
+
+
 
 @media (min-width: 768px) {
   .TaglineBlack {
@@ -164,6 +190,10 @@ BACKGROUND GRADIENTS
   .ArtifexLabInline {
     font-size: 1.9rem;
   }
+
+  .pageShell {
+    max-width: 720px;
+  }
 }
 
 /******  992PX  ************/
@@ -178,7 +208,10 @@ BACKGROUND GRADIENTS
 
   .ArtworkTitle {
     font-size: 1.3rem;
+  }
 
+  .pageShell {
+    max-width: 960px;
   }
 }
 
@@ -197,6 +230,10 @@ BACKGROUND GRADIENTS
 
   .textWhiteLight {
     font-size: 1.5rem;
+  }
+
+  .pageShell {
+    max-width: 1140px;
   }
 }
 
@@ -219,6 +256,10 @@ BACKGROUND GRADIENTS
     font-size: 2rem;
     text-shadow: 0 2px 3px rgba(7, 7, 7, 0.9);
 
+  }
+
+  .pageShell {
+    max-width: 1320px;
   }
 }
 
@@ -249,6 +290,8 @@ BACKGROUND GRADIENTS
     text-shadow: 0 3px 4px rgba(7, 7, 7, 0.9);
 
   }
+
+
 }
 
 
@@ -274,5 +317,9 @@ BACKGROUND GRADIENTS
     font-size: 3rem;
     text-shadow: 0 3px 4px rgba(7, 7, 7, 0.9);
 
+  }
+
+  .pageShell {
+    max-width: 2010px;
   }
 }

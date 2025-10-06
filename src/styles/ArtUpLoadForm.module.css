@@ -1,3 +1,13 @@
-.Container {
-  min-height: 343px;
+.ArtWorkForm {
+  width: 99%;
+  min-width: 300px;
+  padding: 0.5rem;
+}
+
+
+.FormContainer {
+  min-width: 320px;
+  padding: 1rem;
+  margin: 0 auto;
+  border: blue 1px solid;
 }

@@ -11,14 +11,14 @@
 }
 
 .Textarea {
-  border-radius: 10px;
+  border-radius: 10px !important;
   text-align: left;
   /* padding: 10px;
   margin-bottom: 1rem; */
 }
 
 .CommentLink {
-  margin-right: auto;
+  margin-right: 20px;
 }
 
 .Input:focus,
@@ -29,7 +29,7 @@
 
 .Input::placeholder,
 .Textarea::placeholder {
-  color: rgba(7, 7, 7, 0.5);
+  color: #6f6868;
 
 }
 
