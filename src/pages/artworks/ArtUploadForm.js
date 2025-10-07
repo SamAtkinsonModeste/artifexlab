@@ -11,10 +11,11 @@ import FieldAlerts from "../../components/FieldAlerts";
 import { axiosReq } from "../../api/axiosDefaults";
 
 import appStyles from "../../App.module.css";
-
 import uniStyles from "../../styles/UniversalDesign.module.css";
 import styles from "../../styles/ArtUpLoadForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
+import formStyles from "../../styles/Form.module.css";
+
 import Asset from "../../components/Asset";
 
 const ArtUploadForm = () => {
@@ -92,6 +93,7 @@ const ArtUploadForm = () => {
       <Form.Group controlId="artTitle">
         <Form.Label>Title</Form.Label>
         <Form.Control
+          className={formStyles.CreateArtInput}
           type="text"
           name="title"
           placeholder="Title of Your Artwork"
@@ -105,6 +107,7 @@ const ArtUploadForm = () => {
       <Form.Group controlId="artContent" className="mt-3 mx-auto">
         <Form.Label>Content</Form.Label>
         <Form.Control
+          className={formStyles.CreateArtTextarea}
           as="textarea"
           rows={6}
           name="description"
