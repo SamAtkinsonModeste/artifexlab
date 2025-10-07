@@ -109,7 +109,9 @@ const Artwork = (props) => {
         </Row>
       </Card.Body>
       <Link to={`/artworks/${id}`}>
-        <Card.Img src={image} alt={title} />
+        <div className={styles.ImageWrapper}>
+          <Card.Img src={image} alt={title} />
+        </div>
       </Link>
 
       <Card.Body>
