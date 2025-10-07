@@ -85,7 +85,7 @@ function ArtworksPage({ message = "No artworks found.", filter = "" }) {
                   <Nav.Link
                     className={` ${btnStyles.BtnBasePurple} rounded-pill`}
                     as={NavLink}
-                    to={{ pathname: "/artworks/", search: location.search }}
+                    to={{ pathname: "/artworks", search: location.search }}
                     end
                   >
                     All Artworks
