@@ -6,6 +6,10 @@
   /* border: solid green 1px; */
 }
 
+ul {
+  padding: 0;
+}
+
 .App {
   font-family: "FinalSix", sans-serif;
   background-image: linear-gradient(to right bottom,
