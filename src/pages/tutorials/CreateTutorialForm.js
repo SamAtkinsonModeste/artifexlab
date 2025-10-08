@@ -14,7 +14,6 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import FormStyles from "../../styles/Form.module.css";
 import uniStyles from "../../styles/UniversalDesign.module.css";
-import styles from "../../styles/Tutorial.module.css";
 
 import { axiosReq } from "../../api/axiosDefaults";
 
