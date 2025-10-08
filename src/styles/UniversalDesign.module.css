@@ -47,6 +47,10 @@ BACKGROUND GRADIENTS
   border: 1px solid #d54848;
 }
 
+.BorderPeachBottom {
+  border-bottom: 1px solid #d54848;
+}
+
 .BorderRadius {
   border-radius: 10px;
 }
