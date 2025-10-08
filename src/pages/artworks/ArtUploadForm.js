@@ -146,7 +146,7 @@ const ArtUploadForm = () => {
 
             <Col className="py-2 p-0 p-md-2 d-flex max-width" md={6} lg={7}>
               <Container
-                className={`${appStyles.Content} ${uniStyles.BorderPeach} ${uniStyles.FlexFill} `}
+                className={`${appStyles.Content} ${uniStyles.BorderPeach}`}
               >
                 <Form.Group className="text-center">
                   {image ? (
