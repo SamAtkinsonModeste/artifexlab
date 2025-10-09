@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 import HomePage from "./pages/home/HomePage";
 import ArtUploadForm from "./pages/artworks/ArtUploadForm";
 import CreateTutorialForm from "./pages/tutorials/CreateTutorialForm";
+import TutorialEditForm from "./pages/tutorials/TutorialEditForm ";
 import ArtworkPage from "./pages/artworks/ArtworkPage";
 import ArtworksPage from "./pages/artworks/ArtworksPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
@@ -53,6 +54,7 @@ function App() {
           />
 
           <Route path="/tutorials/create" element={<CreateTutorialForm />} />
+          <Route path="/tutorials/:id/edit" element={<TutorialEditForm />} />
           <Route path="*" element={<p> Page Not Found </p>} />
         </Routes>
       </Container>
