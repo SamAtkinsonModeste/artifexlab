@@ -39,7 +39,7 @@ const Artwork = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/artworks/${id}/`);
-      navigate("/artworks/");
+      navigate("/artworks");
     } catch (err) {
       console.log(err);
     }
