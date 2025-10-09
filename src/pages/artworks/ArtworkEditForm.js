@@ -22,7 +22,7 @@ const ArtworkEditForm = () => {
   const [artworkData, setArtworkData] = useState({
     title: "",
     description: "",
-    image: "",
+    previewImage: "",
   });
 
   const [errors, setErrors] = useState({});
@@ -31,7 +31,7 @@ const ArtworkEditForm = () => {
   const { id } = useParams();
   const [loading, setLoading] = React.useState(true);
 
-  const { title, description, image } = artworkData;
+  const { title, description, previewImage } = artworkData;
   const isBlobUrl = (u) => typeof u === "string" && u.startsWith("blob:");
 
   const handleChange = (evt) => {
@@ -42,34 +42,22 @@ const ArtworkEditForm = () => {
   };
 
   const handleImageChange = (evt) => {
-    if (evt.target.files.length) {
-      if (image) {
-        URL.revokeObjectURL(image);
-      }
-      setArtworkData({
-        ...artworkData,
-        image: URL.createObjectURL(evt.target.files[0]),
-      });
+    if (evt.target.files?.length) {
+      const file = evt.target.files[0];
+      if (isBlobUrl(previewImage)) URL.revokeObjectURL(previewImage);
+      setArtworkData((prev) => ({
+        ...prev,
+        previewImage: URL.createObjectURL(file),
+      }));
     }
   };
 
   const handleCancel = () => {
-    setArtworkData({
-      title: "",
-      description: "",
-      image: "",
-    });
-    setErrors({});
-    if (image) {
-      URL.revokeObjectURL(image);
-    }
+    navigate(`/artworks/${id}`);
   };
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    console.log("Title:", title);
-    console.log("Description:", description);
-    console.log("Image file:", imageInput.current?.files[0]);
     setErrors({});
 
     const formData = new FormData();
@@ -82,8 +70,7 @@ const ArtworkEditForm = () => {
     }
 
     try {
-      await axiosReq.patch(`/artworks/${id}`, formData);
-      console.log("Artwork edited:");
+      await axiosReq.patch(`/artworks/${id}/`, formData);
       navigate(`/artworks/${id}`);
     } catch (err) {
       console.log(err);
@@ -127,6 +114,7 @@ const ArtworkEditForm = () => {
       <div className="d-flex justify-content-center gap-3 my-4">
         {/* Cancel button */}
         <Button
+          type="button"
           className={`${btnStyles.Button} ${btnStyles.Cancel} ${btnStyles.SmallWide} rounded-pill`}
           onClick={handleCancel}
         >
@@ -138,7 +126,7 @@ const ArtworkEditForm = () => {
           type="submit"
           className={`${btnStyles.Button} ${btnStyles.Submit} ${btnStyles.SmallWide}  rounded-pill `}
         >
-          Create
+          Save Changes
         </Button>
       </div>
     </>
@@ -155,7 +143,6 @@ const ArtworkEditForm = () => {
         if (!isMounted) return;
 
         setArtworkData({
-          // prefer your serializer’s fields; fall back to alternates just in case
           title: a.title ?? a.artwork_title ?? "",
           description: a.description ?? a.artwork_description ?? "",
           previewImage: a.image ?? a.preview_art ?? "", // server image URL
@@ -172,27 +159,34 @@ const ArtworkEditForm = () => {
 
     return () => {
       isMounted = false;
+    };
+  }, [id]);
+
+  React.useEffect(() => {
+    return () => {
       if (isBlobUrl(previewImage)) URL.revokeObjectURL(previewImage);
     };
-  }, [id, previewImage]);
+  }, [previewImage]);
+
+  if (loading) return <Asset spinner message="Loading artwork…" />;
 
   return (
     <Form className={styles.ArtWorkForm} onSubmit={handleSubmit}>
       <section className={uniStyles.RowWrapperBg}>
         <div className={uniStyles.pageShell}>
           <Row>
-            <h2>Upload Artwork</h2>
+            <h2>Edit Artwork</h2>
 
             <Col className="py-2 p-0 p-md-2 d-flex max-width" md={6} lg={7}>
               <Container
                 className={`${appStyles.Content} ${uniStyles.BorderPeach}`}
               >
                 <Form.Group className="text-center">
-                  {image ? (
+                  {previewImage ? (
                     <>
                       <figure>
                         <img
-                          src={image}
+                          src={previewImage}
                           alt="Preview"
                           style={{
                             maxHeight: "300px",
@@ -205,8 +199,9 @@ const ArtworkEditForm = () => {
                         <Form.Label
                           className={`${btnStyles.Button} ${btnStyles.BtnBasePeach} btn my-auto`}
                           htmlFor="image-upload"
+                          aria-label="Change artwork image"
                         >
-                          Change the Image
+                          Change the artwork Image
                         </Form.Label>
                       </div>
                     </>
@@ -214,7 +209,7 @@ const ArtworkEditForm = () => {
                     <div className="d-flex justify-content-center">
                       <Form.Label
                         htmlFor="image-upload"
-                        className={` ${styles.AssestContainer} text-center`}
+                        className="text-center"
                       >
                         <Asset
                           src={Upload}
@@ -232,12 +227,18 @@ const ArtworkEditForm = () => {
                     ref={imageInput}
                     className="d-none"
                   />
-                  <FieldAlerts messages={errors?.image} />
+                  <FieldAlerts
+                    messages={
+                      errors?.image ??
+                      errors?.preview_art ??
+                      errors?.previewImage
+                    }
+                  />
                 </Form.Group>
               </Container>
             </Col>
             {/* Reusable form fields */}
-            <Col sx={2} md={6} lg={5} className="p-0 p-md-2">
+            <Col xs={12} md={6} lg={5} className="p-0 p-md-2">
               <Container
                 className={`${appStyles.Content} ${uniStyles.BorderPeach} `}
               >
