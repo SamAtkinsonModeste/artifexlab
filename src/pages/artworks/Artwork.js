@@ -7,7 +7,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import Row from "react-bootstrap/Row";
 import Avatar from "../../components/Avatar";
-import { axiosReq, axiosRes } from "../../api/axiosDefaults";
+import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -39,7 +39,7 @@ const Artwork = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/artworks/${id}/`);
-      navigate(-1);
+      navigate("/artworks/");
     } catch (err) {
       console.log(err);
     }
@@ -54,7 +54,7 @@ const Artwork = (props) => {
           return artwork.id === id
             ? {
                 ...artwork,
-                artwork_likes_count: artwork.artwork_likes_count + 1,
+                artwork_likes_count: (artwork.artwork_likes_count || 0) + 1,
                 artwork_liked_id: data.id,
               }
             : artwork;
@@ -67,14 +67,14 @@ const Artwork = (props) => {
 
   const handleUnlike = async () => {
     try {
-      await axiosReq.delete(`/artwork-likes/${artwork_liked_id}/`);
+      await axiosRes.delete(`/artwork-likes/${artwork_liked_id}/`);
       setArtworks((prevArtworks) => ({
         ...prevArtworks,
         results: prevArtworks.results.map((artwork) => {
           return artwork.id === id
             ? {
                 ...artwork,
-                artwork_likes_count: artwork.artwork_likes_count - 1,
+                artwork_likes_count: (artwork.artwork_likes_count || 0) + 1,
                 artwork_liked_id: null,
               }
             : artwork;
@@ -108,11 +108,14 @@ const Artwork = (props) => {
           </div>
         </Row>
       </Card.Body>
-      <Link to={`/artworks/${id}`}>
-        <div className={styles.ImageWrapper}>
-          <Card.Img src={image} alt={title} />
-        </div>
-      </Link>
+
+      {image && (
+        <Link to={`/artworks/${id}`}>
+          <div className={styles.ImageWrapper}>
+            <Card.Img src={image} alt={title || "Artwork image"} />
+          </div>
+        </Link>
+      )}
 
       <Card.Body>
         {title && (
@@ -127,7 +130,7 @@ const Artwork = (props) => {
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>You can't like your own post!</Tooltip>}
+              overlay={<Tooltip>You can't like your own artwork!</Tooltip>}
             >
               <i className={`fa-regular fa-heart ${styles.HeartOutline}`} />
             </OverlayTrigger>
@@ -147,11 +150,14 @@ const Artwork = (props) => {
               <i className={`fa-regular fa-heart ${styles.HeartOutline}`} />
             </OverlayTrigger>
           )}
-          <span className={styles.LikeCount}>{artwork_likes_count}</span>
+          <span className={styles.LikeCount}>{artwork_likes_count ?? 0}</span>
           <Link to={`/artworks/${id}`}>
             <i className={` ${styles.Comment} fa-regular fa-comments`} />
           </Link>
-          <span className={styles.CommentCount}> {artwork_comments_count}</span>
+          <span className={styles.CommentCount}>
+            {" "}
+            {artwork_comments_count ?? 0}
+          </span>
         </div>
       </Card.Body>
     </Card>
