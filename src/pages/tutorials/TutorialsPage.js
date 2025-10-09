@@ -152,7 +152,23 @@ function TutorialsPage({ message = "No tutorials found.", filter = "" }) {
                           md={6}
                           className="d-flex"
                         >
-                          <Tutorial {...tutorial} setTutorials={setTutorials} />
+                          <Tutorial
+                            {...tutorial}
+                            title={tutorial.title ?? tutorial.tutorial_title}
+                            description={
+                              tutorial.description ??
+                              tutorial.tutorial_description
+                            }
+                            preview_art={tutorial.preview_art ?? tutorial.image}
+                            profile_image={
+                              tutorial.profile_image ??
+                              tutorial.owner_profile_image ??
+                              tutorial.owner_image ??
+                              null
+                            }
+                            setTutorials={setTutorials}
+                            condensed
+                          />
                         </Col>
                       ))}
                     </Row>
