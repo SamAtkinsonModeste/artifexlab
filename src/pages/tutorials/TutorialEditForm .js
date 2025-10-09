@@ -110,18 +110,7 @@ const TutorialEditForm = () => {
   };
 
   const handleCancel = () => {
-    setTutorialData({ title: "", description: "", previewImage: "" });
-    setErrors({});
-    if (previewImage) URL.revokeObjectURL(previewImage);
-    if (stepImagePreview) URL.revokeObjectURL(stepImagePreview);
-
-    setStepImagePreview(null);
-    setStepImage(null);
-    setStepTitle("");
-    setStepInstructions("");
-    setShowStepForm(false);
-    setShowStepImageInput(false);
-    setSteps([]);
+    navigate(`/tutorials/${id}`);
   };
 
   const confirmDeleteStep = (indexToRemove) => {
