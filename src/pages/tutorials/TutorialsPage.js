@@ -16,30 +16,30 @@ import { NavLink, useLocation } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import { axiosReq } from "../../api/axiosDefaults";
-import Artwork from "./Artwork";
+import Tutorial from "./Tutorial";
 import NoResults from "../../assets/no-results.png";
 import Asset from "../../components/Asset";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { fetchMoreData } from "../../utils/utils";
 import PopularProfiles from "../profiles/PopularProfiles";
 
-function TutorialsPage({ message = "No artworks found.", filter = "" }) {
+function TutorialsPage({ message = "No tutorials found.", filter = "" }) {
   const currentUser = useCurrentUser();
   const location = useLocation();
-  const [artworks, setArtworks] = useState({ results: [] });
+  const [tutorials, setTutorials] = useState({ results: [] });
   const [hasLoaded, setHasLoaded] = useState(false);
   const { pathname } = useLocation();
   const [query, setQuery] = useState("");
   const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
-    const fetchArtworks = async () => {
+    const fetchTutorials = async () => {
       try {
         const queryString = searchParams.toString();
         const { data } = await axiosReq.get(
-          `/artworks/?${filter}${queryString}`
+          `/tutorials/?${filter}${queryString}`
         );
-        setArtworks(data);
+        setTutorials(data);
         setHasLoaded(true);
       } catch (err) {
         console.error(err);
@@ -47,7 +47,7 @@ function TutorialsPage({ message = "No artworks found.", filter = "" }) {
     };
     setHasLoaded(false);
     const timer = setTimeout(() => {
-      fetchArtworks();
+      fetchTutorials();
     }, 1000);
     return () => {
       clearTimeout(timer);
@@ -85,10 +85,10 @@ function TutorialsPage({ message = "No artworks found.", filter = "" }) {
                   <Nav.Link
                     className={` ${btnStyles.BtnBasePurple} rounded-pill`}
                     as={NavLink}
-                    to={{ pathname: "/artworks", search: location.search }}
+                    to={{ pathname: "/tutorials", search: location.search }}
                     end
                   >
-                    All Artworks
+                    All Tutorials
                   </Nav.Link>
                 </Nav.Item>
                 <Nav.Item className="mx-2 my-2">
@@ -96,7 +96,7 @@ function TutorialsPage({ message = "No artworks found.", filter = "" }) {
                     className={`${btnStyles.BtnBasePurple} rounded-pill`}
                     as={NavLink}
                     to={{
-                      pathname: "/artworks/liked",
+                      pathname: "/tutorials/liked",
                       search: location.search,
                     }}
                   >
@@ -108,7 +108,7 @@ function TutorialsPage({ message = "No artworks found.", filter = "" }) {
                     className={` ${btnStyles.BtnBasePurple} rounded-pill`}
                     as={NavLink}
                     to={{
-                      pathname: "/artworks/following",
+                      pathname: "/tutorials/following",
                       search: location.search,
                     }}
                   >
@@ -128,7 +128,7 @@ function TutorialsPage({ message = "No artworks found.", filter = "" }) {
                 name="search"
                 type="text"
                 className={` ${formStyles.InputSearch}  mr-sm-2`}
-                placeholder="Search Artworks"
+                placeholder="Search Tutorials"
                 value={query}
                 onChange={(evt) => setQuery(evt.target.value)}
               />
@@ -137,17 +137,22 @@ function TutorialsPage({ message = "No artworks found.", filter = "" }) {
           <Col className="py-2 p-0 p-lg-2" lg={8}>
             {hasLoaded ? (
               <>
-                {artworks.results.length ? (
+                {tutorials.results.length ? (
                   <InfiniteScroll
-                    dataLength={artworks.results.length}
+                    dataLength={tutorials.results.length}
                     loader={<Asset spinner />}
-                    hasMore={!!artworks.next}
-                    next={() => fetchMoreData(artworks, setArtworks)}
+                    hasMore={!!tutorials.next}
+                    next={() => fetchMoreData(tutorials, setTutorials)}
                   >
                     <Row className="g-4 mx-0">
-                      {artworks.results.map((artwork) => (
-                        <Col key={artwork.id} xs={12} md={6} className="d-flex">
-                          <Artwork {...artwork} setArtworks={setArtworks} />
+                      {tutorials.results.map((tutorial) => (
+                        <Col
+                          key={tutorial.id}
+                          xs={12}
+                          md={6}
+                          className="d-flex"
+                        >
+                          <Tutorial {...tutorial} setTutorials={setTutorials} />
                         </Col>
                       ))}
                     </Row>
