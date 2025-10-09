@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import FieldAlerts from "../../components/FieldAlerts";
 import Form from "react-bootstrap/Form";
 import Container from "react-bootstrap/Container";
@@ -16,6 +16,8 @@ import FormStyles from "../../styles/Form.module.css";
 import uniStyles from "../../styles/UniversalDesign.module.css";
 
 import { axiosReq } from "../../api/axiosDefaults";
+
+const isBlobUrl = (url) => typeof url === "string" && url.startsWith("blob:");
 
 const TutorialEditForm = () => {
   const [tutorialData, setTutorialData] = useState({
@@ -39,6 +41,8 @@ const TutorialEditForm = () => {
 
   const imageInput = useRef(null);
   const navigate = useNavigate();
+  const { id } = useParams();
+  const [loading, setLoading] = useState(true);
 
   const handleToggleStepForm = () => setShowStepForm((prev) => !prev);
   const handleToggleStepImageInput = () =>
@@ -53,7 +57,7 @@ const TutorialEditForm = () => {
 
   const handleImageChange = (evt) => {
     if (evt.target.files.length) {
-      if (previewImage) URL.revokeObjectURL(previewImage);
+      if (isBlobUrl(previewImage)) URL.revokeObjectURL(previewImage);
       setTutorialData({
         ...tutorialData,
         previewImage: URL.createObjectURL(evt.target.files[0]),
@@ -134,24 +138,13 @@ const TutorialEditForm = () => {
     const formData = new FormData();
     formData.append("tutorial_title", title);
     formData.append("tutorial_description", description);
-    formData.append("preview_art", imageInput.current.files[0]);
+    if (imageInput.current?.files?.length) {
+      formData.append("preview_art", imageInput.current.files[0]);
+    }
 
     try {
-      const { data } = await axiosReq.post("/tutorials/", formData);
-
-      for (const step of steps) {
-        const stepFormData = new FormData();
-        stepFormData.append("tutorial", data.id);
-        stepFormData.append("tutorial_title", title);
-        stepFormData.append("step_number", step.step_number);
-        stepFormData.append("step_title", step.step_title);
-        stepFormData.append("step_content", step.step_content);
-        if (step.step_image) {
-          stepFormData.append("step_image", step.step_image);
-        }
-        await axiosReq.post("/tutorial-steps/", stepFormData);
-      }
-      navigate(`/tutorials/${data.id}`);
+      await axiosReq.patch(`/tutorials/${id}/`, formData);
+      navigate(`/tutorials/${id}`);
     } catch (err) {
       if (err.response?.status !== 401) {
         setErrors(err.response?.data);
@@ -332,7 +325,11 @@ const TutorialEditForm = () => {
                       style={{ width: "180px" }}
                     >
                       <img
-                        src={URL.createObjectURL(step.step_image)}
+                        src={
+                          typeof step.step_image === "string"
+                            ? step.step_image
+                            : URL.createObjectURL(step.step_image)
+                        }
                         alt={`Step ${step.step_number} thumbnail`}
                         className="w-100 h-100"
                         style={{ objectFit: "cover" }}
@@ -407,14 +404,56 @@ const TutorialEditForm = () => {
     </Container>
   );
 
+  /**NOTE  Prefill tutorial & steps on mount*/
+
+  React.useEffect(() => {
+    let isMounted = true;
+
+    async function fetchData() {
+      try {
+        const { data: t } = await axiosReq.get(`/tutorials/${id}/`);
+        const { data: s } = await axiosReq.get(
+          `/tutorial-steps/?tutorial=${id}&ordering=step_number`
+        );
+
+        if (!isMounted) return;
+
+        setTutorialData({
+          title: t.tutorial_title || "",
+          description: t.tutorial_description || "",
+          previewImage: t.preview_art || "",
+        });
+
+        const mapped = (s.results || s || []).map((st) => ({
+          id: st.id,
+          step_number: st.step_number,
+          step_title: st.step_title || "",
+          step_content: st.step_content || "",
+          step_image: st.step_image || null,
+        }));
+
+        setSteps(mapped);
+        setLoading(false);
+      } catch (err) {
+        setLoading(false);
+      }
+    }
+
+    fetchData();
+    return () => {
+      isMounted = false;
+    };
+  }, [id]);
+
   /**NOTE - revokes preview URLS on unmount */
   React.useEffect(() => {
     return () => {
-      if (previewImage) URL.revokeObjectURL(previewImage);
+      if (isBlobUrl(previewImage)) URL.revokeObjectURL(previewImage);
       if (stepImagePreview) URL.revokeObjectURL(stepImagePreview);
     };
   }, [previewImage, stepImagePreview]);
 
+  if (loading) return <Asset spinner message="Loading tutorial…" />;
   return (
     <Form onSubmit={handleSubmit}>
       <section className={uniStyles.RowWrapperBg}>
@@ -498,7 +537,7 @@ const TutorialEditForm = () => {
                 type="submit"
                 className={`${btnStyles.BtnBasePurple} ${btnStyles.MedWide} rounded-pill w-100`}
               >
-                Submit Your Tutorial
+                Save Changes
               </Button>
               <Button
                 type="button"
