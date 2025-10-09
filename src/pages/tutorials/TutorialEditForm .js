@@ -36,6 +36,9 @@ const TutorialEditForm = () => {
   const [showStepImageInput, setShowStepImageInput] = useState(false);
   const [stepImagePreview, setStepImagePreview] = useState(null);
   const [pendingDeleteIndex, setPendingDeleteIndex] = useState(null);
+  const [deletingStepId, setDeletingStepId] = useState(null);
+  const [renumbering, setRenumbering] = useState(false);
+  const [savingStepId, setSavingStepId] = useState(null); // for image replace/remove
 
   const [errors, setErrors] = useState({});
 
@@ -65,26 +68,43 @@ const TutorialEditForm = () => {
     }
   };
 
-  const handleAddStep = () => {
-    if (stepTitle.trim() && stepInstructions.trim()) {
-      const newStep = {
-        step_number: steps.length + 1,
-        step_title: stepTitle,
-        step_content: stepInstructions,
-        step_image: stepImage || null,
-      };
-      setSteps((prevSteps) => [...prevSteps, newStep]);
+  const handleAddStep = async () => {
+    if (!stepTitle.trim() || !stepInstructions.trim()) return;
 
-      if (stepImagePreview) {
-        URL.revokeObjectURL(stepImagePreview);
-        setStepImagePreview(null);
-      }
+    const nextNumber = steps.length + 1;
+    const payload = {
+      tutorial: id,
+      step_number: nextNumber,
+      step_title: stepTitle,
+      step_content: stepInstructions,
+    };
 
+    try {
+      if (stepImage) payload.step_image = stepImage;
+      const created = await postStep(payload);
+
+      /**NOTE add to UI with id from server */
+      setSteps((prev) => [
+        ...prev,
+        {
+          id: created.id,
+          step_number: nextNumber,
+          step_title: stepTitle,
+          step_content: stepInstructions,
+          step_image: created.step_image || stepImage || null,
+        },
+      ]);
+
+      /**NOTE  CLEANUP*/
+      if (stepImagePreview) URL.revokeObjectURL(stepImagePreview);
+      setStepImagePreview(null);
+      setStepImage(null);
       setStepTitle("");
       setStepInstructions("");
       setShowStepForm(false);
-      setStepImage(null);
       setShowStepImageInput(false);
+    } catch (err) {
+      setErrors(err.response?.data || {});
     }
   };
 
@@ -113,12 +133,93 @@ const TutorialEditForm = () => {
     navigate(`/tutorials/${id}`);
   };
 
-  const confirmDeleteStep = (indexToRemove) => {
-    setSteps((prev) => {
-      const next = prev.filter((_, i) => i !== indexToRemove);
-      return next.map((s, idx) => ({ ...s, step_number: idx + 1 }));
-    });
+  const handleReplaceStepImage = async (step, index, file) => {
+    if (!file || !step.id) return;
+    try {
+      setSavingStepId(step.id);
+      await patchStep(step.id, { step_image: file });
+      // optimistic UI
+      setSteps((prev) =>
+        prev.map((s, i) =>
+          i === index ? { ...s, step_image: URL.createObjectURL(file) } : s
+        )
+      );
+    } catch (err) {
+      setErrors(err.response?.data || {});
+    } finally {
+      setSavingStepId(null);
+    }
+  };
+
+  const handleRemoveStepImage = async (step, index) => {
+    if (!step.id) {
+      /**NOTE - local-only fallback */
+      setSteps((prev) =>
+        prev.map((s, i) => (i === index ? { ...s, step_image: null } : s))
+      );
+      return;
+    }
+    try {
+      setSavingStepId(step.id);
+      await patchStep(step.id, { step_image: null }); // clears on server
+      setSteps((prev) =>
+        prev.map((s, i) => (i === index ? { ...s, step_image: null } : s))
+      );
+    } catch (err) {
+      setErrors(err.response?.data || {});
+    } finally {
+      setSavingStepId(null);
+    }
+  };
+
+  const renumberSteps = async (list) => {
+    setRenumbering(true);
+    try {
+      /**NOTE - compute new numbers */
+      const withNumbers = list.map((s, idx) => ({
+        ...s,
+        step_number: idx + 1,
+      }));
+
+      /**NOTE - figure out which changed */
+      const changed = withNumbers.filter(
+        (s, idx) => steps[idx]?.step_number !== s.step_number
+      );
+
+      // PATCH only changed ones (must have id)
+      await Promise.all(
+        changed
+          .filter((s) => !!s.id)
+          .map((s) => patchStep(s.id, { step_number: s.step_number }))
+      );
+
+      /**NOTE - commit to state */
+      setSteps(withNumbers);
+    } finally {
+      setRenumbering(false);
+    }
+  };
+
+  const confirmDeleteStep = async (indexToRemove) => {
+    const target = steps[indexToRemove];
     setPendingDeleteIndex(null);
+
+    try {
+      setDeletingStepId(target.id || "__local__");
+
+      // 1) delete on server if it has an id
+      if (target.id) await deleteStep(target.id);
+
+      // 2) remove locally
+      const next = steps.filter((_, i) => i !== indexToRemove);
+
+      // 3) renumber remaining 1..N and PATCH only changed
+      await renumberSteps(next);
+    } catch (err) {
+      setErrors(err.response?.data || {});
+    } finally {
+      setDeletingStepId(null);
+    }
   };
 
   const handleSubmit = async (evt) => {
@@ -346,6 +447,38 @@ const TutorialEditForm = () => {
                 Delete Step
               </Button>
             </div>
+
+            <Button
+              type="button"
+              className={`${btnStyles.Submit} ${btnStyles.MedWide} rounded-pill w-sm-100 w-md-50`}
+              onClick={() =>
+                document.getElementById(`step-image-input-${index}`).click()
+              }
+              disabled={savingStepId === step.id}
+            >
+              {savingStepId === step.id ? "Saving…" : "Replace Image"}
+            </Button>
+
+            <Button
+              type="button"
+              className={`${btnStyles.Cancel} ${btnStyles.MedWide} rounded-pill w-sm-100 w-md-50`}
+              onClick={() => handleRemoveStepImage(step, index)}
+              disabled={savingStepId === step.id}
+              aria-label={`Remove image for step ${step.step_number}`}
+            >
+              Remove Image
+            </Button>
+
+            <input
+              id={`step-image-input-${index}`}
+              type="file"
+              accept="image/*"
+              className="d-none"
+              onChange={(e) =>
+                handleReplaceStepImage(step, index, e.target.files?.[0] || null)
+              }
+            />
+
             {pendingDeleteIndex === index && (
               <div className="mt-2">
                 <FieldAlerts
@@ -441,6 +574,28 @@ const TutorialEditForm = () => {
       if (stepImagePreview) URL.revokeObjectURL(stepImagePreview);
     };
   }, [previewImage, stepImagePreview]);
+
+  const postStep = async (payload) => {
+    const fd = new FormData();
+    Object.entries(payload).forEach(
+      ([k, v]) => v !== undefined && v !== null && fd.append(k, v)
+    );
+    const { data } = await axiosReq.post("/tutorial-steps/", fd);
+    return data; // expects { id, ... }
+  };
+
+  const patchStep = async (id, payload) => {
+    const fd = new FormData();
+    Object.entries(payload).forEach(([k, v]) => {
+      if (v === null) fd.append(k, ""); // DRF convention to clear file fields
+      else if (v !== undefined) fd.append(k, v);
+    });
+    await axiosReq.patch(`/tutorial-steps/${id}/`, fd);
+  };
+
+  const deleteStep = async (id) => {
+    await axiosReq.delete(`/tutorial-steps/${id}/`);
+  };
 
   if (loading) return <Asset spinner message="Loading tutorial…" />;
   return (
