@@ -432,7 +432,7 @@ const CreateTutorialForm = () => {
                       <figure>
                         <img
                           src={previewImage}
-                          alt="Tutorial preview image"
+                          alt="Preview"
                           style={{
                             maxHeight: "300px",
                             width: "100%",
