@@ -437,6 +437,42 @@ const TutorialEditForm = () => {
                 </div>
               </div>
             </div>
+            <div className="d-grid gap-2 d-sm-flex justify-content-center w-100 my-4">
+              <Button
+                type="button"
+                className={`${btnStyles.Submit} ${btnStyles.MedWide} rounded-pill w-sm-100 w-md-50`}
+                onClick={() =>
+                  document.getElementById(`step-image-input-${index}`).click()
+                }
+                disabled={savingStepId === step.id}
+              >
+                {savingStepId === step.id ? "Saving…" : "Replace Image"}
+              </Button>
+
+              <Button
+                type="button"
+                className={`${btnStyles.Cancel} ${btnStyles.MedWide} rounded-pill w-sm-100 w-md-50`}
+                onClick={() => handleRemoveStepImage(step, index)}
+                disabled={savingStepId === step.id}
+                aria-label={`Remove image for step ${step.step_number}`}
+              >
+                Remove Image
+              </Button>
+
+              <input
+                id={`step-image-input-${index}`}
+                type="file"
+                accept="image/*"
+                className="d-none"
+                onChange={(e) =>
+                  handleReplaceStepImage(
+                    step,
+                    index,
+                    e.target.files?.[0] || null
+                  )
+                }
+              />
+            </div>
             <div className="d-grid gap-2 d-sm-flex justify-content-center w-100 mt-2">
               <Button
                 type="button"
@@ -447,38 +483,6 @@ const TutorialEditForm = () => {
                 Delete Step
               </Button>
             </div>
-
-            <Button
-              type="button"
-              className={`${btnStyles.Submit} ${btnStyles.MedWide} rounded-pill w-sm-100 w-md-50`}
-              onClick={() =>
-                document.getElementById(`step-image-input-${index}`).click()
-              }
-              disabled={savingStepId === step.id}
-            >
-              {savingStepId === step.id ? "Saving…" : "Replace Image"}
-            </Button>
-
-            <Button
-              type="button"
-              className={`${btnStyles.Cancel} ${btnStyles.MedWide} rounded-pill w-sm-100 w-md-50`}
-              onClick={() => handleRemoveStepImage(step, index)}
-              disabled={savingStepId === step.id}
-              aria-label={`Remove image for step ${step.step_number}`}
-            >
-              Remove Image
-            </Button>
-
-            <input
-              id={`step-image-input-${index}`}
-              type="file"
-              accept="image/*"
-              className="d-none"
-              onChange={(e) =>
-                handleReplaceStepImage(step, index, e.target.files?.[0] || null)
-              }
-            />
-
             {pendingDeleteIndex === index && (
               <div className="mt-2">
                 <FieldAlerts
