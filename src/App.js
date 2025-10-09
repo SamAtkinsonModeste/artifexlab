@@ -8,12 +8,13 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import Footer from "./components/Footer";
 import HomePage from "./pages/home/HomePage";
 import ArtUploadForm from "./pages/artworks/ArtUploadForm";
+import ArtworkEditForm from "./pages/artworks/ArtworkEditForm";
+import ArtworkPage from "./pages/artworks/ArtworkPage";
+import ArtworksPage from "./pages/artworks/ArtworksPage";
 import CreateTutorialForm from "./pages/tutorials/CreateTutorialForm";
 import TutorialEditForm from "./pages/tutorials/TutorialEditForm ";
 import TutorialPage from "./pages/tutorials/TutorialPage";
 import TutorialsPage from "./pages/tutorials/TutorialsPage";
-import ArtworkPage from "./pages/artworks/ArtworkPage";
-import ArtworksPage from "./pages/artworks/ArtworksPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import ProfilePage from "./pages/profiles/ProfilePage";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
@@ -34,6 +35,7 @@ function App() {
           <Route path="/profiles/:id" element={<ProfilePage />} />
           <Route path="/profiles/:id/edit" element={<ProfileEditForm />} />
           <Route path="/artworks/create" element={<ArtUploadForm />} />
+          <Route path="/artworks/:id/edit" element={<ArtworkEditForm />} />
           <Route path="/artworks/:id" element={<ArtworkPage />} />
           <Route path="/artworks/" element={<ArtworksPage />} />
           <Route
