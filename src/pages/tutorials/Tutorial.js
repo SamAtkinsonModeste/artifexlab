@@ -7,7 +7,7 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import Row from "react-bootstrap/Row";
 import Avatar from "../../components/Avatar";
-import { axiosReq, axiosRes } from "../../api/axiosDefaults";
+import { axiosRes } from "../../api/axiosDefaults";
 import { MoreDropdown } from "../../components/MoreDropdown";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -22,7 +22,7 @@ const Tutorial = (props) => {
     tutorial_liked_id,
     title,
     description,
-    image,
+    preview_art,
     updated_at,
     tutorialPage,
     setTutorials,
@@ -32,6 +32,18 @@ const Tutorial = (props) => {
   const is_owner = props.is_owner;
   const navigate = useNavigate();
 
+  const updateTutorialState = (updater) => {
+    if (typeof setTutorials === "function") {
+      setTutorials((prev) => ({
+        ...prev,
+        results: prev.results.map((t) => (t.id === id ? updater(t) : t)),
+      }));
+    } else if (typeof props.setTutorial === "function") {
+      props.setTutorial((prev) => updater(prev));
+    }
+    // else: no-op (component used without state setters)
+  };
+
   const handleEdit = () => {
     navigate(`/tutorials/${id}/edit`);
   };
@@ -39,7 +51,7 @@ const Tutorial = (props) => {
   const handleDelete = async () => {
     try {
       await axiosRes.delete(`/tutorials/${id}/`);
-      navigate(-1);
+      navigate(`/tutorials/`);
     } catch (err) {
       console.log(err);
     }
@@ -50,17 +62,10 @@ const Tutorial = (props) => {
       const { data } = await axiosRes.post("/tutorial-likes/", {
         tutorial: id,
       });
-      setTutorials((prevTutorials) => ({
-        ...prevTutorials,
-        results: prevTutorials.results.map((tutorial) => {
-          return tutorial.id === id
-            ? {
-                ...tutorial,
-                tutorial_likes_count: tutorial.tutorial_likes_count + 1,
-                tutorial_liked_id: data.id,
-              }
-            : tutorial;
-        }),
+      updateTutorialState((t) => ({
+        ...t,
+        tutorial_likes_count: (t.tutorial_likes_count || 0) + 1,
+        tutorial_liked_id: data.id,
       }));
     } catch (err) {
       console.error(err);
@@ -69,21 +74,14 @@ const Tutorial = (props) => {
 
   const handleUnlike = async () => {
     try {
-      await axiosReq.delete(`/tutorial-likes/${tutorial_liked_id}/`);
-      setTutorials((prevTutorials) => ({
-        ...prevTutorials,
-        results: prevTutorials.results.map((tutorial) => {
-          return tutorial.id === id
-            ? {
-                ...tutorial,
-                tutorial_likes_count: tutorial.tutorial_likes_count - 1,
-                tutorial_liked_id: null,
-              }
-            : tutorial;
-        }),
+      await axiosRes.delete(`/tutorial-likes/${tutorial_liked_id}/`);
+      updateTutorialState((t) => ({
+        ...t,
+        tutorial_likes_count: Math.max(0, (t.tutorial_likes_count || 0) - 1),
+        tutorial_liked_id: null,
       }));
     } catch (err) {
-      console.log(err);
+      console.error(err);
     }
   };
   return (
@@ -110,11 +108,14 @@ const Tutorial = (props) => {
           </div>
         </Row>
       </Card.Body>
-      <Link to={`/tutorials/${id}`}>
-        <div className={styles.ImageWrapper}>
-          <Card.Img src={image} alt={title} />
-        </div>
-      </Link>
+
+      {preview_art && (
+        <Link to={`/tutorials/${id}`}>
+          <div className={styles.ImageWrapper}>
+            <Card.Img src={preview_art} alt={title || "Tutorial image"} />
+          </div>
+        </Link>
+      )}
 
       <Card.Body>
         {title && (
@@ -129,7 +130,7 @@ const Tutorial = (props) => {
           {is_owner ? (
             <OverlayTrigger
               placement="top"
-              overlay={<Tooltip>You can't like your own post!</Tooltip>}
+              overlay={<Tooltip>You can't like your own tutorial!</Tooltip>}
             >
               <i className={`fa-regular fa-heart ${styles.HeartOutline}`} />
             </OverlayTrigger>
@@ -149,13 +150,13 @@ const Tutorial = (props) => {
               <i className={`fa-regular fa-heart ${styles.HeartOutline}`} />
             </OverlayTrigger>
           )}
-          <span className={styles.LikeCount}>{tutorial_likes_count}</span>
+          <span className={styles.LikeCount}>{tutorial_likes_count ?? 0}</span>
           <Link to={`/tutorials/${id}`}>
             <i className={` ${styles.Comment} fa-regular fa-comments`} />
           </Link>
           <span className={styles.CommentCount}>
             {" "}
-            {tutorial_comments_count}
+            {tutorial_comments_count ?? 0}
           </span>
         </div>
       </Card.Body>
