@@ -11,6 +11,7 @@ import ArtUploadForm from "./pages/artworks/ArtUploadForm";
 import CreateTutorialForm from "./pages/tutorials/CreateTutorialForm";
 import TutorialEditForm from "./pages/tutorials/TutorialEditForm ";
 import TutorialPage from "./pages/tutorials/TutorialPage";
+import TutorialsPage from "./pages/tutorials/TutorialsPage";
 import ArtworkPage from "./pages/artworks/ArtworkPage";
 import ArtworksPage from "./pages/artworks/ArtworksPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
@@ -57,6 +58,25 @@ function App() {
           <Route path="/tutorials/create" element={<CreateTutorialForm />} />
           <Route path="/tutorials/:id/edit" element={<TutorialEditForm />} />
           <Route path="/tutorials/:id" element={<TutorialPage />} />
+          <Route path="/tutorials" element={<TutorialsPage />} />
+          <Route
+            path="/tutorials/liked"
+            element={
+              <TutorialsPage
+                message="No liked tutorials found."
+                filter={`tutorial_likes__owner__profile=${profile_id}&ordering=-likes__created_at&`}
+              />
+            }
+          />
+          <Route
+            path="/tutorials/following"
+            element={
+              <TutorialsPage
+                message="No followed users' tutorials found."
+                filter={`owner__followed__owner__profile=${profile_id}&`}
+              />
+            }
+          />
           <Route path="*" element={<p> Page Not Found </p>} />
         </Routes>
       </Container>
