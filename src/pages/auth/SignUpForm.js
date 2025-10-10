@@ -45,6 +45,10 @@ const SignUpForm = () => {
       ...signUpData,
       [evt.target.name]: evt.target.value,
     });
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [evt.target.name]: null,
+    }));
   };
 
   //EVENTHANDLER - handleSubmit of new User sign up
@@ -66,13 +70,8 @@ const SignUpForm = () => {
 
       setNewProfileId(user.profile_id);
       setSuccess(true);
-      console.log("Success!");
-      console.log("Success!");
     } catch (err) {
-      console.log(err);
-      console.log("Signup error:", err.response?.data);
       setErrors(err.response?.data);
-      console.log("Errors state:", err.reponse?.data);
     }
   };
 
