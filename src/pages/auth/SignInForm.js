@@ -47,6 +47,11 @@ const SignInForm = () => {
       ...signInData,
       [evt.target.name]: evt.target.value,
     });
+
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [evt.target.name]: null,
+    }));
   };
 
   //EVENTHANDLER - handleSubmit of new User sign up
@@ -76,7 +81,7 @@ const SignInForm = () => {
               <Form.Group controlId="username">
                 <Form.Label className="d-none">Username</Form.Label>
                 <Form.Control
-                  className={formStyles.Input}
+                  className={`${formStyles.Input} ${formStyles.InputSignIn}`}
                   type="text"
                   placeholder="Enter Username"
                   name="username"
@@ -89,7 +94,7 @@ const SignInForm = () => {
               <Form.Group controlId="password">
                 <Form.Label className="d-none">Password</Form.Label>
                 <Form.Control
-                  className={formStyles.Input}
+                  className={`${formStyles.Input} ${formStyles.InputSignIn}`}
                   type="password"
                   placeholder="Password"
                   name="password"
@@ -111,7 +116,7 @@ const SignInForm = () => {
               {success && (
                 <div
                   className="mt-3"
-                  ref={(el) => el && el.scrollIntoView({ behaviour: "smooth" })}
+                  ref={(el) => el && el.scrollIntoView({ behavior: "smooth" })}
                 >
                   <FieldAlerts
                     messages={[`Welcome back ${username}`]}
