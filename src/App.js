@@ -18,6 +18,8 @@ import TutorialsPage from "./pages/tutorials/TutorialsPage";
 import { useCurrentUser } from "./contexts/CurrentUserContext";
 import ProfilePage from "./pages/profiles/ProfilePage";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
+import UsernameForm from "./pages/profiles/UsernameForm";
+import UserPasswordForm from "./pages/profiles/UserPasswordForm";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -34,6 +36,14 @@ function App() {
           <Route path="/signup" element={<SignUpForm />} />
           <Route path="/profiles/:id" element={<ProfilePage />} />
           <Route path="/profiles/:id/edit" element={<ProfileEditForm />} />
+          <Route
+            path="/profiles/:id/edit/username"
+            element={<UsernameForm />}
+          />
+          <Route
+            path="/profiles/:id/edit/password"
+            element={<UserPasswordForm />}
+          />
           <Route path="/artworks/create" element={<ArtUploadForm />} />
           <Route path="/artworks/:id/edit" element={<ArtworkEditForm />} />
           <Route path="/artworks/:id" element={<ArtworkPage />} />
