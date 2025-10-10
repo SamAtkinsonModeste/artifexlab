@@ -7,15 +7,20 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 
-import { useHistory, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { axiosRes } from "../../api/axiosDefaults";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
+import FieldAlerts from "../../components/FieldAlerts";
+
+import uniStyles from "../../styles/UniversalDesign.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import formStyles from "../../styles/Form.module.css";
+import styles from "../../styles/SignInUpForm.module.css";
 
 const UserPasswordForm = () => {
-  const history = useHistory();
+  const navigate = useNavigate();
   const { id } = useParams();
   const currentUser = useCurrentUser();
 
@@ -26,26 +31,43 @@ const UserPasswordForm = () => {
   const { new_password1, new_password2 } = userData;
 
   const [errors, setErrors] = useState({});
+  const [success, setSuccess] = useState(false);
 
-  const handleChange = (event) => {
+  const handleChange = (evt) => {
     setUserData({
       ...userData,
-      [event.target.name]: event.target.value,
+      [evt.target.name]: evt.target.value,
     });
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [evt.target.name]: null,
+    }));
   };
 
   useEffect(() => {
     if (currentUser?.profile_id?.toString() !== id) {
       // redirect user if they are not the owner of this profile
-      history.push("/");
+      navigate(-1);
     }
-  }, [currentUser, history, id]);
+  }, [currentUser, navigate, id]);
+
+  //USEEFFECT - IF SUCCESSFULL SUBMISSION
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => {
+        navigate(-1);
+      }, 2500);
+
+      return () => clearTimeout(timer);
+    }
+  }, [success, navigate]);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
     try {
       await axiosRes.post("/dj-rest-auth/password/change/", userData);
-      history.goBack();
+      setSuccess(true);
     } catch (err) {
       console.log(err);
       setErrors(err.response?.data);
@@ -53,56 +75,69 @@ const UserPasswordForm = () => {
   };
 
   return (
-    <Row>
-      <Col className="py-2 mx-auto text-center" md={6}>
-        <Container className={appStyles.Content}>
-          <Form onSubmit={handleSubmit}>
-            <Form.Group>
-              <Form.Label>New password</Form.Label>
-              <Form.Control
-                placeholder="new password"
-                type="password"
-                value={new_password1}
-                onChange={handleChange}
-                name="new_password1"
-              />
-            </Form.Group>
-            {errors?.new_password1?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
-            <Form.Group>
-              <Form.Label>Confirm password</Form.Label>
-              <Form.Control
-                placeholder="confirm new password"
-                type="password"
-                value={new_password2}
-                onChange={handleChange}
-                name="new_password2"
-              />
-            </Form.Group>
-            {errors?.new_password2?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
-                {message}
-              </Alert>
-            ))}
-            <Button
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
-              onClick={() => history.goBack()}
+    <Container className="mt-5">
+      <Row className={styles.Row}>
+        <Col className="py-2 mx-auto text-center" md={6}>
+          <Container className={appStyles.Content}>
+            <h1
+              className={`${uniStyles.ArtifexLab} ${uniStyles.BorderRadius} ${uniStyles.bgMainGradient} py-2`}
             >
-              cancel
-            </Button>
-            <Button
-              type="submit"
-              className={`${btnStyles.Button} ${btnStyles.Blue}`}
-            >
-              save
-            </Button>
-          </Form>
-        </Container>
-      </Col>
-    </Row>
+              Change Password
+            </h1>
+            <Form onSubmit={handleSubmit}>
+              <Form.Group>
+                <Form.Label className="d-none">New password</Form.Label>
+                <Form.Control
+                  className={`${formStyles.Input} ${formStyles.InputSignIn}`}
+                  placeholder="new password"
+                  type="password"
+                  value={new_password1}
+                  onChange={handleChange}
+                  name="new_password1"
+                />
+              </Form.Group>
+              <FieldAlerts messages={errors?.new_password1} />
+              <Form.Group>
+                <Form.Label className="d-none">Confirm password</Form.Label>
+                <Form.Control
+                  className={`${formStyles.Input} ${formStyles.InputSignIn}`}
+                  placeholder="confirm new password"
+                  type="password"
+                  value={new_password2}
+                  onChange={handleChange}
+                  name="new_password2"
+                />
+              </Form.Group>
+              <FieldAlerts messages={errors?.new_password2} />
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.SmallWide} ${btnStyles.Cancel}`}
+                onClick={() => navigate(-1)}
+              >
+                cancel
+              </Button>
+              <Button
+                className={`${btnStyles.Button} ${btnStyles.SmallWide} ${btnStyles.Submit}`}
+                type="submit"
+                disabled={success}
+              >
+                save
+              </Button>
+              {success && (
+                <div
+                  className="mt-3"
+                  ref={(el) => el && el.scrollIntoView({ behavior: "smooth" })}
+                >
+                  <FieldAlerts
+                    messages={[`Password changed successfully!`]}
+                    variant="success"
+                  />
+                </div>
+              )}
+            </Form>
+          </Container>
+        </Col>
+      </Row>
+    </Container>
   );
 };
 
