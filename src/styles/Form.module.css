@@ -16,6 +16,10 @@
   padding-left: 2rem;
 }
 
+.InputSignIn:global(.form-control) {
+  text-align: center;
+}
+
 .Textarea:global(.form-control),
 .CreateArtInput:global(.form-control),
 .CreateArtTextarea:global(.form-control) {
