@@ -1,16 +1,16 @@
-.Button {
+.Button:global(.btn) {
   font-size: 1rem;
   align-self: center;
   border-radius: 100px;
   border-color: transparent !important;
-  padding: 4px 10px;
+  padding: 10px;
   margin-left: 2px;
   margin-right: 2px;
   min-width: 75px;
   letter-spacing: 1px;
 }
 
-.Button:hover {
+.Button:global(.btn:hover) {
   opacity: 0.8;
   border-color: transparent;
   cursor: pointer;
