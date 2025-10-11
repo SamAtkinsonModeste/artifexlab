@@ -1,16 +1,17 @@
 /*---------------------------
 BACKGROUND COLOURS
 ----------------------------*/
+
 .bgWhiteBase {
   background-color: #FFF9F4;
 }
-
 
 /*--------------------
 BACKGROUND GRADIENTS
 -------------------------*/
 
 /* Gradient */
+
 .bgMainGradient {
   background-image: linear-gradient(to right bottom, #80ED99, #FF6B6B, #5E60CE);
 }
@@ -24,10 +25,10 @@ BACKGROUND GRADIENTS
 ---------------------------- */
 
 /* White */
+
 .textWhiteLight {
   color: #FCFCFC;
 }
-
 
 /*-------------------------
   FONT FAMILIES
@@ -39,10 +40,10 @@ BACKGROUND GRADIENTS
   letter-spacing: 1px;
 }
 
-
 /*-------------------------
     BORDERS
 ---------------------------*/
+
 .BorderPeach {
   border: 1px solid #d54848;
 }
@@ -58,9 +59,10 @@ BACKGROUND GRADIENTS
 /*-------------------------
       SPECIALS
 ---------------------------*/
-/******  WRAPPERS ***********/
-.RowWrapperBg {
 
+/******  WRAPPERS ***********/
+
+.RowWrapperBg {
   background-image: linear-gradient(to left bottom, #f6ece3, #faeeea, #fbf1f1, #faf4f7, #faf8fa, #fbf9fb, #fcfafb, #fdfbfc, #fefafb, #fff9f9, #fff9f7, #fff9f4);
   background-size: cover;
   padding-block: 1.5rem;
@@ -73,6 +75,7 @@ BACKGROUND GRADIENTS
 }
 
 /****** TAGLINE ********/
+
 .TaglineSmall {
   font-family: pinot-grigio-modern, sans-serif;
   font-weight: 500;
@@ -91,7 +94,6 @@ BACKGROUND GRADIENTS
   text-shadow: 0 1px 1px rgba(213, 73, 73, 0.9);
 }
 
-
 .ArtifexLab,
 .ArtifexLabInline {
   font-family: pinot-grigio-modern, sans-serif;
@@ -102,16 +104,12 @@ BACKGROUND GRADIENTS
   text-shadow: 0 1px 1px rgba(7, 7, 7, 0.9);
 }
 
-
 .ArtifexLabQuote {
   font-size: 1.4rem;
   letter-spacing: 1px;
   color: #FFF9F4;
   text-shadow: 0 1px 1px rgba(7, 7, 7, 0.9);
-
 }
-
-
 
 .ProfileLink {
   color: #454696;
@@ -120,7 +118,6 @@ BACKGROUND GRADIENTS
   letter-spacing: 1px;
   text-decoration: none;
   border-bottom: 1px solid #454797;
-
 }
 
 .ProfileLink:hover {
@@ -140,8 +137,6 @@ BACKGROUND GRADIENTS
   text-shadow: 0 1px 1px rgba(7, 7, 7, 0.9);
 }
 
-
-
 .ArtworkTitle {
   font-size: 1.2rem;
   color: #D54949;
@@ -156,21 +151,15 @@ BACKGROUND GRADIENTS
   border-radius: 2px;
 }
 
-
-
-
-
-
 /*----------------------------------------------------------
                            MEDIA QUERIES
 ------------------------------------------------------------*/
+
 @media (min-width: 576px) {
   .pageShell {
     max-width: 540px;
   }
 }
-
-
 
 @media (min-width: 768px) {
   .TaglineBlack {
@@ -187,7 +176,6 @@ BACKGROUND GRADIENTS
     letter-spacing: 1px;
     color: #FFF9F4;
     text-shadow: 0 1px 1px rgba(7, 7, 7, 0.9);
-
   }
 
   .ArtifexLab,
@@ -201,6 +189,7 @@ BACKGROUND GRADIENTS
 }
 
 /******  992PX  ************/
+
 @media (min-width: 992px) {
   .TaglineBlack {
     font-size: 3rem;
@@ -223,7 +212,6 @@ BACKGROUND GRADIENTS
   .TaglineBlack {
     line-height: 80px;
     font-size: 4rem;
-
   }
 
   .ArtifexLab,
@@ -244,7 +232,6 @@ BACKGROUND GRADIENTS
 @media (min-width: 1400px) {
   .TaglineBlack {
     font-size: 5rem;
-
   }
 
   .ArtifexLab,
@@ -259,7 +246,6 @@ BACKGROUND GRADIENTS
   .ArtifexLabQuote {
     font-size: 2rem;
     text-shadow: 0 2px 3px rgba(7, 7, 7, 0.9);
-
   }
 
   .pageShell {
@@ -267,12 +253,10 @@ BACKGROUND GRADIENTS
   }
 }
 
-
 @media (min-width: 1800px) {
   .TaglineBlack {
     line-height: 100px;
     font-size: 6rem;
-
   }
 
   .ArtifexLab,
@@ -285,32 +269,21 @@ BACKGROUND GRADIENTS
     text-shadow: 0 3px 3px rgba(7, 7, 7, 0.9);
   }
 
-  /* .textWhiteLight {
-    font-size: 2rem;
-  } */
-
   .ArtifexLabQuote {
     font-size: 2.8rem;
     text-shadow: 0 3px 4px rgba(7, 7, 7, 0.9);
-
   }
-
-
 }
-
 
 @media (min-width: 2000px) {
   .TaglineBlack {
     line-height: 150px;
     font-size: 8rem;
-
   }
-
 
   .ArtifexLabInline {
     font-size: 3rem;
     text-shadow: 0 3px 3px rgba(7, 7, 7, 0.9);
-
   }
 
   .textWhiteLight {
@@ -320,7 +293,6 @@ BACKGROUND GRADIENTS
   .ArtifexLabQuote {
     font-size: 3rem;
     text-shadow: 0 3px 4px rgba(7, 7, 7, 0.9);
-
   }
 
   .pageShell {

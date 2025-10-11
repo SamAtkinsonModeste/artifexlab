@@ -23,8 +23,6 @@
   max-width: 800px;
 }
 
-
-
 .MedWide {
   width: 300px;
   max-width: 350px;
@@ -56,7 +54,6 @@
   width: 100%;
 }
 
-
 .SignUpIn,
 .Cancel,
 .Follow {
@@ -75,7 +72,6 @@
   text-shadow: 0 1px 2px #070707;
 }
 
-
 .Submit,
 .Unfollow {
   box-shadow: inset 0 0 10px rgba(69, 71, 151, 0.4);
@@ -85,15 +81,12 @@
   border-color: transparent !important;
 }
 
-
 .Submit:hover {
   box-shadow: inset 0 0 20px rgba(82, 155, 99, 0.9);
   background-color: rgb(69, 71, 151);
   color: #ff6b6b;
   text-shadow: 0 1px 2px #070707;
 }
-
-
 
 .SignUpIn:hover,
 .BtnBasePurple:hover,
@@ -107,8 +100,6 @@
   text-shadow: 0 1px 2px #070707;
 }
 
-
-
 .SignUpIn:focus {
   background-color: #529B63 !important;
   color: #FBA747;
@@ -116,8 +107,6 @@
   text-shadow: 0 1px 2px #070707;
   border-color: rgba(7, 7, 7, 0.6);
 }
-
-
 
 .SignUpIn:hover:active,
 .SignUpIn:focus:active,
@@ -139,9 +128,6 @@
   border-color: rgba(7, 7, 7, 0.6);
 }
 
-
-
-
 .SignUpIn:disabled {
   background-color: #529B63 !important;
   color: #FBA747 !important;
@@ -151,23 +137,14 @@
   border-color: rgba(7, 7, 7, 0.6) !important;
 }
 
-
-
-
-
-
-
-
 /*-------------------------
        MEDIA QUERIES
 ------------------------------*/
-@media (min-width: 768px) {}
 
 @media (min-width: 992px) {
   .Button {
     font-size: 1.2rem;
   }
-
 
   .ProfileFollow {
     margin-top: 10px;
@@ -175,20 +152,8 @@
   }
 }
 
-@media (min-width: 1200px) {}
-
-
-@media (min-width: 1400px) {}
-
 @media (min-width: 1800px) {
   .Wide {
     width: 1000px;
   }
-}
-
-
-@media (min-width: 2000px) {
-  /* .Wide {
-    width: 1000px;
-  } */
 }

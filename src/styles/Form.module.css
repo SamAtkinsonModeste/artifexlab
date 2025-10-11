@@ -24,14 +24,11 @@
 .CreateArtInput:global(.form-control),
 .CreateArtTextarea:global(.form-control) {
   border-radius: 10px !important;
-
 }
 
 .CommentLink {
   margin-right: 20px;
 }
-
-
 
 .Input:global(.form-control:focus),
 .Textarea:global(.form-control:focus),
@@ -46,13 +43,10 @@
 .Input::placeholder,
 .Textarea::placeholder {
   color: #6f6868;
-
 }
 
-/* .ArtworkComment {} */
-
 @media (min-width: 992px) {
-  .Input {
-    font-size: 1rem;
+  .Input:global(.form-control) {
+    font-size: 1.2rem;
   }
 }

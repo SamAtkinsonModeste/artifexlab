@@ -1,6 +1,5 @@
 .bgHeroImage {
-  background-image: linear-gradient(to top, rgba(255, 249, 244, 0.9), rgba(255, 249, 244, 0.2)),
-    url('../assets/hero-bg.svg');
+  background-image: linear-gradient(to top, rgba(255, 249, 244, 0.9), rgba(255, 249, 244, 0.2)), url('../assets/hero-bg.svg');
   background-size: auto;
   background-position: bottom right;
   background-repeat: no-repeat;
@@ -18,8 +17,7 @@
 
 .CallOutArt,
 .CallOutTutorial {
-  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9),
-    inset 0 0 10px rgba(69, 71, 151, 0.4);
+  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9), inset 0 0 10px rgba(69, 71, 151, 0.4);
   background-color: #FF6B6B;
   color: #B0E88D;
   text-shadow: 0 1px 2px #070707;
@@ -30,28 +28,23 @@
 .CallOutTutorial:hover,
 .CallOutArt:active,
 .CallOutTutorial:active {
-  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9),
-    inset 0 0 10px rgba(255, 107, 107, 0.4);
+  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9), inset 0 0 10px rgba(255, 107, 107, 0.4);
   background-color: rgb(69, 71, 151);
   color: #B0E88D;
   text-shadow: 0 1px 2px #070707;
 }
 
 .CallOutTutorial {
-  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9),
-    inset 0 0 10px rgba(69, 71, 151, 0.4);
+  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9), inset 0 0 10px rgba(69, 71, 151, 0.4);
   background-color: #529b63;
   color: #ff6b6b;
-
 }
 
 .CallOutTutorial:hover,
 .CallOutTutorial:active {
-  box-shadow: 0 1px 1px #070707,
-    inset 0 0 20px rgba(82, 155, 99, 0.9);
+  box-shadow: 0 1px 1px #070707, inset 0 0 20px rgba(82, 155, 99, 0.9);
   background-color: rgb(69, 71, 151);
   color: #ff6b6b;
-
 }
 
 /*----------------------------------------------------------
@@ -109,7 +102,6 @@
 
   .CallOutArt,
   .CallOutTutorial {
-
     font-size: 1.6rem;
   }
 }
@@ -122,7 +114,6 @@
 
   .CallOutArt,
   .CallOutTutorial {
-
     font-size: 1.7rem;
   }
 }
@@ -136,7 +127,6 @@
 
   .CallOutArt,
   .CallOutTutorial {
-
     font-size: 2rem;
   }
 }

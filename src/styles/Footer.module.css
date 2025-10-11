@@ -20,29 +20,13 @@
 }
 
 .FooterSocialIcons i {
-
   font-size: 1.750rem;
   line-height: 37px;
   color: #fff9fa !important;
   text-shadow: 2px 2px 4px rgba(46, 46, 46, 0.6);
-
 }
 
 
 .FooterCopySmall {
   font-size: 0.750rem;
 }
-
-
-
-/*----------------------------------------------------------
-                           MEDIA QUERIES
-------------------------------------------------------------*/
-
-@media (min-width: 768px) {}
-
-@media (min-width: 992px) {}
-
-@media (min-width: 1200px) {}
-
-@media (min-width: 1400px) {}

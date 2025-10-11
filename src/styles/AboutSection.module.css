@@ -9,9 +9,7 @@
 
 .AboutBg {
   background-image: linear-gradient(to right bottom, #5e60ce, #5e60ce, #5e60ce, #a757bf, #d650a6, #f35789, #ff6b6b);
-
 }
-
 
 /*----------------------------------------------------------
                            MEDIA QUERIES
@@ -32,8 +30,6 @@
   }
 }
 
-@media (min-width: 992px) {}
-
 @media (min-width: 1200px) {
   .About {
     font-size: 2.5rem;
@@ -45,7 +41,6 @@
     font-size: 2.8rem;
   }
 }
-
 
 @media (min-width: 1800px) {
   .About {
