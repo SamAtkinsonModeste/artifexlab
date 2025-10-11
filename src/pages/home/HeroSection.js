@@ -6,10 +6,9 @@ import Button from "react-bootstrap/Button";
 import styles from "../../styles/Hero.module.css";
 import design from "../../styles/UniversalDesign.module.css";
 import btnStyle from "../../styles/Button.module.css";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
-  const currentUser = useCurrentUser();
   return (
     <Container
       fluid
@@ -27,16 +26,25 @@ const HeroSection = () => {
               A digital art space for creators who learn, share and grow
               together
             </p>
-            {currentUser && (
-              <div className="d-flex flex-column flex-md-row justify-content-center gap-3 gap-md-5 my-4 my-lg-5">
-                <Button className={`${styles.CallOutArt} rounded-pill`}>
-                  &larr; &nbsp; Explore Art
-                </Button>
-                <Button className={`${styles.CallOutTutorial}  rounded-pill`}>
-                  Browse Tutorials Art &nbsp; &rarr;
-                </Button>
-              </div>
-            )}
+
+            <div className="d-flex flex-column flex-md-row justify-content-center gap-3 gap-md-5 my-4 my-lg-5">
+              <Button
+                as={Link}
+                to="/artworks"
+                aria-label="Go to Artworks"
+                className={`${styles.CallOutArt} ${btnStyle.Button} ${btnStyle.Wide} rounded-pill`}
+              >
+                &larr; &nbsp; Explore Art
+              </Button>
+              <Button
+                as={Link}
+                to="/tutorials"
+                aria-label="Go to Tutorials"
+                className={`${styles.CallOutTutorial} ${btnStyle.Button} ${btnStyle.Wide}  rounded-pill`}
+              >
+                Browse Tutorials &nbsp; &rarr;
+              </Button>
+            </div>
           </Col>
         </Row>
       </Container>
