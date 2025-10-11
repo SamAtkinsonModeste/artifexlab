@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/artifexLab-logo.svg";
 import styles from "../styles/NavBar.module.css";
 import Design from "../styles/UniversalDesign.module.css";
@@ -18,11 +18,21 @@ import { removeTokenTimestamp } from "../utils/utils";
 const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
-  const [expanded, setExpanded] = useState();
+  const [expanded, setExpanded] = useState(false);
+  const location = useLocation();
+
+  const navClass =
+    (base) =>
+    ({ isActive }) =>
+      `${base} ${isActive ? styles.Active : styles.NavLink}`;
+
+  const isCreateActive =
+    location.pathname.startsWith("/artworks/create") ||
+    location.pathname.startsWith("/tutorials/create");
 
   const handleSignOut = async () => {
     try {
-      await axios.post("dj-rest-auth/logout/");
+      await axios.post("/dj-rest-auth/logout/");
       setCurrentUser(null);
     } catch (err) {
       console.log(err);
@@ -36,48 +46,31 @@ const NavBar = () => {
 
   const loggedInIcons = (
     <>
-      {/* Feed */}
-      <NavLink
-        to="/feed"
-        className={`order-5 order-md-3 ${styles.NavLink} ${styles.NavFade} ${styles.delay4} activeClassName=${styles.Active}`}
-        onClick={handleLinkClick}
-      >
-        <span className={styles.NavBarIcons}>
-          <i className="fas fa-stream"></i>
-        </span>
-        Feed
-      </NavLink>
-
-      {/* Tutorial Results */}
-      <NavLink
-        to="/tutorial-results"
-        className={`order-5 order-md-4 text-nowrap ${styles.NavLink} ${styles.NavFade} ${styles.delay5} activeClassName=${styles.Active}`}
-        onClick={handleLinkClick}
-      >
-        <span className={styles.NavBarIcons}>
-          <i className="fas fa-clipboard-check"></i>
-        </span>{" "}
-        Tutorial Results
-      </NavLink>
-
       {/* Create Dropdown */}
       <NavDropdown
+        id="create-nav-dropdown"
         title={
           <>
-            <span className={styles.NavBarIcons}>
+            <span className={`${styles.NavBarIcons} ${styles.NavBarCreate}`}>
               <i className="fas fa-plus"></i>
             </span>{" "}
-            <span className={styles.NavLink}>Create</span>
+            <span
+              className={`${styles.NavLink} ${
+                isCreateActive ? styles.Active : ""
+              }`}
+            >
+              Create
+            </span>
           </>
         }
-        id="create-nav-dropdown"
-        className={`order-5 order-md-5 ${styles.NavFade} ${styles.delay6} ${styles.Dropdown}`}
+        className={`${styles.NavFade} ${styles.delay4} ${styles.Dropdown}`}
       >
         <NavDropdown.Item
-          className={`${styles.NavLink} ${styles.Dropdown} activeClassName=${styles.Active}`}
+          id="uploadArt"
           as={NavLink}
-          onClick={handleLinkClick}
           to="/artworks/create"
+          onClick={handleLinkClick}
+          className={navClass(`${styles.NavLink} ${styles.Dropdown} `)}
         >
           <span className={styles.NavBarIcons}>
             <i className="fas fa-paint-brush"></i>
@@ -86,10 +79,10 @@ const NavBar = () => {
         </NavDropdown.Item>
 
         <NavDropdown.Item
-          className={`${styles.NavLink} activeClassName=${styles.Active} ${styles.Dropdown}`}
           as={NavLink}
-          onClick={handleLinkClick}
           to="/tutorials/create"
+          onClick={handleLinkClick}
+          className={navClass(`${styles.NavLink} ${styles.Dropdown}`)}
         >
           <span className={styles.NavBarIcons}>
             <i className="fas fa-file-alt"></i>
@@ -99,52 +92,54 @@ const NavBar = () => {
       </NavDropdown>
 
       {/* User Dropdown */}
-      <Nav.Item
-        className={`order-0 order-md-6 order-lg-6 ${styles.ProfileNav}`}
-      >
+      <Nav.Item className={`${styles.ProfileNav}`}>
         <NavDropdown
+          id="user-nav-dropdown"
           title={
             <div
-              className={`${styles.NavAvatarWrap}`}
+              className={styles.NavAvatarWrap}
               style={{ position: "relative" }}
             >
               <div className={styles.AvatarContainer}>
-                <Avatar
-                  src={currentUser?.profile_image}
-                  text="Profile"
-                  height={40}
-                />
+                <Avatar src={currentUser?.profile_image} height={40} />
                 <i
                   className={`fas fa-circle-notch ${styles.NavAvatarStatus} ${styles.Dropdown}`}
                 ></i>
               </div>
+              <span className="visually-hidden">Profile menu</span>
             </div>
           }
-          id="user-nav-dropdown"
-          className={`${styles.NavFade} ${styles.DelayOne} ${Design.bgWhiteBase}`}
+          className={`${styles.NavFade} ${styles.delay5} ${Design.bgWhiteBase}`}
         >
           <NavDropdown.Item
-            className={`${styles.NavLink} activeClassName=${styles.Active} ${styles.Dropdown}`}
             as={NavLink}
-            onClick={handleLinkClick}
+            end
             to={`/profiles/${currentUser?.profile_id}`}
+            onClick={handleLinkClick}
+            className={navClass(
+              `${styles.NavLink} ${styles.Dropdown} ${styles.NavProfile}`
+            )}
           >
             My Profile
           </NavDropdown.Item>
+
           <NavDropdown.Item
-            className={`${styles.NavLink} activeClassName=${styles.Active} ${styles.Dropdown}`}
             as={NavLink}
-            onClick={handleLinkClick}
             to={`/profiles/${currentUser?.profile_id}/edit`}
+            onClick={handleLinkClick}
+            className={navClass(`${styles.NavLink} ${styles.Dropdown}`)}
           >
             Edit Profile
           </NavDropdown.Item>
+
           <NavDropdown.Divider />
+
+          {/* Sign Out: special styling */}
           <NavDropdown.Item
-            className={`${styles.NavLink} activeClassName=${styles.Active} ${styles.ActiveSignOut}`}
             as={NavLink}
-            onClick={handleSignOut}
             to="/"
+            onClick={handleSignOut}
+            className={`${styles.NavLink} ${styles.ActiveSignOut}`}
           >
             Sign Out
           </NavDropdown.Item>
@@ -158,8 +153,10 @@ const NavBar = () => {
       {/* Sign In */}
       <NavLink
         to="/signin"
-        className={`order-4 order-md-3 ps-md-4 ${styles.NavLink} ${styles.NavFade} ${styles.delay7} text-nowrap`}
         onClick={handleLinkClick}
+        className={navClass(
+          `${styles.NavLink} ${styles.NavFade} ${styles.delay4} text-nowrap`
+        )}
       >
         <span className={`${styles.NavBarIcons} me-2`}>
           <i className="fas fa-right-to-bracket"></i>
@@ -170,8 +167,10 @@ const NavBar = () => {
       {/* Sign Up */}
       <NavLink
         to="/signup"
-        className={`order-5 order-md-4 text-nowrap ${styles.NavLink} ${styles.NavFade} ${styles.delay8}`}
         onClick={handleLinkClick}
+        className={navClass(
+          `text-nowrap ${styles.NavLink} ${styles.NavFade} ${styles.delay5}`
+        )}
       >
         <span className={`${styles.NavBarIcons} me-2`}>
           <i className="fas fa-id-badge"></i>
@@ -182,25 +181,20 @@ const NavBar = () => {
   );
 
   return (
-    <Navbar
-      expand="lg"
-      expanded={expanded}
-      onToggle={setExpanded}
-      className="w-sm-80 px-3 w-md-100"
-    >
-      <Container fluid>
+    <Container fluid className={styles.NavContainer}>
+      <Navbar
+        expand="lg"
+        expanded={expanded}
+        onToggle={setExpanded}
+        className="align-content-center"
+      >
         <Navbar.Brand>
-          <img
-            src={logo}
-            alt="ArtifexLab Logo"
-            className={styles.NavbarLogo}
-            height="60"
-          />
+          <img src={logo} alt="ArtifexLab Logo" className={styles.NavbarLogo} />
         </Navbar.Brand>
 
         <Navbar.Toggle
           aria-controls="navbar-nav"
-          className={`${Design.bgMainGradient} ${Design.textWhiteLight}`}
+          className={`${Design.bgMainGradient} ${Design.textWhiteLight} ms-auto`}
         />
 
         <Navbar.Collapse id="navbar-nav" className="mt-2">
@@ -208,8 +202,9 @@ const NavBar = () => {
             {/* Home */}
             <NavLink
               to="/"
-              className={`order-1 order-md-0 ${styles.NavLink} ${styles.NavFade} ${styles.delay1} activeClassName=${styles.Active}`}
+              end
               onClick={handleLinkClick}
+              className={navClass(`${styles.NavFade} ${styles.delay1}`)}
             >
               Home
             </NavLink>
@@ -217,8 +212,9 @@ const NavBar = () => {
             {/* Artworks */}
             <NavLink
               to="/artworks"
-              className={`order-3 order-md-1 ${styles.NavLink} ${styles.NavFade} ${styles.delay2} activeClassName=${styles.Active}`}
+              end
               onClick={handleLinkClick}
+              className={navClass(`${styles.NavFade} ${styles.delay2}`)}
             >
               Artworks
             </NavLink>
@@ -226,17 +222,20 @@ const NavBar = () => {
             {/* View Tutorials */}
             <NavLink
               to="/tutorials"
-              className={`order-4 order-md-2 text-nowrap ${styles.NavLink} ${styles.NavFade} ${styles.delay3} activeClassName=${styles.Active}`}
+              end
               onClick={handleLinkClick}
+              className={navClass(
+                `text-nowrap ${styles.NavFade} ${styles.delay3}`
+              )}
             >
-              View Tutorials
+              Tutorials
             </NavLink>
 
             {currentUser ? loggedInIcons : loggedOutIcons}
           </Nav>
         </Navbar.Collapse>
-      </Container>
-    </Navbar>
+      </Navbar>
+    </Container>
   );
 };
 
