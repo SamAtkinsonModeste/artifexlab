@@ -2,9 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { setTokenTimestamp } from "../../utils/utils";
 import eyeArt from "../../assets/eye-art.webp";
+
+import formStyles from "../../styles/Form.module.css";
 import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -86,7 +89,7 @@ const SignUpForm = () => {
               <Form.Group controlId="username">
                 <Form.Label className="d-none">Username</Form.Label>
                 <Form.Control
-                  className={styles.Input}
+                  className={` ${formStyles.Input} ${formStyles.InputSignIn} `}
                   type="text"
                   placeholder="Username"
                   name="username"
@@ -99,7 +102,7 @@ const SignUpForm = () => {
               <Form.Group controlId="password1">
                 <Form.Label className="d-none">Password</Form.Label>
                 <Form.Control
-                  className={styles.Input}
+                  className={` ${formStyles.Input} ${formStyles.InputSignIn} `}
                   type="password"
                   placeholder="Password"
                   name="password1"
@@ -112,7 +115,7 @@ const SignUpForm = () => {
               <Form.Group controlId="password2">
                 <Form.Label className="d-none">Confirm Password</Form.Label>
                 <Form.Control
-                  className={styles.Input}
+                  className={` ${formStyles.Input} ${formStyles.InputSignIn} `}
                   type="password"
                   placeholder="Confirm password"
                   name="password2"
@@ -124,7 +127,7 @@ const SignUpForm = () => {
 
               <Button
                 variant="none"
-                className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.SignUpIn}`}
+                className={`${btnStyles.Button} ${btnStyles.SignUpIn}`}
                 type="submit"
                 disabled={success}
               >

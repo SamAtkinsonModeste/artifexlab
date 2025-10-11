@@ -106,7 +106,7 @@ const SignInForm = () => {
 
               <Button
                 variant="none"
-                className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.SignUpIn}`}
+                className={`${btnStyles.Button} ${btnStyles.SignUpIn}`}
                 type="submit"
                 disabled={success}
               >
