@@ -1,13 +1,15 @@
 .Button:global(.btn) {
-  font-size: 1rem;
   align-self: center;
   border-radius: 100px;
   border-color: transparent !important;
-  padding: 10px;
-  margin-left: 2px;
-  margin-right: 2px;
-  min-width: 75px;
   letter-spacing: 1px;
+}
+
+.Button:global(.btn:active) {
+  background: #ff6b6b !important;
+  color: #529b63 !important;
+  box-shadow: none;
+  outline: none;
 }
 
 .Button:global(.btn:hover) {
@@ -17,20 +19,17 @@
 }
 
 .Wide {
-  padding: 10px 50px;
-  width: 100%;
+  width: 300px;
+  max-width: 800px;
 }
 
 .MedWide {
-  padding: 10px 50px;
-  min-width: 300px;
+  width: 300px;
   max-width: 350px;
 }
 
 .SmallWide {
-  margin: 10px;
-  padding: 8px;
-  min-width: 100px;
+  width: 100px;
   max-width: 150px;
 }
 
@@ -147,17 +146,6 @@
 }
 
 
-/* .Button:hover:active {
-  background-color: #eb1111 !important;
-}
-
-.Button:active {
-  background-color: #62b221 !important;
-}
-
-.Button:focus {
-  background-color: #f502f1;
-} */
 
 
 
@@ -186,7 +174,15 @@
 
 @media (min-width: 1400px) {}
 
-@media (min-width: 1800px) {}
+@media (min-width: 1800px) {
+  .Wide {
+    width: 1000px;
+  }
+}
 
 
-@media (min-width: 2000px) {}
+@media (min-width: 2000px) {
+  /* .Wide {
+    width: 1000px;
+  } */
+}
