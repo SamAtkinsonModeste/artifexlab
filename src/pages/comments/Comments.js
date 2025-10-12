@@ -80,7 +80,7 @@ const Comments = (props) => {
               <p className={commentStyles.PostedMessage}>{content}</p>
             )}
           </Col>
-          <Col xs="auto">
+          <Col xs="auto position-relative">
             {is_owner && !showEditForm && (
               <MoreDropdown
                 handleEdit={() => setShowEditForm(true)}

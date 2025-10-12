@@ -144,7 +144,7 @@ const Tutorial = (props) => {
           </div>
         )}
 
-        <Row className="align-items-center justify-content-between">
+        <Row className="align-items-center justify-content-between position-relative">
           <Link
             className={uniStyles.ProfileLink}
             to={`/profiles/${profile_id}`}

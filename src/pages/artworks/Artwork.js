@@ -95,7 +95,7 @@ const Artwork = (props) => {
             <Avatar src={profile_image} height={55} />
             {owner}
           </Link>
-          <div className="d-flex align-items-center">
+          <div className="d-flex align-items-center position-relative">
             <span className={` ${uniStyles.ArtUpdate} textDarkBlue`}>
               {updated_at}
             </span>
