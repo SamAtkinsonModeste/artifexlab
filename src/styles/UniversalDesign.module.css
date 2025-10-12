@@ -151,6 +151,27 @@ BACKGROUND GRADIENTS
   border-radius: 2px;
 }
 
+.PageHeadings {
+  background-image: linear-gradient(120deg,
+      hsl(239deg 37% 43%) 0%,
+      hsl(286deg 36% 45%) 8%,
+      hsl(321deg 46% 51%) 17%,
+      hsl(341deg 73% 61%) 25%,
+      hsl(0deg 100% 71%) 33%,
+      hsl(11deg 100% 75%) 42%,
+      hsl(18deg 100% 81%) 50%,
+      hsl(23deg 100% 88%) 58%,
+      hsl(27deg 100% 98%) 67%,
+      hsl(27deg 100% 98%) 75%,
+      hsl(27deg 100% 98%) 83%,
+      hsl(27deg 100% 98%) 92%,
+      hsl(27deg 100% 98%) 100%);
+  color: #FFF9F4;
+  text-shadow: 0 1px 2px rgba(7, 7, 7, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+}
+
 /*----------------------------------------------------------
                            MEDIA QUERIES
 ------------------------------------------------------------*/
