@@ -28,13 +28,19 @@
   max-width: 350px;
 }
 
+.BigSmallWide {
+  width: 175px;
+  padding: 0;
+}
+
 .SmallWide {
   width: 100px;
   max-width: 150px;
+  padding: 0;
 }
 
 .BtnChangeImage {
-  padding: 10px;
+  padding: 5px;
   border-radius: 100px;
 }
 
@@ -45,6 +51,11 @@
 .BtnSave,
 .BtnCancel {
   margin: 10px;
+}
+
+.Follow,
+.Unfollow {
+  padding: 0 10px;
 }
 
 .AddStep,
