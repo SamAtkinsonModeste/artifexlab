@@ -1,0 +1,78 @@
+:root {
+  --header-h: 64px;
+}
+
+.NotFoundWrapper {
+  width: 100%;
+  min-height: calc(100dvh - var(--header-h) - 128px);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.Canvas {
+  position: relative;
+  width: 100%;
+  max-width: 1500px;
+  padding-block: 2rem;
+  margin-inline: auto;
+}
+
+.NotFound {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  text-align: center;
+  background: rgba(7, 7, 7, 0.9);
+  color: #FFF9F4;
+  text-shadow: 0 1px 1px rgba(7, 7, 7, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 1px 2px #FFF9F4;
+  z-index: 1;
+}
+
+.EyeContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.EyeContainer img {
+  max-width: 100%;
+  height: auto;
+  max-height: min(60dvh, 700px);
+  display: block;
+}
+
+
+
+@media (min-width: 768px) {
+  :root {
+    --header-h: 95px;
+  }
+}
+
+@media (min-width: 992px) {
+  :root {
+    --header-h: 115px;
+  }
+}
+
+@media (min-width: 1300px) {
+  :root {
+    --header-h: 100px;
+  }
+}
+
+@media (min-width: 1400px) {
+  :root {
+    --header-h: 120px;
+  }
+}

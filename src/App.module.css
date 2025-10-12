@@ -114,12 +114,6 @@ ul {
   }
 }
 
-@media (min-width: 1024px) {
-  /* .Header {
-    height: 98px;
-  } */
-}
-
 
 @media (min-width: 1300px) {
   .Header {

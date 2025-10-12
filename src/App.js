@@ -20,6 +20,7 @@ import ProfilePage from "./pages/profiles/ProfilePage";
 import ProfileEditForm from "./pages/profiles/ProfileEditForm";
 import UsernameForm from "./pages/profiles/UsernameForm";
 import UserPasswordForm from "./pages/profiles/UserPasswordForm";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   const currentUser = useCurrentUser();
@@ -89,7 +90,7 @@ function App() {
               />
             }
           />
-          <Route path="*" element={<p> Page Not Found </p>} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Container>
       <Footer />
