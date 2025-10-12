@@ -74,6 +74,12 @@
     font-size: 1.4rem;
     padding: 5px 10px;
   }
+
+
+  .CallOutTutorial {
+
+    padding: 5px 7px;
+  }
 }
 
 @media (min-width: 1200px) {
