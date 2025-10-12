@@ -229,7 +229,7 @@ const CreateTutorialForm = () => {
       <div className="d-flex justify-content-center align-content-center">
         <Button
           type="button"
-          className={`${btnStyles.Submit} ${btnStyles.MedWide} rounded-pill mx-4 my-4`}
+          className={`${btnStyles.AddStep} ${btnStyles.MedWide} rounded-pill mx-4 my-4`}
           onClick={handleToggleStepImageInput}
         >
           {showStepImageInput ? "Remove Step Image" : "Add Image With Step"}
@@ -258,7 +258,7 @@ const CreateTutorialForm = () => {
               </figure>
               <div className="text-center">
                 <Form.Label
-                  className="btn btn-primary mt-2"
+                  className={`${btnStyles.Button} ${btnStyles.BtnChangeImage} mt-2`}
                   htmlFor="step-image-upload"
                 >
                   Change Step Image
@@ -290,14 +290,14 @@ const CreateTutorialForm = () => {
       <div className="d-grid gap-2 d-sm-flex justify-content-center w-100 mt-3">
         <Button
           type="button"
-          className={`${btnStyles.Submit} ${btnStyles.MedWide} rounded-pill w-100`}
+          className={`${btnStyles.SaveStep} ${btnStyles.MedWide} rounded-pill w-100`}
           onClick={handleAddStep}
         >
           Save Step
         </Button>
         <Button
           type="button"
-          className={`${btnStyles.Cancel} ${btnStyles.MedWide} rounded-pill w-100`}
+          className={`${btnStyles.CancelStep} ${btnStyles.MedWide} rounded-pill w-100`}
           onClick={handleStepCancel}
         >
           Cancel Step
@@ -353,7 +353,7 @@ const CreateTutorialForm = () => {
             <div className="d-grid gap-2 d-sm-flex justify-content-center w-100 mt-2">
               <Button
                 type="button"
-                className={`${btnStyles.Cancel} ${btnStyles.MedWide} rounded-pill w-sm-100 w-md-50`}
+                className={`${btnStyles.CancelStep} ${btnStyles.MedWide} rounded-pill w-sm-100 w-md-50`}
                 aria-label={`Delete step ${step.step_number}`}
                 onClick={() => setPendingDeleteIndex(index)}
               >
@@ -377,7 +377,7 @@ const CreateTutorialForm = () => {
                   </Button>
                   <Button
                     type="button"
-                    className={`${btnStyles.Cancel} ${btnStyles.MedWide} rounded-pill w-100`}
+                    className={`${btnStyles.CancelStep} ${btnStyles.MedWide} rounded-pill w-100`}
                     onClick={() => setPendingDeleteIndex(null)}
                   >
                     Keep Step
@@ -396,7 +396,7 @@ const CreateTutorialForm = () => {
     <Container className="d-flex align-items-center justify-content-center">
       <Button
         type="button"
-        className={`${btnStyles.Submit} ${btnStyles.MedWide} rounded-pill m-2 w-sm-100`}
+        className={`${btnStyles.AddStep} ${btnStyles.MedWide} rounded-pill m-2 w-sm-100`}
         onClick={handleToggleStepForm}
       >
         Add a Step{" "}
@@ -442,7 +442,7 @@ const CreateTutorialForm = () => {
                       </figure>
                       <div className="text-center">
                         <Form.Label
-                          className="btn btn-primary mt-2"
+                          className={`${btnStyles.Button} ${btnStyles.RemoveImage} mt-2`}
                           htmlFor="image-upload"
                         >
                           Change the Image
@@ -496,13 +496,13 @@ const CreateTutorialForm = () => {
             <div className="d-grid gap-2 d-sm-flex justify-content-center w-100 my-4">
               <Button
                 type="submit"
-                className={`${btnStyles.BtnBasePurple} ${btnStyles.MedWide} rounded-pill w-100`}
+                className={`${btnStyles.SaveStep} ${btnStyles.MedWide} rounded-pill w-100`}
               >
                 Submit Your Tutorial
               </Button>
               <Button
                 type="button"
-                className={`${btnStyles.Cancel} ${btnStyles.MedWide} rounded-pill w-100`}
+                className={`${btnStyles.CancelStep} ${btnStyles.MedWide} rounded-pill w-100`}
                 onClick={handleCancel}
               >
                 Cancel

@@ -14,6 +14,7 @@ import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import FormStyles from "../../styles/Form.module.css";
 import uniStyles from "../../styles/UniversalDesign.module.css";
+import styles from "../../styles/Tutorial.module.css";
 
 import { axiosReq } from "../../api/axiosDefaults";
 
@@ -312,7 +313,7 @@ const TutorialEditForm = () => {
       <div className="d-flex justify-content-center align-content-center">
         <Button
           type="button"
-          className={`${btnStyles.Submit} ${btnStyles.MedWide} rounded-pill mx-4 my-4`}
+          className={`${btnStyles.AddStep} ${btnStyles.MedWide} rounded-pill mx-4 my-4`}
           onClick={handleToggleStepImageInput}
         >
           {showStepImageInput ? "Remove Step Image" : "Add Image With Step"}
@@ -341,7 +342,7 @@ const TutorialEditForm = () => {
               </figure>
               <div className="text-center">
                 <Form.Label
-                  className="btn btn-primary mt-2"
+                  className={`${btnStyles.Button} ${btnStyles.BtnChangeImage} mt-2`}
                   htmlFor="step-image-upload"
                 >
                   Change Step Image
@@ -373,14 +374,14 @@ const TutorialEditForm = () => {
       <div className="d-grid gap-2 d-sm-flex justify-content-center w-100 mt-3">
         <Button
           type="button"
-          className={`${btnStyles.Submit} ${btnStyles.MedWide} rounded-pill w-100`}
+          className={`${btnStyles.SaveStep} ${btnStyles.MedWide} rounded-pill w-100`}
           onClick={handleAddStep}
         >
           Save Step
         </Button>
         <Button
           type="button"
-          className={`${btnStyles.Cancel} ${btnStyles.MedWide} rounded-pill w-100`}
+          className={`${btnStyles.CancelStep} ${btnStyles.MedWide} rounded-pill w-100`}
           onClick={handleStepCancel}
         >
           Cancel Step
@@ -440,7 +441,7 @@ const TutorialEditForm = () => {
             <div className="d-grid gap-2 d-sm-flex justify-content-center w-100 my-4">
               <Button
                 type="button"
-                className={`${btnStyles.Submit} ${btnStyles.MedWide} rounded-pill w-sm-100 w-md-50`}
+                className={`${btnStyles.AddStep} ${btnStyles.MedWide} rounded-pill w-sm-100 w-md-50`}
                 onClick={() =>
                   document.getElementById(`step-image-input-${index}`).click()
                 }
@@ -451,7 +452,7 @@ const TutorialEditForm = () => {
 
               <Button
                 type="button"
-                className={`${btnStyles.Cancel} ${btnStyles.MedWide} rounded-pill w-sm-100 w-md-50`}
+                className={`${btnStyles.RemoveImage} ${btnStyles.MedWide} rounded-pill w-sm-100 w-md-50`}
                 onClick={() => handleRemoveStepImage(step, index)}
                 disabled={savingStepId === step.id}
                 aria-label={`Remove image for step ${step.step_number}`}
@@ -476,7 +477,7 @@ const TutorialEditForm = () => {
             <div className="d-grid gap-2 d-sm-flex justify-content-center w-100 mt-2">
               <Button
                 type="button"
-                className={`${btnStyles.Cancel} ${btnStyles.MedWide} rounded-pill w-sm-100 w-md-50`}
+                className={`${btnStyles.DeleteStep} ${btnStyles.MedWide} rounded-pill w-sm-100 w-md-50`}
                 aria-label={`Delete step ${step.step_number}`}
                 onClick={() => setPendingDeleteIndex(index)}
               >
@@ -519,7 +520,7 @@ const TutorialEditForm = () => {
     <Container className="d-flex align-items-center justify-content-center">
       <Button
         type="button"
-        className={`${btnStyles.Submit} ${btnStyles.MedWide} rounded-pill m-2 w-sm-100`}
+        className={`${btnStyles.AddStep} ${btnStyles.MedWide} rounded-pill m-2 w-sm-100`}
         onClick={handleToggleStepForm}
       >
         Add a Step{" "}
@@ -629,7 +630,7 @@ const TutorialEditForm = () => {
                       </figure>
                       <div className="text-center">
                         <Form.Label
-                          className="btn btn-primary mt-2"
+                          className={`${btnStyles.Button} ${btnStyles.RemoveImage} ${styles.ChangeImage} mt-2`}
                           htmlFor="image-upload"
                         >
                           Change the Image
@@ -683,13 +684,13 @@ const TutorialEditForm = () => {
             <div className="d-grid gap-2 d-sm-flex justify-content-center w-100 my-4">
               <Button
                 type="submit"
-                className={`${btnStyles.BtnBasePurple} ${btnStyles.MedWide} rounded-pill w-100`}
+                className={`${btnStyles.SaveStep} ${btnStyles.MedWide} rounded-pill w-100`}
               >
                 Save Changes
               </Button>
               <Button
                 type="button"
-                className={`${btnStyles.Cancel} ${btnStyles.MedWide} rounded-pill w-100`}
+                className={`${btnStyles.CancelStep} ${btnStyles.MedWide} rounded-pill w-100`}
                 onClick={handleCancel}
               >
                 Cancel

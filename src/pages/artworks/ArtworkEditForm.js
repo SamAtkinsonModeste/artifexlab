@@ -197,7 +197,7 @@ const ArtworkEditForm = () => {
                       </figure>
                       <div className="mt-2">
                         <Form.Label
-                          className={`${btnStyles.Button} ${btnStyles.BtnBasePeach} btn my-auto`}
+                          className={`${btnStyles.Button} ${btnStyles.BtnChangeImage} btn my-auto`}
                           htmlFor="image-upload"
                           aria-label="Change artwork image"
                         >

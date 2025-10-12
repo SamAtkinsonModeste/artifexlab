@@ -119,7 +119,7 @@ const ProfileEditForm = () => {
         </Alert>
       ))}
       <Button
-        className={`${btnStyles.Button} ${btnStyles.BtnBasePurple} ${btnStyles.SmallWide}`}
+        className={`${btnStyles.Button} ${btnStyles.BtnCancel} ${btnStyles.SmallWide}`}
         onClick={() => navigate(-1)}
       >
         cancel
@@ -159,7 +159,7 @@ const ProfileEditForm = () => {
                   ))}
                   <div>
                     <Form.Label
-                      className={`${btnStyles.Button} ${btnStyles.BtnBasePeach} btn my-auto`}
+                      className={`${btnStyles.Button} ${btnStyles.BtnChangeImage} btn my-auto`}
                       htmlFor="image-upload"
                     >
                       Change the image
