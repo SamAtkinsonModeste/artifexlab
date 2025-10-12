@@ -115,7 +115,7 @@ const ArtworkEditForm = () => {
         {/* Cancel button */}
         <Button
           type="button"
-          className={`${btnStyles.Button} ${btnStyles.Cancel} ${btnStyles.SmallWide} rounded-pill`}
+          className={`${btnStyles.Button} ${btnStyles.BtnCancel} ${btnStyles.SmallWide} rounded-pill`}
           onClick={handleCancel}
         >
           Cancel
@@ -124,7 +124,7 @@ const ArtworkEditForm = () => {
         {/* Submit Button */}
         <Button
           type="submit"
-          className={`${btnStyles.Button} ${btnStyles.Submit} ${btnStyles.SmallWide}  rounded-pill `}
+          className={`${btnStyles.Button} ${btnStyles.BtnSave} ${btnStyles.BigSmallWide}  rounded-pill `}
         >
           Save Changes
         </Button>
@@ -175,7 +175,7 @@ const ArtworkEditForm = () => {
       <section className={uniStyles.RowWrapperBg}>
         <div className={uniStyles.pageShell}>
           <Row>
-            <h2>Edit Artwork</h2>
+            <h2 className={uniStyles.PageHeadings}>Edit Artwork</h2>
 
             <Col className="py-2 p-0 p-md-2 d-flex max-width" md={6} lg={7}>
               <Container

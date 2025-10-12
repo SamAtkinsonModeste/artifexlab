@@ -172,7 +172,9 @@ const Tutorial = (props) => {
         {title && (
           <Card.Title className={`${styles.ArtworkTitles} text-center`}>
             {props.condensed ? (
-              <Link to={`/tutorials/${id}`}>{title}</Link>
+              <Link className={uniStyles.ProfileLink} to={`/tutorials/${id}`}>
+                {title}
+              </Link>
             ) : (
               title
             )}

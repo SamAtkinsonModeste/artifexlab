@@ -120,7 +120,7 @@ const ArtUploadForm = () => {
       <div className="d-flex justify-content-center gap-3 my-4">
         {/* Cancel button */}
         <Button
-          className={`${btnStyles.Button} ${btnStyles.Cancel} ${btnStyles.SmallWide} rounded-pill`}
+          className={`${btnStyles.Button} ${btnStyles.BtnCancel} ${btnStyles.SmallWide} rounded-pill`}
           onClick={handleCancel}
         >
           Cancel
@@ -142,7 +142,7 @@ const ArtUploadForm = () => {
       <section className={uniStyles.RowWrapperBg}>
         <div className={uniStyles.pageShell}>
           <Row>
-            <h2>Upload Artwork</h2>
+            <h2 className={uniStyles.PageHeadings}>Upload Artwork</h2>
 
             <Col className="py-2 p-0 p-md-2 d-flex max-width" md={6} lg={7}>
               <Container

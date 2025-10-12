@@ -420,7 +420,7 @@ const CreateTutorialForm = () => {
       <section className={uniStyles.RowWrapperBg}>
         <div className={uniStyles.pageShell}>
           <Row className="top-row">
-            <h2>Upload Tutorials</h2>
+            <h2 className={uniStyles.PageHeadings}>Upload Tutorials</h2>
 
             <Col className="py-2 p-0 p-md-2 max-width" md={6} lg={7}>
               <Container
