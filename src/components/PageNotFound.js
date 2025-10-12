@@ -11,7 +11,6 @@ import Asset from "./Asset";
 
 const PageNotFound = () => {
   return (
-    // PageNotFound.js (only the Container props change)
     <Container className={styles.NotFoundWrapper}>
       <div className={styles.Canvas}>
         <div
