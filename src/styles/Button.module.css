@@ -33,8 +33,81 @@
   max-width: 150px;
 }
 
-.BtnBasePurple {
-  box-shadow: inset 0 0 20px rgba(82, 155, 99, 0.5);
+.BtnChangeImage {
+  padding: 10px;
+  border-radius: 100px;
+}
+
+.SignUpIn {
+  width: 100%;
+}
+
+.BtnSave,
+.BtnCancel {
+  margin: 10px;
+}
+
+.AddStep,
+.SaveStep,
+.CancelStep,
+.RemoveImage,
+.DeleteStep {
+  background: linear-gradient(to right bottom, #454797, #0066ab, #007da0, #008f84, #529b69);
+  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9);
+  color: #f6ece3;
+  text-shadow: 0 1px 2px #070707;
+
+}
+
+.AddStep:hover,
+.SaveStep:hover,
+.CancelStep:hover,
+.RemoveImage:hover,
+.DeleteStep:hover {
+  background: linear-gradient(to right bottom, #529b69, #008f84, #007da0, #0066ab, #454797);
+  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9);
+  color: #f6ece3;
+  text-shadow: 0 1px 2px #070707;
+
+}
+
+.SaveStep {
+  background-image: linear-gradient(to right bottom, #454797, #9e4896, #da527f, #fa7560, #fba747);
+}
+
+.SaveStep:hover {
+  background: linear-gradient(to right bottom, #fba747, #fa7560, #da527f, #9e4896, #454797);
+
+}
+
+.CancelStep {
+  background: linear-gradient(to right bottom, #454797, #2758a0, #0066a4, #0072a3, #007da0);
+}
+
+.CancelStep:hover {
+  background: linear-gradient(to right bottom, #007da0, #0072a3, #0066a4, #2758a0, #454797);
+}
+
+.RemoveImage {
+  background: linear-gradient(to right bottom, #454797, #5d346d, #582a4a, #462630, #2e2323);
+}
+
+.RemoveImage:hover {
+  background: linear-gradient(to right bottom, #2e2323, #462630, #582a4a, #5d346d, #454797);
+}
+
+.DeleteStep {
+  background-image: linear-gradient(to right bottom, #454797, #7f4092, #aa3781, #c73867, #d54949);
+}
+
+.DeleteStep:hover {
+  background-image: linear-gradient(to right bottom, #d54949, #c73867, #aa3781, #7f4092, #454797);
+}
+
+.BtnBasePurple,
+.BtnCancel {
+  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9),
+    inset 0 0 20px rgba(82, 155, 99, 0.5);
   background-color: rgb(69, 71, 151);
   color: #ff6b6b;
   text-shadow: 0 1px 2px #070707;
@@ -42,31 +115,33 @@
 }
 
 .BtnBasePeach,
+.BtnChangeImage,
+.BtnSave,
 .BtnBasePeach:disabled {
-  box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.6);
+  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9),
+    inset 0 0 20px rgba(69, 71, 151, 0.6);
   background-color: #FF6B6B;
   color: #B0E88D;
   text-shadow: 0 1px 2px #070707;
   border-color: transparent !important;
 }
 
-.SignUpIn {
-  width: 100%;
-}
+
 
 .SignUpIn,
-.Cancel,
 .Follow {
-  box-shadow: inset 0 0 10px rgba(69, 71, 151, 0.4);
+  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9),
+    inset 0 0 10px rgba(69, 71, 151, 0.4);
   background-color: #FF6B6B;
   color: #B0E88D;
   text-shadow: 0 1px 2px #070707;
   border-color: transparent !important;
 }
 
-.Cancel:hover,
+.BtnCancel:hover,
 .Follow:hover {
-  box-shadow: inset 0 0 10px rgba(255, 107, 107, 0.4);
+  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9),
+    inset 0 0 10px rgba(255, 107, 107, 0.4);
   background-color: rgb(69, 71, 151);
   color: #B0E88D;
   text-shadow: 0 1px 2px #070707;
@@ -74,7 +149,8 @@
 
 .Submit,
 .Unfollow {
-  box-shadow: inset 0 0 10px rgba(69, 71, 151, 0.4);
+  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9),
+    inset 0 0 10px rgba(69, 71, 151, 0.4);
   background-color: #529b63;
   color: #ff6b6b;
   text-shadow: 0 1px 2px #070707;
@@ -82,7 +158,8 @@
 }
 
 .Submit:hover {
-  box-shadow: inset 0 0 20px rgba(82, 155, 99, 0.9);
+  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9),
+    inset 0 0 20px rgba(82, 155, 99, 0.9);
   background-color: rgb(69, 71, 151);
   color: #ff6b6b;
   text-shadow: 0 1px 2px #070707;
@@ -91,10 +168,14 @@
 .SignUpIn:hover,
 .BtnBasePurple:hover,
 .BtnBasePeach:hover,
+.BtnChangeImage:hover,
+.BtnSave:hover,
+.BtnCancel:hover,
 .BtnBasePeach:disabled:hover,
 .Unfollow:hover {
   opacity: 0.8;
-  box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.9);
+  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9),
+    inset 0 0 20px rgba(69, 71, 151, 0.9);
   background-color: #80ed99;
   color: #FF6B6B;
   text-shadow: 0 1px 2px #070707;
@@ -103,7 +184,8 @@
 .SignUpIn:focus {
   background-color: #529B63 !important;
   color: #FBA747;
-  box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.9) !important;
+  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9),
+    inset 0 0 20px rgba(69, 71, 151, 0.9) !important;
   text-shadow: 0 1px 2px #070707;
   border-color: rgba(7, 7, 7, 0.6);
 }
@@ -114,7 +196,8 @@
 .UnFollow:hover:active {
   background-color: #529B63 !important;
   color: #FCFCFC !important;
-  box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.9) !important;
+  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9),
+    inset 0 0 20px rgba(69, 71, 151, 0.9) !important;
   text-shadow: 0 1px 2px #070707 !important;
   border-color: rgba(7, 7, 7, 0.6) !important;
 }
@@ -123,7 +206,8 @@
 .Follow:active {
   background-color: #529B63 !important;
   color: #FBA747 !important;
-  box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.9) !important;
+  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9),
+    inset 0 0 20px rgba(69, 71, 151, 0.9) !important;
   text-shadow: 0 1px 2px #070707;
   border-color: rgba(7, 7, 7, 0.6);
 }
@@ -131,7 +215,8 @@
 .SignUpIn:disabled {
   background-color: #529B63 !important;
   color: #FBA747 !important;
-  box-shadow: inset 0 0 20px rgba(69, 71, 151, 0.9) !important;
+  box-shadow: 0 2px 5px rgba(7, 7, 7, 0.9),
+    inset 0 0 20px rgba(69, 71, 151, 0.9) !important;
   cursor: not-allowed;
   text-shadow: 0 1px 2px #070707 !important;
   border-color: rgba(7, 7, 7, 0.6) !important;
