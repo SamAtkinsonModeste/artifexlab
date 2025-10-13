@@ -95,7 +95,7 @@ while the soft off-white background keeps the interface balanced and approachabl
   </p>
 
   <p align="center">
-    <img src="docs/images/fonts.png" alt="Font samples showing pinot-grigio-modern, FinalSix, and bc-alphapipe" width="600">
+    <img src="docs/images/artifexlabs-fonts.png" alt="Font samples showing pinot-grigio-modern, FinalSix, and bc-alphapipe" width="600">
   </p>
 
   <p align="center">
