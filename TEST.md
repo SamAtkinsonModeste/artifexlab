@@ -148,8 +148,6 @@ Use a non-admin account for standard user journeys.
 
 ## 📊 Lighthouse Scores
 
-Add your screenshots for **mobile** and **desktop** here. Each section is collapsible to keep the README tidy.
-
 <details>
   <summary><strong>🏠 Home — Lighthouse</strong></summary>
 
@@ -307,8 +305,6 @@ Checklist (WCAG-inspired):
 - ✅ Link names meaningful (avoid “click here”)
 - ✅ Images with `alt` text (decorative images `alt=""`)
 
-> Optional: include Lighthouse Accessibility score.
-
 ---
 
 ## ⚡ Performance
@@ -329,8 +325,6 @@ Checklist (WCAG-inspired):
 ---
 
 ## 📷 Screenshots & Evidence
-
-Use collapsible sections to keep the document tidy.
 
 <details>
   <summary><strong>Authentication</strong></summary>
