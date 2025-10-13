@@ -23,17 +23,28 @@
 
 ## 📖 Table of Contents
 
-1. [Project Overview](#project-overview)
-2. [User Stories](#-user-stories)
-3. [UX & Design](#ux--design)
-4. [Features](#features)
-5. [Frontend Architecture](#frontend-architecture)
-6. [API Integration](#api-integration)
-7. [Tech Stack](#tech-stack)
-8. [Testing](#testing)
-9. [Known Issues & Future Enhancements](#known-issues--future-enhancements)
-10. [Agile Process](#agile-process)
-11. [Credits](#credits)
+1. [🎨 Project Overview](#-project-overview)
+2. [👥 User Stories](#-user-stories)
+3. [🎨 UX & Design](#-ux--design)
+   - [🖋️ Typography](#️-typography)
+   - [🎨 Color Palette](#-color-palette)
+4. [⚙️ Features](#️-features)
+   - [🏠 Home](#-home)
+   - [🌐 Navigation](#-navigation)
+   - [📱 Mobile Navigation](#-mobile-navigation)
+   - [📚 Tutorials (Custom Feature)](#-tutorials-custom-feature)
+   - [🎨 Artworks](#-artworks)
+   - [👤 Profile](#-profile)
+   - [👥 Followers Component](#-followers-component)
+   - [📰 Feed](#-feed)
+   - [🚫 404 Page](#-404-page)
+5. [🏗️ Frontend Architecture](#️-frontend-architecture)
+6. [🔗 API Integration](#-api-integration)
+7. [🧰 Tech Stack](#-tech-stack)
+8. [🧪 Testing](#-testing)
+9. [🧭 Known Issues & Future Enhancements](#-known-issues--future-enhancements)
+10. [⚡ Agile Process](#-agile-process)
+11. [🙏 Credits](#-credits)
 
 ---
 
@@ -451,14 +462,141 @@ These controls ensure users can manage their identity and privacy without naviga
 
 ---
 
-### 🚨 Feedback & Errors
+### 👥 Followers Component
 
-- Reusable **FieldAlerts** for success, warning, and error messages.
-- Custom **404 page** featuring an Eye artwork background.
+The **Followers component** is a reusable side panel that appears on almost every main page across ArtifexLab —
+including the **Artworks**, **Tutorials**, and **Profile** pages.
+Its purpose is to make community connection effortless by giving users a quick way to discover and follow other artists.
+
+At the top, the panel displays a small title such as **“Most Followed Profiles”**, followed by a list of user avatars and usernames.
+Each entry includes a **Follow / Unfollow button** for logged-in users to interact with instantly — no need to navigate away from the current page.
+
+To maintain intuitive UX, the **Follow button is hidden for the logged-in user’s own profile**,
+ensuring that users only see actionable follow options for other members.
 
 <p align="center">
-  <img src="docs/images/404-page.png" alt="404 Eye page" width="600">
+  <img src="docs/images/followers-panel.png" alt="Followers panel showing list of top profiles" width="400">
 </p>
+
+This consistent placement of the component encourages social interaction throughout the browsing experience —
+whether viewing an artwork, reading a tutorial, or scrolling through the feed.
+
+<p align="center">
+  <img src="docs/images/followers-on-page.png" alt="Followers component displayed on an artwork page" width="750">
+</p>
+
+🔵⬆️ [**Back to top**](#-table-of-contents)
+
+### 🔎 Filters & Search (Artworks & Tutorials)
+
+Both the **Artworks** and **Tutorials** list pages include a **filter navigation bar** positioned directly above the results.
+This bar helps users quickly refine what they see without leaving the page.
+
+**Shared controls**
+
+- 🔍 **Search**: type to filter by keywords in titles/descriptions/usernames.
+- ↕️ **Order**: sort by **Newest**, **Oldest**, or **Most liked** (where applicable).
+- 📱 **Responsive**: on smaller screens, filters stack vertically with comfortable tap targets and preserved spacing.
+
+**Artworks and Tutorials specific**
+
+- 🧑‍🤝‍🧑 **Following**: show artworks from profiles you follow.
+- ❤️ **Liked**: show artworks you’ve liked.
+- ⭐ **All**: shows all Artwrk or Tutorials
+
+#### Artworks page Filters
+
+<p align="center">
+  <img src="docs/images/filterbar-artworks.png" alt="Artworks filter and search bar" width="800">
+</p>
+
+#### Tutorials page Filters
+
+<p align="center">
+  <img src="docs/images/filterbar-tutorials.png" alt="Tutorials filter and search bar" width="800">
+</p>
+
+🔵⬆️ [**Back to top**](#-table-of-contents)
+
+### 🚨 Feedback & Errors
+
+A consistent feedback system runs throughout ArtifexLab, ensuring users always understand what’s happening as they interact with forms and pages.
+
+#### 🔑 Sign In & Sign Up
+
+Both authentication forms use **FieldAlerts** and inline validation to provide clear, instant feedback.
+
+**Sign Up Form**
+
+- Checks for **password length** and **password mismatch** between the two fields.
+- Displays warning alerts directly under the relevant inputs when validation fails.
+- On success, users see a **success alert** and are automatically logged in and redirected to their profile page.
+
+**Sign In Form**
+
+- If either the **username** or **password** is incorrect, a clear alert message is displayed.
+- The message disappears once valid credentials are entered and login succeeds.
+
+<details>
+  <summary><strong>🖼️ Open to view Sign In & Sign Up feedback screenshots</strong></summary>
+
+  <br>
+
+#### Sign In with Bad Credentials
+
+<p align="center">
+  <img src="docs/images/signin-form.png" alt="Sign in form showing incorrect credentials alert" width="750">
+</p>
+
+#### Sign In with Success
+
+<p align="center">
+    <img src="docs/images/welcome-back.png" alt="Sign in form with correct credentials alert" width="750">
+  </p>
+
+#### Sign Up with Common password
+
+<p align="center">
+    <img src="docs/images/common-password.png" alt="Sign up form with common password validation alerts" width="750">
+  </p>
+
+#### Sign Up with Passwords Mismatch
+
+  <p align="center">
+    <img src="docs/images/passwords-not-match.png" alt="Sign up form with password validation alerts" width="750">
+  </p>
+
+#### Sign Up with Success
+
+  <p align="center">
+  <img src="docs/images/signup-success.png" alt="Sign up success alert" width="750">
+</p>
+
+</details>
+
+#### 🟢 Success & Warning Alerts
+
+ArtifexLab uses a **custom React component** called **FieldAlerts**, which extends the functionality of Bootstrap’s built-in `<Alert>` component.
+This approach gives developers greater flexibility to control the styling, visibility, and type of feedback displayed throughout the site.
+
+**FieldAlerts** appear across multiple pages, offering instant user feedback for actions such as:
+
+- Submitting or editing artworks and tutorials
+- Deleting content
+- Updating profile information
+
+Distinct color styling differentiates success, warning, and error alerts for better accessibility and readability.
+
+#### 🚫 404 Page
+
+ArtifexLab includes a custom **404 Page Not Found** featuring the project’s signature Eye artwork.
+Even when something goes wrong, the site maintains consistent branding and creative flair.
+
+<p align="center">
+  <img src="docs/images/pageNotFound.png" alt="404 Eye artwork page" width="600">
+</p>
+
+🔵⬆️ [**Back to top**](#-table-of-contents)
 
 ---
 
