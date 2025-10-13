@@ -55,10 +55,20 @@ Digital artists, learners, and mentors who want to share and grow creatively in 
 - **Palette:** Light/base/dark variants, primary/secondary accents, and a main gradient.
 - **Typography:** Custom display fonts with clean body text for readability.
 - **Wireframes:** Adobe XD mockups for Navbar, Homepage, and key pages.
+  <details>
+  <summary><strong>🖼️ Open to view wireframes</strong></summary>
+
+  <br>
+
   <p align="center">
-    <img src="docs/images/mobile-wireframe.png" alt="Adobe XD homepage wireframe" width="600">
+    <img src="docs/images/home-page-desk-wireframe.png" alt="Adobe XD homepage wireframe" width="600">
   </p>
-- **Accessibility:** Semantic elements, visible focus states, color-contrast checks, keyboard-navigable menus.
+
+  <p align="center">
+    <img src="docs/images/mobile-wireframe.png" alt="Adobe XD mobile wireframe" width="300">
+  </p>
+
+</details>
 
 🔵⬆️ [**Back to top**](#-table-of-contents)
 
@@ -68,15 +78,75 @@ Digital artists, learners, and mentors who want to share and grow creatively in 
 
 ### 🌐 Navigation
 
-- Sticky Navbar with auth-aware links (Home, Artworks, Tutorials, Profile).
-- Mobile-friendly collapse menu for smaller screens.
+The **Navbar** is a responsive Bootstrap component that adapts for desktop and mobile views.
+It remains fixed at the top of the page for easy access to key site areas.
 
-<p align="center">
-  <img src="docs/images/desk-top-nav.png" alt="Navbar desktop view" width="700">
-</p>
+### 📱 Mobile Navigation
+
+On smaller screens, the Navbar collapses into a **hamburger menu** using Bootstrap’s built-in responsive behaviour.
+When the menu is toggled open, each navigation link is revealed with a smooth **fade-in transition** —
+creating a subtle cascading effect as the dropdown expands.
+
+This transition helps maintain visual clarity on mobile while giving the menu a more polished, app-like feel.
+All links remain large and easily tappable, improving accessibility and touch usability.
+The mobile Navbar also ensures that dropdowns for **Create** and **Profile** are accessible,
+retaining their respective options (Create Artwork, Create Tutorial, View Profile, Edit Profile, Logout)
+for logged-in users.
 
 <p align="center">
   <img src="docs/images/navbar-mobile.png" alt="Navbar mobile view" width="350">
+</p>
+
+When **logged out**, users see limited navigation options:
+
+- **Home**
+- **Artworks**
+- **Tutorials**
+- **Sign In**
+- **Sign Up**
+<p align="center">
+  <img src="docs/images/nva-bar-not-signed-in.png" alt="Navbar desktop view" width="700">
+</p>
+
+When **logged in**, the Navbar expands to include:
+
+- **Home**
+- **Artworks**
+- **Tutorials**
+- **Feed**
+- **Create** (Dropdown)
+- **Profile** (Dropdown)
+
+<p align="center">
+  <img src="docs/images/artifexLab-deskNav.png" alt="Navbar desktop view" width="700">
+</p>
+
+### 🎨 Create Dropdown
+
+The **Create** dropdown is visible **only to logged-in users**.
+It provides quick access to add new content without navigating through multiple pages:
+
+- ➕ **Create Artwork** – opens the Artwork Create Form.
+- 🧠 **Create Tutorial** – opens the Tutorial Create Form.
+
+This dropdown enhances workflow by allowing creators to jump straight into content creation from any page.
+
+<p align="center">
+  <img src="docs/images/create-dropdown.png" alt="Navbar desktop view" width="700">
+</p>
+
+### 👤 Profile Dropdown
+
+The **Profile** dropdown is also only visible to authenticated users.
+It displays the user’s **avatar** (or default profile image) and offers two key options as well as Siging Out:
+
+- 👀 **View Profile** – navigates to the user’s own profile page (`/profiles/:id`).
+- ✏️ **Edit Profile** – takes the user to their profile edit form (`/profiles/:id/edit`).
+
+This setup mirrors common social media UX patterns, ensuring familiarity and quick navigation for logged-in users.
+
+<p align="center">
+  <img src="docs/images/navbar-profile-dropdown.png" alt="Navbar desktop view" width="700">
 </p>
 
 ---
@@ -98,25 +168,25 @@ Digital artists, learners, and mentors who want to share and grow creatively in 
 - Create/Edit forms with clear field validation and success/error feedback.
 - Like ❤️ and comment 💬 interactions using reusable patterns.
 
-#### List View
+#### Artwork List View
 
 <p align="center">
   <img src="docs/images/artwork-listview.png" alt="Artworks list view" width="750">
 </p>
 
-#### Detail View
+#### Artwork Detail View
 
 <p align="center">
   <img src="docs/images/artwork-detail.png" alt="Artwork detail view" width="750">
 </p>
 
-#### Create View
+#### Artwork Create View
 
 <p align="center">
   <img src="docs/images/upload-artwork.png" alt="Artwork detail view" width="750">
 </p>
 
-#### Edit View
+#### Artwork Edit View
 
 <p align="center">
   <img src="docs/images/edit-artwork.png" alt="Artwork detail view" width="750">
