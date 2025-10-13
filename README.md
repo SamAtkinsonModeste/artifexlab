@@ -292,17 +292,79 @@ This setup mirrors common social media UX patterns, ensuring familiarity and qui
 
 ### 📚 Tutorials (Custom Feature)
 
-- List & detail views for learning content created by users.
-- Comments integrated on each tutorial page.
-- Reuses image preview and inline delete confirmation patterns.
+The **Tutorials** feature is the standout custom element that sets ArtifexLab apart from the Code Institute walkthrough projects.
+It allows creators to share educational content in a structured, visual, and interactive way — ideal for artists who want to **teach their creative process** step by step.
+
+#### ✨ Create Tutorial
+
+From the **Create dropdown** in the Navbar, logged-in users can access the **Tutorial Create Form**.
+The form includes fields for a **title**, **feature image**, and a **description**, as well as the option to **add multiple tutorial steps**.
+
+When the “Add Step” button is clicked, a new **step form dynamically appears** — revealing input fields for the step’s text and optional step image.
+Each step can include an image preview, providing creators with instant visual feedback before saving.
+
+This flexible design gives users creative control while maintaining a simple, guided workflow.
 
 <p align="center">
-  <img src="docs/images/tutorials-list.png" alt="Tutorials list view" width="750">
+  <img src="docs/images/tutorial-create-main.png" alt="Tutorial create form" width="750">
 </p>
 
 <p align="center">
-  <img src="docs/images/tutorials-detail.png" alt="Tutorial detail view" width="750">
+  <img src="docs/images/tutorial-create-steps.png" alt="Adding tutorial steps dynamically" width="750">
 </p>
+
+#### 🖼️ Tutorial Detail View
+
+Each tutorial opens to a **detail view** that displays:
+
+- The **feature image** at the top for strong visual impact.
+- The **title** and **description** for context.
+- A list of **tutorial steps** below, shown in the order they were added.
+
+Logged-in users who own the tutorial will see **edit and delete icons** next to both:
+
+- The main tutorial fields (title, description, feature image).
+- Individual steps — allowing updates to text or images directly within the detail view.
+
+This inline edit experience makes maintaining tutorials quick and intuitive.
+Other users can like ❤️ and comment 💬 on tutorials just like artworks, helping teachers receive feedback and engagement.
+
+<details>
+  <summary><strong>🖼️ Open to view Tutorial screenshots</strong></summary>
+
+  <br>
+
+#### Tutorial Creation Form
+
+  <p align="center">
+    <img src="docs/images/create-tutorial.png" alt="Tutorial create form with all fields open" width="750">
+  </p>
+
+#### Tutorial Detail View
+
+  <p align="center">
+    <img src="docs/images/detail-tutorial.png" alt="Tutorial detail view after creation" width="750">
+  </p>
+
+</details>
+
+#### 🧩 Reusable Patterns
+
+The tutorials feature reuses core UI patterns from artworks:
+
+- **FieldAlerts** for success, warning, and error feedback.
+- **Image preview logic** for uploads.
+- **Inline confirmation prompts** for safe deletions.
+
+Together, these ensure a consistent and reliable user experience across all creation and editing workflows.
+
+#### Tutorial Edit Steps View
+
+<p align="center">
+  <img src="docs/images/tutorial-steps.png" alt="Editing an individual tutorial step" width="750">
+</p>
+
+🔵⬆️ [**Back to top**](#-table-of-contents)
 
 ---
 
