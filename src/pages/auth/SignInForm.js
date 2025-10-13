@@ -14,7 +14,7 @@ import styles from "../../styles/SignInUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import FieldAlerts from "../../components/FieldAlerts";
-import eyeArt from "../../assets/eye-art.webp";
+import eyeArt from "../../assets/art-of-eye.webp";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import { setTokenTimestamp } from "../../utils/utils";
 

@@ -5,7 +5,7 @@ import Image from "react-bootstrap/Image";
 import styles from "../styles/NotFound.module.css";
 import baseStyles from "../App.module.css";
 
-import eye from "../assets/eye-art.webp";
+import eye from "../assets/art-of-eye.webp";
 import pageNotFound from "../assets/page-not-found.png";
 import Asset from "./Asset";
 

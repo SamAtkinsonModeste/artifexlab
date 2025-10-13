@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { setTokenTimestamp } from "../../utils/utils";
-import eyeArt from "../../assets/eye-art.webp";
+import eyeArt from "../../assets/art-of-eye.webp";
 
 import formStyles from "../../styles/Form.module.css";
 import styles from "../../styles/SignInUpForm.module.css";
