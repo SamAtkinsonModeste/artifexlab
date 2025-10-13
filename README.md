@@ -24,15 +24,16 @@
 ## 📖 Table of Contents
 
 1. [Project Overview](#project-overview)
-2. [UX & Design](#ux--design)
-3. [Features](#features)
-4. [Frontend Architecture](#frontend-architecture)
-5. [API Integration](#api-integration)
-6. [Tech Stack](#tech-stack)
-7. [Testing](#testing)
-8. [Known Issues & Future Enhancements](#known-issues--future-enhancements)
-9. [Agile Process](#agile-process)
-10. [Credits](#credits)
+2. [User Stories](#-user-stories)
+3. [UX & Design](#ux--design)
+4. [Features](#features)
+5. [Frontend Architecture](#frontend-architecture)
+6. [API Integration](#api-integration)
+7. [Tech Stack](#tech-stack)
+8. [Testing](#testing)
+9. [Known Issues & Future Enhancements](#known-issues--future-enhancements)
+10. [Agile Process](#agile-process)
+11. [Credits](#credits)
 
 ---
 
@@ -48,6 +49,41 @@ Digital artists, learners, and mentors who want to share and grow creatively in 
 🔵⬆️ [**Back to top**](#-table-of-contents)
 
 ---
+
+## 👥 User Stories
+
+This project was developed using an **Agile methodology** with **MoSCoW prioritisation**,
+managed through GitHub Projects to plan, track, and deliver each feature incrementally.
+
+👉 You can view the complete Agile board and backlog here:
+[**ArtifexLab Frontend GitHub Project**](https://github.com/users/SamAtkinsonModeste/projects/20/views/1)
+
+### 🎯 Core User Goals
+
+ArtifexLab is designed to give creators and learners a seamless, inspiring experience.
+From showcasing digital art to exploring educational tutorials, users can connect, learn, and grow together.
+
+### 💡 Key User Stories
+
+As a **Registered User**, I can:
+
+- 🎨 **Upload new artworks** with titles, descriptions, and images to share my creations.
+- ✏️ **Edit or delete my own artworks** to keep my portfolio current and polished.
+- 💬 **Comment on and like other users’ artworks** to engage and interact within the community.
+- 🧠 **Create tutorials** that include a description, feature image, and multiple **steps**.
+  - Each step can optionally include its own **image**, providing visual guidance.
+- 👁️ **View tutorials created by others** to learn new techniques and creative approaches.
+- 💚 **Follow other artists** to see their latest works and tutorials appear in my personalised feed.
+- 👤 **Manage my own profile** by updating my avatar and bio to reflect my creative identity.
+
+As an **Unregistered Visitor**, I can:
+
+- 👀 **Browse artworks and tutorials** to explore the community’s content.
+- 🔑 **Register for an account** to gain access to interactive features like posting, liking, and following.
+
+These stories guided the frontend and backend build of ArtifexLab and were continually refined through Agile iterations and feedback from mentors.
+
+🔵⬆️ [**Back to top**](#-table-of-contents)
 
 ## 🎨 UX & Design
 
