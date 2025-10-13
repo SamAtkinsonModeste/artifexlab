@@ -249,12 +249,47 @@ This setup mirrors common social media UX patterns, ensuring familiarity and qui
 
 ### 🏠 Home
 
-- Hero banner with project tagline and introduction.
-- **Callout buttons** linking directly to **Artworks** and **Tutorials** pages.
+The **Home page** welcomes visitors to ArtifexLab with a striking **Hero banner** that captures the site’s creative spirit and message —
+a digital art space for creators to **Create, Inspire, and Mentor** one another.
+
+The Hero section features clear **callout buttons** that invite visitors to explore the two core areas of the platform:
+🎨 **Artworks** and 🧠 **Tutorials**.
+This gives newcomers an immediate pathway to discover and engage with the community’s content.
+
+Just below the Hero, the **About section** introduces the purpose and ethos of ArtifexLab.
+It briefly explains the site’s mission — to provide a collaborative space where artists can showcase their work,
+learn new techniques, and connect through creativity.
+Visitors are encouraged to register or sign in to take part in the community.
+
+Following the About section, the **Featured Artwork area** offers a quick visual snapshot of the creativity happening within the platform.
+This curated section highlights a selection of user artworks — from digital paintings to conceptual pieces —
+giving new visitors an instant feel for the diversity and quality of art being produced on ArtifexLab.
+It’s a showcase designed to inspire, while encouraging users to dive deeper into the main Artworks feed.
 
 <p align="center">
-  <img src="docs/images/hero-homepage.png" alt="Homepage hero section" width="800">
+  <img src="docs/images/home-hero.png" alt="Homepage hero section with tagline and callout buttons" width="800">
 </p>
+
+<p align="center">
+  <img src="docs/images/home-about.png" alt="Homepage about section introducing ArtifexLab's mission" width="800">
+</p>
+
+<p align="center">
+  <img src="docs/images/home-feature.png" alt="Homepage feature section showing example artworks" width="800">
+</p>
+
+<details>
+  <summary><strong>🖼️ Open to view all sections of Home page screenshot</strong></summary>
+
+  <br>
+
+  <p align="center">
+    <img src="docs/images/home-all-sections.png" alt="Homepage hero, about and feature sections" width="800">
+  </p>
+
+</details>
+
+🔵⬆️ [**Back to top**](#-table-of-contents)
 
 ---
 
