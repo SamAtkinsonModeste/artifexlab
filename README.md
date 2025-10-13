@@ -51,10 +51,71 @@ Digital artists, learners, and mentors who want to share and grow creatively in 
 
 ## 🎨 UX & Design
 
-- **Branding:** _ArtifexLab — “Create. Inspire. Mentor.”_
-- **Palette:** Light/base/dark variants, primary/secondary accents, and a main gradient.
-- **Typography:** Custom display fonts with clean body text for readability.
-- **Wireframes:** Adobe XD mockups for Navbar, Homepage, and key pages.
+### ✨ Branding
+
+ArtifexLab embodies creativity, mentorship, and community through its simple yet expressive branding.
+The project tagline — **“Create. Inspire. Mentor.”** — captures the platform’s collaborative mission.
+
+### 🖋️ Typography
+
+Three typefaces were selected from **Adobe Fonts** to establish a distinctive yet readable style across all viewports:
+
+| Font                    | Usage                                                 | Visual Style                                                 |
+| ----------------------- | ----------------------------------------------------- | ------------------------------------------------------------ |
+| **pinot-grigio-modern** | Used for the **ArtifexLab** site name on the homepage | Elegant, artistic display font adding character to the logo  |
+| **FinalSix**            | Applied to all **headings and body text**             | Rounded geometric sans-serif that feels modern and confident |
+| **bc-alphapipe**        | Used for **Navbar links** and interactive labels      | Sleek, futuristic font that complements the creative theme   |
+
+Together, these fonts balance personality with legibility, supporting both expressive headlines and user-friendly reading experiences.
+
+### 🎨 Color Palette
+
+The color palette was designed using a **light/base/dark system** with primary, secondary, and CTA accents.
+Each color was tested for contrast and visual harmony against both white and dark backgrounds.
+
+| Role                        | Hex Code  | Description                                              |
+| --------------------------- | --------- | -------------------------------------------------------- |
+| 🕊️ **White Base**           | `#FFF9F4` | Warm off-white background used for main content areas    |
+| ⚫ **Black Base**           | `#2E2E2E` | Deep neutral text color ensuring strong readability      |
+| 💜 **Primary Accent**       | `#5E60CE` | Core brand color (used for buttons, icons, and headings) |
+| 💚 **Secondary Accent**     | `#80ED99` | Fresh complementary hue used sparingly for highlights    |
+| ❤️ **Call to Action (CTA)** | `#FF6B6B` | Bold brand color for interactive elements and alerts     |
+
+These colors work harmoniously to convey creativity and energy without overwhelming the user.
+The combination of purple and coral provides contrast between inspiration and action,
+while the soft off-white background keeps the interface balanced and approachable.
+
+<details>
+  <summary><strong>🎨 Open to view color palette and font samples</strong></summary>
+
+  <br>
+
+  <p align="center">
+    <img src="docs/images/colour-palette.png" alt="ArtifexLab color palette" width="600">
+  </p>
+
+  <p align="center">
+    <img src="docs/images/fonts.png" alt="Font samples showing pinot-grigio-modern, FinalSix, and bc-alphapipe" width="600">
+  </p>
+
+  <p align="center">
+    <em>Font sample preview:</em><br>
+    <strong style="font-family: 'pinot-grigio-modern';">ArtifexLab</strong><br>
+    <span style="font-family: 'FinalSix';">Create. Inspire. Mentor.</span><br>
+    <span style="font-family: 'bc-alphapipe'; text-transform: uppercase;">Navbar Links</span>
+  </p>
+
+</details>
+
+### ♿ Accessibility
+
+All color choices were checked for **WCAG contrast compliance**.
+The layout uses **semantic HTML**, focus-visible states, and consistent color cues for interaction and feedback.
+
+🔵⬆️ [**Back to top**](#-table-of-contents)
+
+### Wireframes: Adobe XD mockups for Mobile & Homepage.
+
   <details>
   <summary><strong>🖼️ Open to view wireframes</strong></summary>
 
@@ -113,7 +174,6 @@ When **logged in**, the Navbar expands to include:
 - **Home**
 - **Artworks**
 - **Tutorials**
-- **Feed**
 - **Create** (Dropdown)
 - **Profile** (Dropdown)
 
@@ -171,7 +231,7 @@ This setup mirrors common social media UX patterns, ensuring familiarity and qui
 #### Artwork List View
 
 <p align="center">
-  <img src="docs/images/artwork-listview.png" alt="Artworks list view" width="750">
+  <img src="docs/images/listview-artwork.png" alt="Artworks list view" width="750">
 </p>
 
 #### Artwork Detail View
