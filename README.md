@@ -727,7 +727,7 @@ The Artworks and Tutorials list views support URL query parameters:
 - **DEPLOYMENT.md** (backend) — production setup: **[Deployment](https://github.com/SamAtkinsonModeste/artifexlab-api/blob/main/DEPLOYMENT.md)**
 - **AGILE.md** (backend) — planning and sprint notes: **[Agile](https://github.com/SamAtkinsonModeste/artifexlab-api/blob/main/AGILE.md)**
 
-> Frontend-specific testing is documented in **[TESTING.md](./TESTING.md)**.
+> Frontend-specific testing is documented in **[TEST.md](./TEST.md)**.
 
 🔵⬆️ [**Back to top**](#-table-of-contents)
 
@@ -749,7 +749,7 @@ The Artworks and Tutorials list views support URL query parameters:
 ## 🧪 Testing
 
 A brief summary of key test areas is below.
-🔎 Full Lighthouse, W3C HTML/CSS validation screenshots, and detailed test cases live in **[TESTING.md](./TEST.md)**.
+🔎 Full Lighthouse, W3C HTML/CSS validation screenshots, and detailed test cases live in **[TEST.md](./TEST.md)**.
 
 ### ✅ Manual Testing
 
