@@ -679,6 +679,20 @@ Even when something goes wrong, the site maintains consistent branding and creat
 | `/profiles/:id/edit`  | Profile edit    |
 | `*`                   | Page Not Found  |
 
+#### Query Parameters (Filtering, Search & Ordering)
+
+The Artworks and Tutorials list views support URL query parameters:
+
+- **Search**: `?search=<keyword>`
+- **Ordering**: `?ordering=-created_at` (newest first) or `?ordering=created_at` (oldest first)
+- **Following-only** (frontend filter → mapped to API params as implemented): e.g. `?owner__followed_by=<current_user_id>`
+- **Liked-only** (Artworks): e.g. `?likes__owner=<current_user_id>`
+
+**Examples**
+
+- `/artworks/?search=portrait&ordering=-created_at`
+- `/tutorials/?search=brush&ordering=-created_at`
+
 ### ⚙️ Components & Pages
 
 - Clear separation between **pages (views)** and **reusable components** like Navbar, FieldAlerts, and SidePanel.
@@ -735,7 +749,7 @@ Even when something goes wrong, the site maintains consistent branding and creat
 ## 🧪 Testing
 
 A brief summary of key test areas is below.
-Full details, screenshots, and results are available in **[TESTING.md](./TESTING.md)**.
+🔎 Full Lighthouse, W3C HTML/CSS validation screenshots, and detailed test cases live in **[TESTING.md](./TESTING.md)**.
 
 ### ✅ Manual Testing
 
