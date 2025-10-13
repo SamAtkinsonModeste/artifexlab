@@ -56,7 +56,7 @@ Digital artists, learners, and mentors who want to share and grow creatively in 
 - **Typography:** Custom display fonts with clean body text for readability.
 - **Wireframes:** Adobe XD mockups for Navbar, Homepage, and key pages.
   <p align="center">
-    ![]"docs/images/wireframes-homepage.png" alt="Adobe XD homepage wireframe" width="600">
+    <img src="docs/images/mobile-wireframe.png" alt="Adobe XD homepage wireframe" width="600">
   </p>
 - **Accessibility:** Semantic elements, visible focus states, color-contrast checks, keyboard-navigable menus.
 
@@ -68,11 +68,11 @@ Digital artists, learners, and mentors who want to share and grow creatively in 
 
 ### 🌐 Navigation
 
-- Sticky Navbar with auth-aware links (Home, Artworks, Tutorials, Feed, Profile).
+- Sticky Navbar with auth-aware links (Home, Artworks, Tutorials, Profile).
 - Mobile-friendly collapse menu for smaller screens.
 
 <p align="center">
-  <img src="docs/images/navbar-desktop.png" alt="Navbar desktop view" width="700">
+  <img src="docs/images/desk-top-nav.png" alt="Navbar desktop view" width="700">
 </p>
 
 <p align="center">
@@ -87,7 +87,7 @@ Digital artists, learners, and mentors who want to share and grow creatively in 
 - **Callout buttons** linking directly to **Artworks** and **Tutorials** pages.
 
 <p align="center">
-  <img src="docs/images/homepage-hero.png" alt="Homepage hero section" width="800">
+  <img src="docs/images/hero-homepage.png" alt="Homepage hero section" width="800">
 </p>
 
 ---
@@ -98,12 +98,28 @@ Digital artists, learners, and mentors who want to share and grow creatively in 
 - Create/Edit forms with clear field validation and success/error feedback.
 - Like ❤️ and comment 💬 interactions using reusable patterns.
 
-<p align="center">
-  <img src="docs/images/artworks-list.png" alt="Artworks list view" width="750">
-</p>
+#### List View
 
 <p align="center">
-  <img src="docs/images/artworks-detail.png" alt="Artwork detail view" width="750">
+  <img src="docs/images/artwork-listview.png" alt="Artworks list view" width="750">
+</p>
+
+#### Detail View
+
+<p align="center">
+  <img src="docs/images/artwork-detail.png" alt="Artwork detail view" width="750">
+</p>
+
+#### Create View
+
+<p align="center">
+  <img src="docs/images/upload-artwork.png" alt="Artwork detail view" width="750">
+</p>
+
+#### Edit View
+
+<p align="center">
+  <img src="docs/images/edit-artwork.png" alt="Artwork detail view" width="750">
 </p>
 
 ---
