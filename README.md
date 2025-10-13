@@ -749,7 +749,7 @@ The Artworks and Tutorials list views support URL query parameters:
 ## 🧪 Testing
 
 A brief summary of key test areas is below.
-🔎 Full Lighthouse, W3C HTML/CSS validation screenshots, and detailed test cases live in **[TESTING.md](./TESTING.md)**.
+🔎 Full Lighthouse, W3C HTML/CSS validation screenshots, and detailed test cases live in **[TESTING.md](./TEST.md)**.
 
 ### ✅ Manual Testing
 
