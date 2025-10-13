@@ -36,8 +36,11 @@
    - [🎨 Artworks](#-artworks)
    - [👤 Profile](#-profile)
    - [👥 Followers Component](#-followers-component)
-   - [📰 Feed](#-feed)
+   - [🔎 Filters & Search (Artworks & Tutorials)](#-filters--search-artworks--tutorials)
+   - [🔗 Footer](#-footer)
+   - [🚨 Feedback & Errors](#-feedback--errors)
    - [🚫 404 Page](#-404-page)
+   - [♻️ Reusable Components](#️-reusable-components)
 5. [🏗️ Frontend Architecture](#️-frontend-architecture)
 6. [🔗 API Integration](#-api-integration)
 7. [🧰 Tech Stack](#-tech-stack)
@@ -58,6 +61,14 @@ This project uses **two GitHub repos** (frontend + backend) and is deployed to *
 Digital artists, learners, and mentors who want to share and grow creatively in a collaborative space.
 
 🔵⬆️ [**Back to top**](#-table-of-contents)
+
+---
+
+**Docs quick links:**
+
+- 🧠 Backend repo: **[artifexlab-api](https://github.com/SamAtkinsonModeste/artifexlab-api)**
+- 🔧 Backend Deployment: **[DEPLOYMENT.md](https://github.com/SamAtkinsonModeste/artifexlab-api/blob/main/DEPLOYMENT.md)**
+- 🗂️ Backend Agile notes: **[AGILE.md](https://github.com/SamAtkinsonModeste/artifexlab-api/blob/main/AGILE.md)**
 
 ---
 
@@ -95,6 +106,8 @@ As an **Unregistered Visitor**, I can:
 These stories guided the frontend and backend build of ArtifexLab and were continually refined through Agile iterations and feedback from mentors.
 
 🔵⬆️ [**Back to top**](#-table-of-contents)
+
+---
 
 ## 🎨 UX & Design
 
@@ -160,6 +173,8 @@ All color choices were checked for **WCAG contrast compliance**.
 The layout uses **semantic HTML**, focus-visible states, and consistent color cues for interaction and feedback.
 
 🔵⬆️ [**Back to top**](#-table-of-contents)
+
+---
 
 ### Wireframes: Adobe XD mockups for Mobile & Homepage.
 
@@ -245,7 +260,7 @@ This dropdown enhances workflow by allowing creators to jump straight into conte
 ### 👤 Profile Dropdown
 
 The **Profile** dropdown is also only visible to authenticated users.
-It displays the user’s **avatar** (or default profile image) and offers two key options as well as Siging Out:
+It displays the user’s **avatar** (or default profile image) and offers two key options as well as Signing Out:
 
 - 👀 **View Profile** – navigates to the user’s own profile page (`/profiles/:id`).
 - ✏️ **Edit Profile** – takes the user to their profile edit form (`/profiles/:id/edit`).
@@ -255,6 +270,8 @@ This setup mirrors common social media UX patterns, ensuring familiarity and qui
 <p align="center">
   <img src="docs/images/navbar-profile-dropdown.png" alt="Navbar desktop view" width="700">
 </p>
+
+🔵⬆️ [**Back to top**](#-table-of-contents)
 
 ---
 
@@ -334,11 +351,13 @@ It’s a showcase designed to inspire, while encouraging users to dive deeper in
   <img src="docs/images/edit-artwork.png" alt="Artwork detail view" width="750">
 </p>
 
+🔵⬆️ [**Back to top**](#-table-of-contents)
+
 ---
 
 ### 📚 Tutorials (Custom Feature)
 
-The **Tutorials** feature is the standout custom element that sets ArtifexLab apart from the Code Institute walkthrough projects.
+The **Tutorials** feature is the standout custom element that sets ArtifexLab apart as a community share site.
 It allows creators to share educational content in a structured, visual, and interactive way — ideal for artists who want to **teach their creative process** step by step.
 
 #### ✨ Create Tutorial
@@ -478,14 +497,15 @@ ensuring that users only see actionable follow options for other members.
   <img src="docs/images/followers-panel.png" alt="Followers panel showing list of top profiles" width="400">
 </p>
 
-This consistent placement of the component encourages social interaction throughout the browsing experience —
-whether viewing an artwork, reading a tutorial, or scrolling through the feed.
+This consistent placement of the component encourages social interaction throughout the browsing experience — whether viewing an artwork or reading a tutorial.
 
 <p align="center">
   <img src="docs/images/followers-on-page.png" alt="Followers component displayed on an artwork page" width="750">
 </p>
 
 🔵⬆️ [**Back to top**](#-table-of-contents)
+
+---
 
 ### 🔎 Filters & Search (Artworks & Tutorials)
 
@@ -498,11 +518,11 @@ This bar helps users quickly refine what they see without leaving the page.
 - ↕️ **Order**: sort by **Newest**, **Oldest**, or **Most liked** (where applicable).
 - 📱 **Responsive**: on smaller screens, filters stack vertically with comfortable tap targets and preserved spacing.
 
-**Artworks and Tutorials specific**
+**Common quick filters**
 
-- 🧑‍🤝‍🧑 **Following**: show artworks from profiles you follow.
+- 🧑‍🤝‍🧑 **Following**: show content from profiles you follow.
 - ❤️ **Liked**: show artworks you’ve liked.
-- ⭐ **All**: shows all Artwrk or Tutorials
+- ⭐ **All**: show all Artwork or Tutorials.
 
 #### Artworks page Filters
 
@@ -517,6 +537,40 @@ This bar helps users quickly refine what they see without leaving the page.
 </p>
 
 🔵⬆️ [**Back to top**](#-table-of-contents)
+
+---
+
+### 🔗 Footer
+
+The **Footer** provides a clean and consistent ending to every page of ArtifexLab.
+It stays visually light so it doesn’t compete with the artwork and tutorials above,
+but still reinforces brand identity through consistent typography and spacing.
+
+At the centre of the footer sits the **ArtifexLab** tagline
+**“Create. Inspire. Mentor.”** to remind visitors of the platform’s ethos.
+
+Beneath it, a row of **social media icons** links to ArtifexLab’s official profiles:
+
+- 📸 **Instagram** — connect with artists sharing their work on social media.
+- 🕊️ **X (Twitter)** — stay updated on announcements and community highlights.
+- 📘 **Facebook** — join longer-form creative discussions and event updates.
+
+All icons open in new tabs (`target="_blank" rel="noopener noreferrer"`) for accessibility and security.
+The icons themselves are provided by **Font Awesome** and use hover color transitions for subtle interactivity.
+
+<p align="center">
+  <img src="docs/images/footer-desktop.png" alt="ArtifexLab footer with social icons" width="800">
+</p>
+
+On smaller screens, the layout remains single-row with compact icon sizing; icons scale down cleanly so no stacking layout is required at this time.
+
+<p align="center">
+  <img src="docs/images/footer-mobile.png" alt="Footer mobile layout" width="350">
+</p>
+
+🔵⬆️ [**Back to top**](#-table-of-contents)
+
+---
 
 ### 🚨 Feedback & Errors
 
@@ -646,12 +700,20 @@ Even when something goes wrong, the site maintains consistent branding and creat
 ## 🔗 API Integration
 
 - **Backend:** Django REST Framework using **dj-rest-auth + JWT**.
-- **Filtering / Searching / Ordering:** Managed through query parameters (e.g. `?ordering=-created_at`, `?search=portrait`).
-- **Pagination:** DRF pagination consumed by infinite scroll or “Load more” features.
-- **Dates:** Rendered using human-friendly times (e.g., `naturaltime`).
-- **Environment variable (production):**
+- **API Base URL (production):** `https://artifexlab-api-d4e6d81a8b08.herokuapp.com/`
+- **Environment variable (frontend build):**
+- REACT_APP_API_BASE_URL=https://artifexlab-api-d4e6d81a8b08.herokuapp.com/
+- **Filtering / Searching / Ordering:** via query params (e.g., `?search=portrait`, `?ordering=-created_at`).
+- **Pagination:** DRF pagination consumed by infinite scroll / “Load more”.
+- **Dates:** human-friendly times (e.g., `naturaltime`).
 
-`TODO: confirm API base URL`
+**Related backend documentation:**
+
+- Backend **README** — models & endpoints overview: **[artifexlab-api README](https://github.com/SamAtkinsonModeste/artifexlab-api)**
+- **DEPLOYMENT.md** (backend) — production setup: **[Deployment](https://github.com/SamAtkinsonModeste/artifexlab-api/blob/main/DEPLOYMENT.md)**
+- **AGILE.md** (backend) — planning and sprint notes: **[Agile](https://github.com/SamAtkinsonModeste/artifexlab-api/blob/main/AGILE.md)**
+
+> Frontend-specific testing is documented in **[TESTING.md](./TESTING.md)**.
 
 🔵⬆️ [**Back to top**](#-table-of-contents)
 
@@ -700,16 +762,18 @@ All main user flows work correctly, no blocking console errors, and the frontend
 
 ## 🧭 Known Issues & Future Enhancements
 
-### 🐛 Known Issues
+### 🐛 Known Issues (current)
 
-- **Resource-level 404:** When a valid route has a non-existent ID (e.g. `/artworks/999`), a fallback to the 404 component will be added later.
+- **Resource-level 404:** When a valid route includes a non-existent ID (e.g., `/artworks/999`), the view may not always fall back to the custom 404 component.
 
 ### 🌱 Future Enhancements
 
-- Add **Feed filters** (e.g., My Feed, Favourites, Popular).
-- Enable **video uploads** for Tutorials.
-- Generate **downloadable PDFs** for Tutorials.
-- Extend account settings to include username/password updates.
+- **Profile Tutorials Integration:** Display a user’s created tutorials on their Profile alongside artworks.
+- **Tutorial steps — text editing:** Add inline editing for step text (currently, step images can be replaced/removed and steps can be deleted/re-created).
+- **Feed page:** Add a personalised feed combining content from followed artists.
+- **Filter bar expansions:** Add dropdown sorting (Most Liked / Most Recent) and “Followed only” toggle where applicable.
+- **Footer (mobile refinements):** Optional stacked layout variant if future content grows.
+- **Tutorial media:** Support for short video clips; export tutorials as downloadable PDFs.
 
 🔵⬆️ [**Back to top**](#-table-of-contents)
 
@@ -717,12 +781,13 @@ All main user flows work correctly, no blocking console errors, and the frontend
 
 ## 🌀 Agile Process
 
-- **Methodology:** Agile development using **MoSCoW** prioritisation.
-- **Tools:** Trello for planning, GitHub Projects for implementation.
-- **Commits:** Followed **Conventional Commit** style for clarity.
-- **User Stories:** Stored in GitHub Issues with labels for epics and priorities.
+- **Methodology:** Agile with **MoSCoW** prioritisation and iterative delivery.
+- **Tracking:** GitHub Projects board for issues, epics, and story states.
+  View the live board: **[Frontend Project](https://github.com/users/SamAtkinsonModeste/projects/20/views/1)**
+- **Commits:** Conventional Commits for clarity (feat/fix/docs/refactor).
 
-👉 See [**AGILE.md**](./AGILE.md) for full story breakdowns and prioritisation.
+For the complete backlog, sprint notes, and acceptance criteria, see the backend Agile log:
+**[AGILE.md (backend)](https://github.com/SamAtkinsonModeste/artifexlab-api/blob/main/AGILE.md)**
 
 🔵⬆️ [**Back to top**](#-table-of-contents)
 
@@ -733,7 +798,7 @@ All main user flows work correctly, no blocking console errors, and the frontend
 Heartfelt thanks to:
 
 - 🧑‍🏫 **Rory Patrick Sheridan** — mentor for Projects 1–4
-- 🧑‍💻 **Richard** — mentor for Project 5 (final)
+- 🧑‍💻 **Richard Wells** — mentor for Project 5 (final)
 - 👨‍👩‍👧‍👦 **My family, especially my kids** — for their patience when mummy wasn’t as available ❤️
 
 **Libraries & Tools:** React, React Router, Bootstrap/React Bootstrap, Axios, Heroku.
