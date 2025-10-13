@@ -256,23 +256,23 @@ The Hero section features clear **callout buttons** that invite visitors to expl
 🎨 **Artworks** and 🧠 **Tutorials**.
 This gives newcomers an immediate pathway to discover and engage with the community’s content.
 
+<p align="center">
+  <img src="docs/images/home-hero.png" alt="Homepage hero section with tagline and callout buttons" width="800">
+</p>
+
 Just below the Hero, the **About section** introduces the purpose and ethos of ArtifexLab.
 It briefly explains the site’s mission — to provide a collaborative space where artists can showcase their work,
 learn new techniques, and connect through creativity.
 Visitors are encouraged to register or sign in to take part in the community.
 
+<p align="center">
+  <img src="docs/images/home-about.png" alt="Homepage about section introducing ArtifexLab's mission" width="800">
+</p>
+
 Following the About section, the **Featured Artwork area** offers a quick visual snapshot of the creativity happening within the platform.
 This curated section highlights a selection of user artworks — from digital paintings to conceptual pieces —
 giving new visitors an instant feel for the diversity and quality of art being produced on ArtifexLab.
 It’s a showcase designed to inspire, while encouraging users to dive deeper into the main Artworks feed.
-
-<p align="center">
-  <img src="docs/images/home-hero.png" alt="Homepage hero section with tagline and callout buttons" width="800">
-</p>
-
-<p align="center">
-  <img src="docs/images/home-about.png" alt="Homepage about section introducing ArtifexLab's mission" width="800">
-</p>
 
 <p align="center">
   <img src="docs/images/home-feature.png" alt="Homepage feature section showing example artworks" width="800">
@@ -335,17 +335,17 @@ It allows creators to share educational content in a structured, visual, and int
 From the **Create dropdown** in the Navbar, logged-in users can access the **Tutorial Create Form**.
 The form includes fields for a **title**, **feature image**, and a **description**, as well as the option to **add multiple tutorial steps**.
 
+<p align="center">
+  <img src="docs/images/tutorial-form.png" alt="Tutorial create form" width="750">
+</p>
+
 When the “Add Step” button is clicked, a new **step form dynamically appears** — revealing input fields for the step’s text and optional step image.
 Each step can include an image preview, providing creators with instant visual feedback before saving.
 
 This flexible design gives users creative control while maintaining a simple, guided workflow.
 
 <p align="center">
-  <img src="docs/images/tutorial-create-main.png" alt="Tutorial create form" width="750">
-</p>
-
-<p align="center">
-  <img src="docs/images/tutorial-create-steps.png" alt="Adding tutorial steps dynamically" width="750">
+  <img src="docs/images/tutorial-step-form.png" alt="Adding tutorial steps dynamically" width="750">
 </p>
 
 #### 🖼️ Tutorial Detail View
@@ -356,29 +356,31 @@ Each tutorial opens to a **detail view** that displays:
 - The **title** and **description** for context.
 - A list of **tutorial steps** below, shown in the order they were added.
 
-Logged-in users who own the tutorial will see **edit and delete icons** next to both:
+Logged-in users who own the tutorial will see three dots once clicked a dropdown menu appears with **edit and delete buttons** where they are taken to the edit page where they can edit:
 
 - The main tutorial fields (title, description, feature image).
-- Individual steps — allowing updates to text or images directly within the detail view.
+- Individual steps — allowing updates to images.
+
+There is also a Delete button after the list of steps to delete the entire tutorial.
 
 This inline edit experience makes maintaining tutorials quick and intuitive.
 Other users can like ❤️ and comment 💬 on tutorials just like artworks, helping teachers receive feedback and engagement.
 
 <details>
-  <summary><strong>🖼️ Open to view Tutorial screenshots</strong></summary>
+  <summary><strong>🖼️ Open to view Tutorial Edit Page</strong></summary>
 
   <br>
-
-#### Tutorial Creation Form
-
-  <p align="center">
-    <img src="docs/images/create-tutorial.png" alt="Tutorial create form with all fields open" width="750">
-  </p>
 
 #### Tutorial Detail View
 
   <p align="center">
-    <img src="docs/images/detail-tutorial.png" alt="Tutorial detail view after creation" width="750">
+    <img src="docs/images/tutorial-detail.png" alt="Tutorial detail view" width="750">
+  </p>
+
+#### Tutorial Edit Steps
+
+  <p align="center">
+    <img src="docs/images/tutorial-steps.png" alt="Tutorial edit steps view after creation" width="750">
   </p>
 
 </details>
@@ -393,28 +395,59 @@ The tutorials feature reuses core UI patterns from artworks:
 
 Together, these ensure a consistent and reliable user experience across all creation and editing workflows.
 
-#### Tutorial Edit Steps View
-
-<p align="center">
-  <img src="docs/images/tutorial-steps.png" alt="Editing an individual tutorial step" width="750">
-</p>
-
 🔵⬆️ [**Back to top**](#-table-of-contents)
 
 ---
 
-### 👤 Profiles
+### 👤 Profile
 
-- View & edit profile information (avatar, bio).
-- Sidebar shows **Most Followed Profiles** for discovery.
+Each user has their own **Profile page** that acts as a personal hub — showcasing their creative activity and giving them control over their account settings.
+
+At the top of the page, the user’s **profile image** is displayed prominently beside key stats:
+
+- 🎨 **Artworks** — total number of artworks created by the user.
+- 👥 **Followers** — how many people are following the user.
+- 💚 **Following** — how many profiles the user follows.
+
+This immediate visual summary gives a snapshot of the user’s engagement and presence within the ArtifexLab community.
 
 <p align="center">
-  <img src="docs/images/profile-view.png" alt="Profile page view" width="750">
+  <img src="docs/images/profile-head.png" alt="Profile header showing avatar, artwork count, and follower stats" width="750">
 </p>
 
+Below the header, users can scroll through all of the **artworks they’ve created**, displayed in the same card format as the main Artworks feed.
+Each piece links to its own detail page, allowing users to revisit, edit, or delete their posts.
+This setup creates a familiar, scrollable gallery of their creative journey.
+
 <p align="center">
-  <img src="docs/images/profile-sidebar.png" alt="Most followed profiles sidebar" width="400">
+  <img src="docs/images/profile-artwork.png" alt="Profile artworks section showing user’s created art" width="750">
 </p>
+
+In the top-right corner of the profile header sits a subtle **three-dot dropdown menu** (⋮).
+This menu provides quick access to important account management options:
+
+- ✏️ **Edit Profile** – update bio or profile image.
+- 🪪 **Change Username** – modify display name while retaining existing content.
+- 🔒 **Change Password** – update login credentials securely.
+
+These controls ensure users can manage their identity and privacy without navigating away from their profile.
+
+<p align="center">
+  <img src="docs/images/profile-dropdownmenu.png" alt="Profile dropdown menu with edit, username, and password options" width="750">
+</p>
+
+<details>
+  <summary><strong>🖼️ Open to view entire Profile screenshot</strong></summary>
+
+  <br>
+
+  <p align="center">
+    <img src="docs/images/profile-page.png" alt="Profile page" width="750">
+  </p>
+
+</details>
+
+🔵⬆️ [**Back to top**](#-table-of-contents)
 
 ---
 
