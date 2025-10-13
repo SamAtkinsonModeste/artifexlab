@@ -30,31 +30,35 @@ const SignInForm = () => {
   const [success, setSuccess] = useState(false);
 
   const navigate = useNavigate();
-  //USEEFFECT - IF SUCCESSFULL SUBMISSION
+
+  // Redirect shortly after success
   useEffect(() => {
     if (success) {
       const timer = setTimeout(() => {
         navigate("/");
       }, 2500);
-
       return () => clearTimeout(timer);
     }
   }, [success, navigate]);
 
-  //EVENTHANDLER - handleChange of form inputs
+  // Handle input change
   const handleChange = (evt) => {
-    setSignInData({
-      ...signInData,
-      [evt.target.name]: evt.target.value,
-    });
+    const { name, value } = evt.target;
 
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [evt.target.name]: null,
+    setSignInData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+
+    // Clear field-specific errors AND general login error
+    setErrors((prev) => ({
+      ...prev,
+      [name]: null,
+      non_field_errors: null, // <-- important for bad-credentials message
     }));
   };
 
-  //EVENTHANDLER - handleSubmit of new User sign up
+  // Submit
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
@@ -63,11 +67,13 @@ const SignInForm = () => {
       setCurrentUser(data.user);
       setTokenTimestamp(data);
       setSuccess(true);
-      console.log("Success!");
-      console.log(data);
+      setErrors({});
+      // console.log("Success!", data);
     } catch (err) {
-      console.log(err);
-      setErrors(err.response?.data);
+      // console.log(err);
+      setSuccess(false);
+      // Store the API error object so FieldAlerts can render it
+      setErrors(err.response?.data || { non_field_errors: ["Login failed"] });
     }
   };
 
@@ -77,6 +83,7 @@ const SignInForm = () => {
         <Col className="my-auto py-2 p-md-2" md={6}>
           <Container className={`${appStyles.Content} p-4 `}>
             <h1 className={styles.Header}>sign in</h1>
+
             <Form onSubmit={handleSubmit}>
               <Form.Group controlId="username">
                 <Form.Label className="d-none">Username</Form.Label>
@@ -87,11 +94,12 @@ const SignInForm = () => {
                   name="username"
                   value={username}
                   onChange={handleChange}
+                  autoComplete="username"
                 />
               </Form.Group>
               <FieldAlerts messages={errors?.username} />
 
-              <Form.Group controlId="password">
+              <Form.Group controlId="password" className="mt-2">
                 <Form.Label className="d-none">Password</Form.Label>
                 <Form.Control
                   className={`${formStyles.Input} ${formStyles.InputSignIn}`}
@@ -100,13 +108,19 @@ const SignInForm = () => {
                   name="password"
                   value={password}
                   onChange={handleChange}
+                  autoComplete="current-password"
                 />
               </Form.Group>
               <FieldAlerts messages={errors?.password} />
 
+              {/* Global login error from dj-rest-auth */}
+              <div className="mt-3">
+                <FieldAlerts messages={errors?.non_field_errors} />
+              </div>
+
               <Button
                 variant="none"
-                className={`${btnStyles.Button} ${btnStyles.SignUpIn}`}
+                className={`${btnStyles.Button} ${btnStyles.SignUpIn} mt-3`}
                 type="submit"
                 disabled={success}
               >
@@ -126,17 +140,19 @@ const SignInForm = () => {
               )}
             </Form>
           </Container>
+
           <Container className={`mt-3 ${appStyles.Content}`}>
             <Link className={styles.Link} to="/signup">
-              Don't have an account? <span>Sign Up now!</span>
+              Don&apos;t have an account? <span>Sign Up now!</span>
             </Link>
           </Container>
         </Col>
+
         <Col
           md={6}
           className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}
         >
-          <Image className={`${appStyles.FillerImage}`} src={eyeArt} />
+          <Image className={`${appStyles.FillerImage}`} src={eyeArt} alt="" />
         </Col>
       </Row>
     </Container>
