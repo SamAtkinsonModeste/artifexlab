@@ -4,7 +4,7 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import { NavLink, useLocation } from "react-router-dom";
-import logo from "../assets/artifexLab-logo.svg";
+import logo from "../assets/logo-artifexlab.webp";
 import styles from "../styles/NavBar.module.css";
 import Design from "../styles/UniversalDesign.module.css";
 import {
